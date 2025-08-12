@@ -212,7 +212,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
 
       try {
         const timelineOps = createTimelineOperations();
-        await timelineOps.initializeFromMedia(mediaFile.id, transcript);
+        await timelineOps.initializeFromMedia(mediaFile.id, transcript, mediaFile.duration);
 
         // Subscribe to state changes
         const unsubscribe = timelineOps.subscribe((state) => {
@@ -227,6 +227,13 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
           const { mapping, totalDuration } = buildVirtualTimeline(clips);
           setVirtualTimeline(mapping);
           setVirtualDuration(totalDuration);
+          
+          console.log('🔄 Timeline state updated:', {
+            activeClips: clips.length,
+            virtualDuration: totalDuration.toFixed(2),
+            mappingPoints: mapping.length,
+            firstClip: clips[0] ? `${clips[0].start.toFixed(2)}-${clips[0].end.toFixed(2)}` : 'none'
+          });
 
           // Auto-save after 2 seconds of inactivity
           if (autoSaveTimeoutRef.current) {
@@ -295,25 +302,28 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
 
   // Timeline editor event handlers
   const handleTimeChange = useCallback(
-    (virtualTime: number) => {
+    (time: number) => {
       // Prevent infinite recursion - check if we're already at this time
-      if (Math.abs(localCurrentTime - virtualTime) < 0.01) {
+      if (Math.abs(localCurrentTime - time) < 0.01) {
         return;
       }
       
-      // Convert virtual time to actual media time
-      const actualTime = virtualToActualTime(virtualTime, virtualTimeline);
+      console.log('🎬 Timeline time change:', { 
+        time: time.toFixed(2),
+        mediaDuration: mediaFile.duration
+      })
       
-      operations?.setCurrentTime(virtualTime);
-      onTimeUpdate(virtualTime);
-      setLocalCurrentTime(virtualTime);
+      operations?.setCurrentTime(time);
+      onTimeUpdate(time);
+      setLocalCurrentTime(time);
       
-      // Seek the media player to the actual time
+      // Seek the media player directly to the time
       if (mediaPlayerRef.current) {
-        mediaPlayerRef.current.seekTo(actualTime);
+        console.log('  → Seeking media player to:', time.toFixed(2))
+        mediaPlayerRef.current.seekTo(time);
       }
     },
-    [operations, onTimeUpdate, virtualTimeline, virtualToActualTime, localCurrentTime],
+    [operations, onTimeUpdate, localCurrentTime, mediaFile.duration],
   );
 
   const handlePlayPause = useCallback(() => {
@@ -459,43 +469,40 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
             src={getMediaUrl(mediaFile)}
             type={mediaFile.type}
             onTimeUpdate={(actualTime) => {
-              // Check if we're in a cut section and need to skip
-              const nextValidTime = getNextValidTime(actualTime, activeClips);
+              console.log('📹 Video time update:', { 
+                actualTime: actualTime.toFixed(2),
+                mediaDuration: mediaFile.duration
+              })
               
-              if (nextValidTime === -1) {
-                // No more clips, pause
-                if (mediaPlayerRef.current) {
-                  mediaPlayerRef.current.pause();
-                }
-              } else if (nextValidTime !== actualTime) {
-                // We're in a cut section, jump to next clip
-                if (mediaPlayerRef.current) {
-                  mediaPlayerRef.current.seekTo(nextValidTime);
-                }
-                return; // Don't update timeline until we're in a valid section
-              }
-              
-              // Convert actual time to virtual time for the timeline
-              const virtualTime = actualToVirtualTime(actualTime, virtualTimeline, activeClips);
-              setLocalCurrentTime(virtualTime);
-              onTimeUpdate(virtualTime);
+              setLocalCurrentTime(actualTime);
+              onTimeUpdate(actualTime);
               
               if (operations) {
-                operations.setCurrentTime(virtualTime);
+                operations.setCurrentTime(actualTime);
               }
               
               // Update last actual time
               lastActualTimeRef.current = actualTime;
             }}
             onSeek={(actualTime) => {
-              // The media player gives us actual time, convert to virtual for timeline
-              const virtualTime = actualToVirtualTime(actualTime, virtualTimeline, activeClips);
+              console.log('⏩ Media Player onSeek:', {
+                actualTime: actualTime.toFixed(2),
+                mediaDuration: mediaFile.duration
+              });
               
-              setLocalCurrentTime(virtualTime);
-              onTimeUpdate(virtualTime);
+              setLocalCurrentTime(actualTime);
+              onTimeUpdate(actualTime);
               
               if (operations) {
-                operations.setCurrentTime(virtualTime);
+                operations.setCurrentTime(actualTime);
+              }
+              
+              // Force timeline editor to update its position
+              if (timelineState) {
+                setTimelineState(prev => ({
+                  ...prev,
+                  currentTime: actualTime
+                }));
               }
               
               // No need to seek again - the media player already did it
@@ -507,8 +514,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
       {/* Timeline Header with Stats and Controls */}
       <div className="flex items-center justify-between p-4 bg-gray-800 rounded-lg border border-gray-700">
         <div className="flex items-center gap-6 text-sm text-gray-400">
-          <span>Duration: {formatTime(virtualDuration > 0 ? virtualDuration : timelineState.duration)}</span>
-          <span>Edited: {formatTime(virtualDuration)}</span>
+          <span>Duration: {formatTime(timelineState.duration)}</span>
           <span>Tracks: {statistics.totalTracks}</span>
           <span>Clips: {statistics.totalClips}</span>
           {statistics.lockedClips > 0 && (
@@ -545,7 +551,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
       {/* Timeline Editor */}
       <TimelineEditor
         tracks={timelineState.tracks}
-        duration={virtualDuration > 0 ? virtualDuration : timelineState.duration}
+        duration={timelineState.duration} // Always use full media duration
         currentTime={localCurrentTime}
         isPlaying={isPlaying}
         playbackRate={playbackRate}

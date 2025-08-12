@@ -89,6 +89,8 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     const newTime = Math.min(Math.max(playerState.currentTime + seconds, 0), playerState.duration || 0)
     mediaRef.current.currentTime = newTime
     setPlayerState(prev => ({ ...prev, currentTime: newTime }))
+    
+    // Notify parent about seek
     onSeek?.(newTime)
   }, [playerState.currentTime, playerState.duration, onSeek])
 
@@ -211,6 +213,12 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     // Get current duration from the media element directly
     const duration = mediaRef.current.duration || 0
     const clampedTime = Math.min(Math.max(time, 0), duration)
+    
+    console.log('🎯 Media Player seekTo called:', {
+      requestedTime: time.toFixed(2),
+      clampedTime: clampedTime.toFixed(2),
+      duration: duration.toFixed(2)
+    })
     
     // Set the media element's current time
     mediaRef.current.currentTime = clampedTime

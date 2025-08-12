@@ -6,10 +6,7 @@ import {
   Filter, 
   Grid3X3, 
   List, 
-  Upload, 
-  Link, 
   MoreVertical,
-  Play,
   Edit,
   Trash2,
   Download,
@@ -19,10 +16,9 @@ import {
   CheckCircle,
   AlertCircle,
   Loader,
-  Mic,
   X
 } from 'lucide-react'
-import { cn, formatTime, formatFileSize, getMediaType } from '@/lib/utils'
+import { cn, formatTime, formatFileSize } from '@/lib/utils'
 
 interface MediaFile {
   id: string
@@ -50,10 +46,6 @@ interface MediaLibraryProps {
   onFileSelect?: (file: MediaFile) => void
   onFileDelete?: (fileId: string) => void
   onFileEdit?: (fileId: string) => void
-  onFilePlay?: (file: MediaFile) => void
-  onFileTranscribe?: (file: MediaFile) => void
-  onImportFile?: () => void
-  onImportUrl?: () => void
   onBatchOperation?: (fileIds: string[], operation: string) => void
   viewMode?: 'grid' | 'list'
   onViewModeChange?: (mode: 'grid' | 'list') => void
@@ -68,22 +60,17 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
   onFileSelect,
   onFileDelete,
   onFileEdit,
-  onFilePlay,
-  onFileTranscribe,
-  onImportFile,
-  onImportUrl,
   onBatchOperation,
   viewMode = 'grid',
   onViewModeChange,
   className
 }) => {
+  console.log('MediaLibrary received files:', files)
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState<SortOption>('date')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [filterBy, setFilterBy] = useState<FilterOption>('all')
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([])
   const [selectedFile, setSelectedFile] = useState<MediaFile | null>(null)
-  const [showFilters, setShowFilters] = useState(false)
 
   // Filter and sort files
   const filteredAndSortedFiles = useMemo(() => {
@@ -152,30 +139,10 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
   }, [files, searchTerm, sortBy, sortOrder, filterBy])
 
   const handleFileClick = (file: MediaFile) => {
-    if (selectedFiles.length > 0) {
-      // In selection mode, toggle selection
-      handleFileSelection(file.id)
-    } else {
-      // Normal mode, set as selected file to show action bar
-      setSelectedFile(file)
-    }
+    // Set as selected file to show action bar
+    setSelectedFile(file)
   }
 
-  const handleFileSelection = (fileId: string) => {
-    setSelectedFiles(prev => 
-      prev.includes(fileId) 
-        ? prev.filter(id => id !== fileId)
-        : [...prev, fileId]
-    )
-  }
-
-  const clearSelection = () => {
-    setSelectedFiles([])
-  }
-
-  const selectAll = () => {
-    setSelectedFiles(filteredAndSortedFiles.map(file => file.id))
-  }
 
   const getStatusIcon = (file: MediaFile) => {
     switch (file.status) {
@@ -232,29 +199,6 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
     <div className={cn("bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700", className)}>
       {/* Header */}
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Media Library</h3>
-          
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={onImportFile}
-              className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition-colors"
-            >
-              <Upload className="h-4 w-4" />
-              Import File
-            </button>
-            
-            <button
-              onClick={onImportUrl}
-              className="flex items-center gap-2 px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-200 text-sm rounded-md transition-colors"
-            >
-              <Link className="h-4 w-4" />
-              Import URL
-            </button>
-          </div>
-        </div>
-
         {/* Search and Controls */}
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search */}
@@ -332,34 +276,6 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
           </div>
         </div>
 
-        {/* Selection Controls */}
-        {selectedFiles.length > 0 && (
-          <div className="flex items-center justify-between mt-4 p-3 bg-blue-900/30 border border-blue-500 rounded-md">
-            <span className="text-sm text-blue-300">
-              {selectedFiles.length} file(s) selected
-            </span>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => onBatchOperation?.(selectedFiles, 'transcode')}
-                className="px-3 py-1 text-sm text-blue-300 hover:text-blue-200 transition-colors"
-              >
-                Batch Transcode
-              </button>
-              <button
-                onClick={() => onBatchOperation?.(selectedFiles, 'delete')}
-                className="px-3 py-1 text-sm text-red-400 hover:text-red-300 transition-colors"
-              >
-                Delete Selected
-              </button>
-              <button
-                onClick={clearSelection}
-                className="px-3 py-1 text-sm text-gray-400 hover:text-gray-200 transition-colors"
-              >
-                Clear
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Selected File Action Bar */}
@@ -379,33 +295,23 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => {
-                onFilePlay?.(selectedFile)
-                setSelectedFile(null)
-              }}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-            >
-              <Play className="h-4 w-4" />
-              Play
-            </button>
-            <button
-              onClick={() => {
-                onFileTranscribe?.(selectedFile)
-                setSelectedFile(null)
-              }}
-              className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors"
-            >
-              <Mic className="h-4 w-4" />
-              Transcribe
-            </button>
-            <button
-              onClick={() => {
                 onFileEdit?.(selectedFile.id)
                 setSelectedFile(null)
               }}
               className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors"
             >
               <Edit className="h-4 w-4" />
-              Edit
+              Studio
+            </button>
+            <button
+              onClick={() => {
+                onFileDelete?.(selectedFile.id)
+                setSelectedFile(null)
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors"
+            >
+              <Trash2 className="h-4 w-4" />
+              Delete
             </button>
             <button
               onClick={() => setSelectedFile(null)}
@@ -426,43 +332,24 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
             <h4 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
               {searchTerm || filterBy !== 'all' ? 'No files found' : 'No media files'}
             </h4>
-            <p className="text-gray-500 dark:text-gray-400 mb-6">
+            <p className="text-gray-500 dark:text-gray-400">
               {searchTerm || filterBy !== 'all' 
                 ? 'Try adjusting your search or filter criteria'
-                : 'Get started by uploading your first video or audio file'
+                : 'Drag and drop files above to get started'
               }
             </p>
-            {!searchTerm && filterBy === 'all' && (
-              <div className="flex justify-center gap-3">
-                <button
-                  onClick={onImportFile}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-                >
-                  <Upload className="h-4 w-4" />
-                  Upload File
-                </button>
-                <button
-                  onClick={onImportUrl}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-md transition-colors"
-                >
-                  <Link className="h-4 w-4" />
-                  Import URL
-                </button>
-              </div>
-            )}
           </div>
         ) : viewMode === 'grid' ? (
           /* Grid View */
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
             {filteredAndSortedFiles.map((file) => {
-              const isSelected = selectedFiles.includes(file.id)
               
               return (
                 <div
                   key={file.id}
                   className={cn(
                     "group relative bg-white dark:bg-gray-800 border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:border-gray-400 dark:hover:border-gray-500",
-                    isSelected ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30" : "border-gray-300 dark:border-gray-600"
+                    selectedFile?.id === file.id ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30" : "border-gray-300 dark:border-gray-600"
                   )}
                   onClick={() => handleFileClick(file)}
                 >
@@ -488,36 +375,6 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
                       {getStatusIcon(file)}
                     </div>
 
-                    {/* Hover Actions */}
-                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onFileSelect?.(file)
-                        }}
-                        className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
-                      >
-                        <Play className="h-4 w-4" />
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onFileDelete?.(file.id)
-                        }}
-                        className="p-2 bg-red-600 hover:bg-red-700 text-white rounded-full transition-colors"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
-
-                    {/* Selection Checkbox */}
-                    <input
-                      type="checkbox"
-                      checked={isSelected}
-                      onChange={() => handleFileSelection(file.id)}
-                      onClick={(e) => e.stopPropagation()}
-                      className="absolute top-2 right-2 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                    />
                   </div>
 
                   {/* Info */}
@@ -541,26 +398,16 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
           /* List View */
           <div className="space-y-2">
             {filteredAndSortedFiles.map((file) => {
-              const isSelected = selectedFiles.includes(file.id)
               
               return (
                 <div
                   key={file.id}
                   className={cn(
                     "flex items-center gap-4 p-3 rounded-lg border cursor-pointer transition-all hover:border-gray-400 dark:hover:border-gray-500",
-                    isSelected ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30" : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
+                    selectedFile?.id === file.id ? "border-blue-500 bg-blue-50 dark:bg-blue-900/30" : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
                   )}
                   onClick={() => handleFileClick(file)}
                 >
-                  {/* Selection */}
-                  <input
-                    type="checkbox"
-                    checked={isSelected}
-                    onChange={() => handleFileSelection(file.id)}
-                    onClick={(e) => e.stopPropagation()}
-                    className="w-4 h-4"
-                  />
-
                   {/* Icon */}
                   <div className="flex-shrink-0">
                     {getFileIcon(file)}
@@ -626,14 +473,6 @@ export const MediaLibrary: React.FC<MediaLibraryProps> = ({
             <span>
               Total: {formatFileSize(files.reduce((acc, file) => acc + file.size, 0))}
             </span>
-            {selectedFiles.length > 0 && (
-              <button
-                onClick={selectAll}
-                className="text-blue-400 hover:text-blue-300 transition-colors"
-              >
-                Select All ({filteredAndSortedFiles.length})
-              </button>
-            )}
           </div>
         </div>
       </div>

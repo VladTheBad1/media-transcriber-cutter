@@ -97,7 +97,7 @@ export class TimelineOperations {
   }
 
   // Initialize timeline from media file and transcript
-  async initializeFromMedia(mediaFileId: string, transcript?: any): Promise<void> {
+  async initializeFromMedia(mediaFileId: string, transcript?: any, mediaDuration?: number): Promise<void> {
     this.mediaFileId = mediaFileId
     
     try {
@@ -109,14 +109,14 @@ export class TimelineOperations {
         this.timelineId = existingTimeline.id
       } else {
         // Create new timeline from transcript or media file
-        await this.createTimelineFromTranscript(mediaFileId, transcript)
+        await this.createTimelineFromTranscript(mediaFileId, transcript, mediaDuration)
       }
       
       this.notify()
     } catch (error) {
       console.error('Failed to initialize timeline:', error)
       // Create basic timeline structure anyway
-      this.createBasicTimeline(mediaFileId, transcript)
+      this.createBasicTimeline(mediaFileId, transcript, mediaDuration)
       this.notify()
     }
   }
@@ -184,9 +184,9 @@ export class TimelineOperations {
   }
 
   // Create timeline from transcript segments
-  private async createTimelineFromTranscript(mediaFileId: string, transcript?: any): Promise<void> {
+  private async createTimelineFromTranscript(mediaFileId: string, transcript?: any, mediaDuration?: number): Promise<void> {
     const tracks: TimelineTrack[] = []
-    let duration = 0
+    let duration = mediaDuration || 0
 
     if (transcript && transcript.segments && transcript.segments.length > 0) {
       // Create text track from transcript segments
@@ -222,10 +222,18 @@ export class TimelineOperations {
       }
       
       tracks.push(textTrack)
-      duration = Math.max(duration, Math.max(...transcript.segments.map((s: any) => s.end)))
+      // Keep the duration from mediaDuration if provided, otherwise use transcript duration
+      if (!mediaDuration) {
+        duration = Math.max(duration, Math.max(...transcript.segments.map((s: any) => s.end)))
+      }
     }
 
-    // Create audio/video track placeholder
+    // If no duration provided and no transcript, use default
+    if (duration === 0) {
+      duration = 60
+    }
+
+    // Create audio/video track placeholder with full media duration
     const mediaTrack: TimelineTrack = {
       id: generateId(),
       name: 'Media',
@@ -234,12 +242,12 @@ export class TimelineOperations {
         {
           id: generateId(),
           start: 0,
-          end: duration || 60,
-          duration: duration || 60,
+          end: duration,
+          duration: duration,
           type: 'video',
           label: 'Media clip',
           sourceStart: 0,
-          sourceEnd: duration || 60,
+          sourceEnd: duration,
           volume: 1,
           opacity: 1,
           locked: false,
@@ -258,7 +266,7 @@ export class TimelineOperations {
 
     this.state = {
       tracks,
-      duration: duration || 60,
+      duration: duration,
       currentTime: 0,
       zoom: 1,
       history: [],
@@ -270,7 +278,8 @@ export class TimelineOperations {
   }
 
   // Create basic timeline structure without transcript
-  private createBasicTimeline(mediaFileId: string, transcript?: any): void {
+  private createBasicTimeline(mediaFileId: string, transcript?: any, mediaDuration?: number): void {
+    const duration = mediaDuration || 60
     const tracks: TimelineTrack[] = [
       {
         id: generateId(),
@@ -280,12 +289,12 @@ export class TimelineOperations {
           {
             id: generateId(),
             start: 0,
-            end: 60,
-            duration: 60,
+            end: duration,
+            duration: duration,
             type: 'video',
             label: 'Media clip',
             sourceStart: 0,
-            sourceEnd: 60,
+            sourceEnd: duration,
             volume: 1,
             opacity: 1,
             locked: false,
@@ -303,7 +312,7 @@ export class TimelineOperations {
 
     this.state = {
       tracks,
-      duration: 60,
+      duration: duration,
       currentTime: 0,
       zoom: 1,
       history: [],

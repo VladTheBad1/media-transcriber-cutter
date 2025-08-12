@@ -62,7 +62,7 @@ interface TranscriptSegment {
 }
 
 export default function MediaStudioHome() {
-  const [activeTab, setActiveTab] = useState('upload')
+  const [activeTab, setActiveTab] = useState('library')
   const [selectedMedia, setSelectedMedia] = useState<MediaFile | null>(null)
   const [transcript, setTranscript] = useState<Transcript | null>(null)
   const [currentTime, setCurrentTime] = useState(0)
@@ -78,14 +78,18 @@ export default function MediaStudioHome() {
 
   // Load media files from API on mount
   useEffect(() => {
+    console.log('Component mounted, fetching media files...')
     fetchMediaFiles()
   }, [])
 
   const fetchMediaFiles = async () => {
     try {
+      console.log('Fetching media files...')
       const response = await fetch('/api/media/upload')
       if (response.ok) {
         const data = await response.json()
+        console.log('API response data:', data)
+        console.log('Files array:', data.files)
         const files = data.files.map((file: any) => ({
           id: file.id,
           name: file.originalName || file.filename,
@@ -105,7 +109,10 @@ export default function MediaStudioHome() {
             resolution: file.resolution
           }
         }))
+        console.log('Processed files:', files)
         setUploadedFiles(files)
+      } else {
+        console.error('Failed to fetch media files - response not ok:', response.status)
       }
     } catch (error) {
       console.error('Failed to fetch media files:', error)
@@ -240,11 +247,11 @@ export default function MediaStudioHome() {
     // Handle uploaded files
     console.log('Upload completed:', files)
     
-    // Wait a moment for server processing
+    // Wait a moment for server processing, then refresh the media list
     setTimeout(async () => {
+      console.log('Refreshing media files after upload...')
       await fetchMediaFiles()
-      setActiveTab('library')
-    }, 1000)
+    }, 1500)
   }
 
   // Handle file deletion
@@ -329,11 +336,7 @@ export default function MediaStudioHome() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="upload" className="flex items-center gap-2">
-              <Upload className="h-4 w-4" />
-              Upload
-            </TabsTrigger>
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="library" className="flex items-center gap-2">
               <Library className="h-4 w-4" />
               Library  
@@ -348,41 +351,41 @@ export default function MediaStudioHome() {
             </TabsTrigger>
           </TabsList>
 
-          {/* Upload Tab */}
-          <TabsContent value="upload" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Upload className="h-5 w-5" />
-                  Upload Media Files
-                </CardTitle>
-                <CardDescription>
-                  Upload video or audio files for transcription and editing. Supports files up to 5GB.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <MediaUpload 
-                  onFilesUploaded={handleUploadComplete}
-                  onUrlImport={(url) => console.log('URL import:', url)}
-                  maxFileSize={5 * 1024 * 1024 * 1024} // 5GB
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           {/* Library Tab */}
           <TabsContent value="library" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Library className="h-5 w-5" />
-                  Media Library
-                </CardTitle>
-                <CardDescription>
-                  Browse and manage your uploaded media files
-                </CardDescription>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle className="flex items-center gap-2">
+                      <Library className="h-5 w-5" />
+                      Media Library
+                      {uploadedFiles.length > 0 && (
+                        <Badge variant="secondary" className="ml-2">
+                          {uploadedFiles.length} {uploadedFiles.length === 1 ? 'file' : 'files'}
+                        </Badge>
+                      )}
+                    </CardTitle>
+                    <CardDescription>
+                      Drag and drop files or click to browse
+                    </CardDescription>
+                  </div>
+                  <Button onClick={fetchMediaFiles} variant="outline" size="sm">
+                    Refresh
+                  </Button>
+                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
+                {/* Upload Section */}
+                <div className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-4">
+                  <MediaUpload 
+                    onFilesUploaded={handleUploadComplete}
+                    onUrlImport={(url) => console.log('URL import:', url)}
+                    maxFileSize={5 * 1024 * 1024 * 1024} // 5GB
+                  />
+                </div>
+                
+                {/* Media Library */}
                 <MediaLibrary
                   files={uploadedFiles}
                   onFileSelect={handleMediaSelect}

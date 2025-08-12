@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { Upload, File, X, AlertCircle, Link } from 'lucide-react'
 import { cn, formatFileSize, getMediaType } from '@/lib/utils'
 
@@ -32,6 +32,7 @@ export const MediaUpload: React.FC<MediaUploadProps> = ({
   const [urlInput, setUrlInput] = useState('')
   const [isUrlImporting, setIsUrlImporting] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [completedUploads, setCompletedUploads] = useState<File[]>([])
 
   const validateFile = (file: File): { valid: boolean; error?: string } => {
     if (file.size > maxFileSize) {
@@ -143,10 +144,27 @@ export const MediaUpload: React.FC<MediaUploadProps> = ({
       }
     }
 
-    if (validFiles.length > 0) {
-      onFilesUploaded(validFiles)
+  }, [maxFileSize, acceptedFormats])
+
+  // Monitor upload queue for completion
+  useEffect(() => {
+    if (uploadQueue.length > 0) {
+      const allComplete = uploadQueue.every(u => u.status === 'completed' || u.status === 'error')
+      if (allComplete) {
+        const successfulUploads = uploadQueue.filter(u => u.status === 'completed')
+        if (successfulUploads.length > 0 && completedUploads.length === 0) {
+          const files = successfulUploads.map(u => u.file)
+          setCompletedUploads(files)
+          onFilesUploaded(files)
+          // Clear the queue after a delay
+          setTimeout(() => {
+            setUploadQueue([])
+            setCompletedUploads([])
+          }, 2000)
+        }
+      }
     }
-  }, [onFilesUploaded, maxFileSize, acceptedFormats])
+  }, [uploadQueue, completedUploads, onFilesUploaded])
 
   // Removed simulateUpload - now using real uploads
 
