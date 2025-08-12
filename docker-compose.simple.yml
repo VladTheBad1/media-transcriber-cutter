@@ -1,0 +1,69 @@
+# Simple Docker Compose for running with WhisperX support
+# Usage: docker-compose -f docker-compose.simple.yml up
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_DB: transcriber_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for queue management
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Next.js Application with Python/WhisperX
+  app:
+    image: node:18-slim
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres123@postgres:5432/transcriber_db
+      REDIS_URL: redis://redis:6379
+      NODE_ENV: development
+      PYTHON_PATH: /usr/bin/python3
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      - ./uploads:/app/uploads
+      - ./media:/app/media
+    depends_on:
+      - postgres
+      - redis
+    command: >
+      sh -c "
+        apt-get update && 
+        apt-get install -y python3 python3-pip ffmpeg &&
+        pip3 install --break-system-packages openai-whisper &&
+        npm install &&
+        npx prisma generate &&
+        npx prisma db push &&
+        npm run dev
+      "
+
+volumes:
+  postgres_data:
+  node_modules:

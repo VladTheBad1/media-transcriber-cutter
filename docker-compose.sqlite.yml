@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Main application with SQLite
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: transcriber-studio
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/transcriber.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-change-this-secret-in-production}
+      - UPLOAD_MAX_SIZE=${UPLOAD_MAX_SIZE:-2147483648}
+      - PYTHON_PATH=/usr/bin/python3
+      - WHISPERX_SERVICE_PATH=/app/scripts/whisperx_service.py
+      - PRELOAD_MODELS=${PRELOAD_MODELS:-false}
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./exports:/app/exports
+      - ./temp:/app/temp
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./prisma:/app/prisma
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - transcriber-network
+
+networks:
+  transcriber-network:
+    driver: bridge

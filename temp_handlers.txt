@@ -1,0 +1,49 @@
+  // Handle file deletion
+  const handleFileDelete = async (fileId: string) => {
+    if (\!confirm('Are you sure you want to delete this file?')) {
+      return
+    }
+    
+    try {
+      const response = await fetch(`/api/media/${fileId}`, {
+        method: 'DELETE',
+      })
+      
+      if (response.ok) {
+        // Remove from state
+        setUploadedFiles(prev => prev.filter(file => file.id \!== fileId))
+        
+        // Clear selection if deleted file was selected
+        if (selectedMedia?.id === fileId) {
+          setSelectedMedia(null)
+          setTranscript(null)
+        }
+        
+        console.log('File deleted successfully')
+      } else {
+        const error = await response.json()
+        console.error('Failed to delete file:', error)
+        alert('Failed to delete file: ' + error.error)
+      }
+    } catch (error) {
+      console.error('Delete error:', error)
+      alert('Failed to delete file')
+    }
+  }
+
+  // Handle file editing (placeholder)
+  const handleFileEdit = (fileId: string) => {
+    const file = uploadedFiles.find(f => f.id === fileId)
+    if (file) {
+      setSelectedMedia(file)
+      setActiveTab('editor')
+    }
+  }
+
+  // Generate correct media URL for player
+  const getMediaUrl = (media: MediaFile) => {
+    // Use the actual filename from the API response
+    const filename = uploadedFiles.find(f => f.id === media.id)?.name || media.name
+    return `/api/media/stream/${filename}`
+  }
+EOF < /dev/null

@@ -1,0 +1,165 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
+import { writeFile, mkdir } from 'fs/promises';
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+import { MediaProcessor } from '@/lib/media-processor';
+
+const prisma = new PrismaClient();
+
+// Configure upload directory
+const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
+const MAX_FILE_SIZE = 5 * 1024 * 1024 * 1024; // 5GB
+
+export async function POST(request: NextRequest) {
+  try {
+    // Ensure upload directory exists
+    await mkdir(UPLOAD_DIR, { recursive: true });
+
+    // Parse multipart form data
+    const formData = await request.formData();
+    const file = formData.get('file') as File;
+
+    if (!file) {
+      return NextResponse.json(
+        { error: 'No file provided' },
+        { status: 400 }
+      );
+    }
+
+    // Validate file size
+    if (file.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: 'File size exceeds 5GB limit' },
+        { status: 400 }
+      );
+    }
+
+    // Validate file type
+    const isVideo = file.type.startsWith('video/');
+    const isAudio = file.type.startsWith('audio/');
+    
+    // Fallback: check file extension if MIME type detection fails
+    const fileExt = path.extname(file.name).toLowerCase();
+    const videoExtensions = [".mp4", ".avi", ".mov", ".mkv", ".webm", ".flv", ".m4v"];
+    const audioExtensions = [".mp3", ".wav", ".aac", ".ogg", ".flac", ".m4a"];
+    const isVideoByExt = videoExtensions.includes(fileExt);
+    const isAudioByExt = audioExtensions.includes(fileExt);
+    
+    if (!isVideo && !isAudio && !isVideoByExt && !isAudioByExt) {
+      return NextResponse.json(
+        { error: "Invalid file type. Only video and audio files are allowed." },
+        { status: 400 }
+      );
+    }
+    // Generate unique filename
+    const fileId = uuidv4();
+    const fileName = `${fileId}${fileExt}`;
+    const filePath = path.join(UPLOAD_DIR, fileName);
+
+    // Convert file to buffer and save
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+    await writeFile(filePath, buffer);
+
+    // Process media to extract info and generate thumbnail
+    console.log('Processing media file:', filePath);
+    const mediaInfo = await MediaProcessor.getMediaInfo(filePath);
+    console.log('Media info extracted:', mediaInfo);
+    
+    let thumbnailPath = null;
+    
+    if (isVideo || isVideoByExt) {
+      // Generate thumbnail at 10% of video duration or 1 second
+      const thumbnailTime = mediaInfo.duration > 10 ? mediaInfo.duration * 0.1 : 1;
+      console.log('Generating thumbnail at', thumbnailTime, 'seconds');
+      thumbnailPath = await MediaProcessor.generateThumbnail(filePath, fileId, thumbnailTime);
+      console.log('Thumbnail generated:', thumbnailPath);
+    }
+
+    // Create database record with processed info
+    const mediaFile = await prisma.mediaFile.create({
+      data: {
+        filename: fileName,
+        originalName: file.name,
+        filePath: filePath,
+        type: (isVideo || isVideoByExt) ? 'video' : 'audio',
+        format: fileExt.slice(1), // Remove the dot from extension
+        size: BigInt(file.size),
+        duration: mediaInfo.duration,
+        bitrate: mediaInfo.bitrate,
+        resolution: mediaInfo.width && mediaInfo.height ? `${mediaInfo.width}x${mediaInfo.height}` : null,
+        framerate: mediaInfo.framerate,
+        audioChannels: mediaInfo.audioChannels,
+        codec: mediaInfo.codec,
+        thumbnailPath: thumbnailPath,
+        tags: '',
+        status: 'READY',
+      },
+    });
+
+    console.log(`File uploaded successfully: ${fileName} (${file.size} bytes)`);
+
+    return NextResponse.json({
+      success: true,
+      file: {
+        id: mediaFile.id,
+        filename: mediaFile.filename,
+        type: mediaFile.type,
+        size: Number(mediaFile.size),
+        status: mediaFile.status,
+        createdAt: mediaFile.uploadedAt,
+      },
+    });
+
+  } catch (error) {
+    console.error('Upload failed:', error);
+    return NextResponse.json(
+      { error: 'Upload failed', details: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    // Get all media files from database
+    const mediaFiles = await prisma.mediaFile.findMany({
+      orderBy: { uploadedAt: 'desc' },
+      include: {
+        transcripts: {
+          select: {
+            id: true,
+            status: true,
+            language: true,
+            confidence: true,
+          },
+          take: 1,
+        },
+      },
+    });
+
+    const files = mediaFiles.map(file => ({
+      id: file.id,
+      filename: file.filename,
+      originalName: file.originalName,
+      type: file.type,
+      size: Number(file.size),
+      duration: file.duration,
+      resolution: file.resolution,
+      thumbnailPath: file.thumbnailPath,
+      status: file.status,
+      createdAt: file.uploadedAt,
+      transcript: file.transcripts[0] || null,
+    }));
+
+    return NextResponse.json({ files });
+
+  } catch (error) {
+    console.error('Failed to fetch media files:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch media files' },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,11 @@
+# Simplified requirements for basic transcription
+# For full WhisperX support, use Python 3.11 or 3.12
+
+# Basic Whisper (OpenAI)
+openai-whisper>=20231117
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydub>=0.25.1

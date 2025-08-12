@@ -1,0 +1,68 @@
+# Docker Compose override for development
+# This file automatically extends docker-compose.yml in development
+
+version: '3.8'
+
+services:
+  # Development overrides for main app
+  app:
+    build:
+      target: development
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      # Mount source code for live reload
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+      - "9229:9229"  # Node.js debug port
+
+  # Development database with exposed port
+  db:
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=transcriber_dev
+    volumes:
+      # Use local volume for development
+      - postgres_dev_data:/var/lib/postgresql/data
+
+  # Development Redis with exposed port
+  redis:
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+
+  # Optional development services
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+      - ADMINER_DESIGN=hydra
+    depends_on:
+      - db
+    profiles:
+      - dev-tools
+
+  # Redis Commander for Redis management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      - redis
+    profiles:
+      - dev-tools
+
+volumes:
+  postgres_dev_data:

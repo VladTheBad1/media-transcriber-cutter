@@ -1,0 +1,7854 @@
+{
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.031,
+      "end": 6.637,
+      "text": "I mean, you know that one Russian guy that he got some ancient bacteria from the ice and he put it in his self.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 0.031,
+          "end": 0.051,
+          "confidence": 1.0
+        },
+        {
+          "word": "mean,",
+          "start": 0.071,
+          "end": 0.191,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 0.211,
+          "end": 0.271,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 0.291,
+          "end": 0.371,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 0.471,
+          "end": 0.551,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 0.571,
+          "end": 0.632,
+          "confidence": 1.0
+        },
+        {
+          "word": "Russian",
+          "start": 0.652,
+          "end": 0.952,
+          "confidence": 1.0
+        },
+        {
+          "word": "guy",
+          "start": 0.992,
+          "end": 1.252,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 1.272,
+          "end": 1.352,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 2.353,
+          "end": 2.473,
+          "confidence": 1.0
+        },
+        {
+          "word": "got",
+          "start": 2.513,
+          "end": 2.633,
+          "confidence": 1.0
+        },
+        {
+          "word": "some",
+          "start": 2.673,
+          "end": 2.813,
+          "confidence": 1.0
+        },
+        {
+          "word": "ancient",
+          "start": 3.334,
+          "end": 3.594,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 3.654,
+          "end": 4.315,
+          "confidence": 1.0
+        },
+        {
+          "word": "from",
+          "start": 4.375,
+          "end": 4.495,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 4.535,
+          "end": 4.615,
+          "confidence": 1.0
+        },
+        {
+          "word": "ice",
+          "start": 4.775,
+          "end": 4.895,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 4.935,
+          "end": 5.015,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 5.055,
+          "end": 5.135,
+          "confidence": 1.0
+        },
+        {
+          "word": "put",
+          "start": 5.175,
+          "end": 5.296,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 5.336,
+          "end": 5.376,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 5.416,
+          "end": 5.476,
+          "confidence": 1.0
+        },
+        {
+          "word": "his",
+          "start": 5.496,
+          "end": 5.996,
+          "confidence": 1.0
+        },
+        {
+          "word": "self.",
+          "start": 6.076,
+          "end": 6.637,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 7.177,
+      "end": 7.357,
+      "text": "What?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What?",
+          "start": 7.177,
+          "end": 7.357,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 7.658,
+      "end": 12.902,
+      "text": "Because he noticed that it was keeping, it was keeping everything young, everything that it touched.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Because",
+          "start": 7.658,
+          "end": 7.818,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 7.838,
+          "end": 7.918,
+          "confidence": 1.0
+        },
+        {
+          "word": "noticed",
+          "start": 8.298,
+          "end": 8.498,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 8.518,
+          "end": 8.618,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 8.659,
+          "end": 8.699,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 8.739,
+          "end": 8.819,
+          "confidence": 1.0
+        },
+        {
+          "word": "keeping,",
+          "start": 8.899,
+          "end": 9.319,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 10.72,
+          "end": 10.76,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 10.8,
+          "end": 10.9,
+          "confidence": 1.0
+        },
+        {
+          "word": "keeping",
+          "start": 10.981,
+          "end": 11.261,
+          "confidence": 1.0
+        },
+        {
+          "word": "everything",
+          "start": 11.341,
+          "end": 11.681,
+          "confidence": 1.0
+        },
+        {
+          "word": "young,",
+          "start": 11.761,
+          "end": 12.001,
+          "confidence": 1.0
+        },
+        {
+          "word": "everything",
+          "start": 12.041,
+          "end": 12.302,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 12.342,
+          "end": 12.442,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 12.502,
+          "end": 12.542,
+          "confidence": 1.0
+        },
+        {
+          "word": "touched.",
+          "start": 12.602,
+          "end": 12.902,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 13.122,
+      "end": 14.804,
+      "text": "He's fucking scientists or psychos.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 13.122,
+          "end": 13.242,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucking",
+          "start": 13.283,
+          "end": 13.603,
+          "confidence": 1.0
+        },
+        {
+          "word": "scientists",
+          "start": 13.663,
+          "end": 14.103,
+          "confidence": 1.0
+        },
+        {
+          "word": "or",
+          "start": 14.163,
+          "end": 14.223,
+          "confidence": 1.0
+        },
+        {
+          "word": "psychos.",
+          "start": 14.323,
+          "end": 14.804,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 15.324,
+      "end": 15.865,
+      "text": "It worked though.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "It",
+          "start": 15.324,
+          "end": 15.364,
+          "confidence": 1.0
+        },
+        {
+          "word": "worked",
+          "start": 15.404,
+          "end": 15.625,
+          "confidence": 1.0
+        },
+        {
+          "word": "though.",
+          "start": 15.665,
+          "end": 15.865,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 16.145,
+      "end": 16.826,
+      "text": "What do you mean it worked?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 16.145,
+          "end": 16.225,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 16.245,
+          "end": 16.285,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 16.305,
+          "end": 16.365,
+          "confidence": 1.0
+        },
+        {
+          "word": "mean",
+          "start": 16.385,
+          "end": 16.485,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 16.505,
+          "end": 16.545,
+          "confidence": 1.0
+        },
+        {
+          "word": "worked?",
+          "start": 16.585,
+          "end": 16.826,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 17.106,
+      "end": 17.726,
+      "text": "He's younger now?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 17.106,
+          "end": 17.226,
+          "confidence": 1.0
+        },
+        {
+          "word": "younger",
+          "start": 17.266,
+          "end": 17.506,
+          "confidence": 1.0
+        },
+        {
+          "word": "now?",
+          "start": 17.566,
+          "end": 17.726,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 18.007,
+      "end": 19.828,
+      "text": "He's biologically younger now.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 18.007,
+          "end": 18.267,
+          "confidence": 1.0
+        },
+        {
+          "word": "biologically",
+          "start": 18.787,
+          "end": 19.388,
+          "confidence": 1.0
+        },
+        {
+          "word": "younger",
+          "start": 19.408,
+          "end": 19.648,
+          "confidence": 1.0
+        },
+        {
+          "word": "now.",
+          "start": 19.708,
+          "end": 19.828,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 19.848,
+      "end": 20.429,
+      "text": "He's not aging.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 19.848,
+          "end": 19.948,
+          "confidence": 1.0
+        },
+        {
+          "word": "not",
+          "start": 19.988,
+          "end": 20.088,
+          "confidence": 1.0
+        },
+        {
+          "word": "aging.",
+          "start": 20.169,
+          "end": 20.429,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 20.709,
+      "end": 21.51,
+      "text": "What are you talking about?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 20.709,
+          "end": 20.829,
+          "confidence": 1.0
+        },
+        {
+          "word": "are",
+          "start": 20.849,
+          "end": 20.929,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 20.949,
+          "end": 21.009,
+          "confidence": 1.0
+        },
+        {
+          "word": "talking",
+          "start": 21.029,
+          "end": 21.269,
+          "confidence": 1.0
+        },
+        {
+          "word": "about?",
+          "start": 21.31,
+          "end": 21.51,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 21.55,
+      "end": 21.99,
+      "text": "Is this real?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Is",
+          "start": 21.55,
+          "end": 21.61,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 21.63,
+          "end": 21.73,
+          "confidence": 1.0
+        },
+        {
+          "word": "real?",
+          "start": 21.77,
+          "end": 21.99,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 22.17,
+      "end": 22.991,
+      "text": "Yeah, I didn't.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 22.17,
+          "end": 22.671,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 22.691,
+          "end": 22.731,
+          "confidence": 1.0
+        },
+        {
+          "word": "didn't.",
+          "start": 22.751,
+          "end": 22.991,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 23.011,
+      "end": 23.792,
+      "text": "I don't know about this.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 23.011,
+          "end": 23.031,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 23.051,
+          "end": 23.171,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 23.211,
+          "end": 23.331,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 23.391,
+          "end": 23.551,
+          "confidence": 1.0
+        },
+        {
+          "word": "this.",
+          "start": 23.591,
+          "end": 23.792,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 24.192,
+      "end": 25.393,
+      "text": "I can't talk to you about it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 24.192,
+          "end": 24.332,
+          "confidence": 1.0
+        },
+        {
+          "word": "can't",
+          "start": 24.632,
+          "end": 24.732,
+          "confidence": 1.0
+        },
+        {
+          "word": "talk",
+          "start": 24.773,
+          "end": 24.913,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 24.933,
+          "end": 24.973,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 24.993,
+          "end": 25.073,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 25.113,
+          "end": 25.273,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 25.313,
+          "end": 25.393,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 25.413,
+      "end": 27.034,
+      "text": "I think, yeah, I think you did.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 25.413,
+          "end": 25.493,
+          "confidence": 1.0
+        },
+        {
+          "word": "think,",
+          "start": 25.573,
+          "end": 25.793,
+          "confidence": 1.0
+        },
+        {
+          "word": "yeah,",
+          "start": 25.994,
+          "end": 26.274,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 26.414,
+          "end": 26.494,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 26.534,
+          "end": 26.694,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 26.734,
+          "end": 26.834,
+          "confidence": 1.0
+        },
+        {
+          "word": "did.",
+          "start": 26.874,
+          "end": 27.034,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 27.195,
+      "end": 28.816,
+      "text": "I think you probably talked to me about it in this.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 27.195,
+          "end": 27.275,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 27.315,
+          "end": 27.455,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 27.495,
+          "end": 27.595,
+          "confidence": 1.0
+        },
+        {
+          "word": "probably",
+          "start": 27.615,
+          "end": 27.835,
+          "confidence": 1.0
+        },
+        {
+          "word": "talked",
+          "start": 27.875,
+          "end": 28.035,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 28.075,
+          "end": 28.115,
+          "confidence": 1.0
+        },
+        {
+          "word": "me",
+          "start": 28.155,
+          "end": 28.196,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 28.256,
+          "end": 28.436,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 28.456,
+          "end": 28.516,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 28.616,
+          "end": 28.696,
+          "confidence": 1.0
+        },
+        {
+          "word": "this.",
+          "start": 28.716,
+          "end": 28.816,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 28.856,
+      "end": 29.937,
+      "text": "So this is the mouse.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 28.856,
+          "end": 28.956,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 28.996,
+          "end": 29.136,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 29.196,
+          "end": 29.256,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 29.296,
+          "end": 29.377,
+          "confidence": 1.0
+        },
+        {
+          "word": "mouse.",
+          "start": 29.417,
+          "end": 29.937,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 29.917,
+      "end": 30.338,
+      "text": "Look at this.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Look",
+          "start": 29.917,
+          "end": 30.097,
+          "confidence": 1.0
+        },
+        {
+          "word": "at",
+          "start": 30.117,
+          "end": 30.157,
+          "confidence": 1.0
+        },
+        {
+          "word": "this.",
+          "start": 30.197,
+          "end": 30.338,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 30.558,
+      "end": 31.559,
+      "text": "So that's not accurate.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 30.558,
+          "end": 30.678,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 30.718,
+          "end": 30.898,
+          "confidence": 1.0
+        },
+        {
+          "word": "not",
+          "start": 30.938,
+          "end": 31.119,
+          "confidence": 1.0
+        },
+        {
+          "word": "accurate.",
+          "start": 31.239,
+          "end": 31.559,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 32.02,
+      "end": 32.381,
+      "text": "I knew it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 32.02,
+          "end": 32.06,
+          "confidence": 1.0
+        },
+        {
+          "word": "knew",
+          "start": 32.12,
+          "end": 32.26,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 32.32,
+          "end": 32.381,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 32.641,
+      "end": 35.345,
+      "text": "That one's a brother, one sister, they're born at the same time.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "That",
+          "start": 32.641,
+          "end": 32.801,
+          "confidence": 1.0
+        },
+        {
+          "word": "one's",
+          "start": 32.961,
+          "end": 33.122,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 33.162,
+          "end": 33.182,
+          "confidence": 1.0
+        },
+        {
+          "word": "brother,",
+          "start": 33.242,
+          "end": 33.482,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 33.562,
+          "end": 33.722,
+          "confidence": 1.0
+        },
+        {
+          "word": "sister,",
+          "start": 33.763,
+          "end": 34.103,
+          "confidence": 1.0
+        },
+        {
+          "word": "they're",
+          "start": 34.163,
+          "end": 34.383,
+          "confidence": 1.0
+        },
+        {
+          "word": "born",
+          "start": 34.423,
+          "end": 34.644,
+          "confidence": 1.0
+        },
+        {
+          "word": "at",
+          "start": 34.684,
+          "end": 34.724,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 34.744,
+          "end": 34.844,
+          "confidence": 1.0
+        },
+        {
+          "word": "same",
+          "start": 34.884,
+          "end": 35.064,
+          "confidence": 1.0
+        },
+        {
+          "word": "time.",
+          "start": 35.124,
+          "end": 35.345,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 35.906,
+      "end": 37.448,
+      "text": "Oh, but one hasn't.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 35.906,
+          "end": 36.066,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 36.246,
+          "end": 36.306,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 36.466,
+          "end": 36.727,
+          "confidence": 1.0
+        },
+        {
+          "word": "hasn't.",
+          "start": 36.867,
+          "end": 37.448,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 37.468,
+      "end": 42.755,
+      "text": "Oh, so the one that's altered is way younger and the one that's the brother is fucked and about to die.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 37.468,
+          "end": 37.568,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 37.908,
+          "end": 38.029,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 38.069,
+          "end": 38.129,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 38.209,
+          "end": 38.289,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 38.309,
+          "end": 38.469,
+          "confidence": 1.0
+        },
+        {
+          "word": "altered",
+          "start": 38.609,
+          "end": 38.93,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 38.97,
+          "end": 39.531,
+          "confidence": 1.0
+        },
+        {
+          "word": "way",
+          "start": 39.611,
+          "end": 39.751,
+          "confidence": 1.0
+        },
+        {
+          "word": "younger",
+          "start": 39.811,
+          "end": 40.112,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 40.492,
+          "end": 40.592,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 40.612,
+          "end": 40.692,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 40.773,
+          "end": 40.873,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 40.893,
+          "end": 41.053,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 41.093,
+          "end": 41.173,
+          "confidence": 1.0
+        },
+        {
+          "word": "brother",
+          "start": 41.233,
+          "end": 41.494,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 41.554,
+          "end": 41.614,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucked",
+          "start": 41.674,
+          "end": 41.954,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 42.115,
+          "end": 42.195,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 42.235,
+          "end": 42.395,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 42.415,
+          "end": 42.475,
+          "confidence": 1.0
+        },
+        {
+          "word": "die.",
+          "start": 42.515,
+          "end": 42.755,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 43.697,
+      "end": 47.462,
+      "text": "So that is a sign that they've done something to the aging of the mice.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 43.697,
+          "end": 43.797,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 43.857,
+          "end": 44.017,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 44.157,
+          "end": 44.298,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 44.318,
+          "end": 44.338,
+          "confidence": 1.0
+        },
+        {
+          "word": "sign",
+          "start": 44.658,
+          "end": 45.119,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 45.179,
+          "end": 45.279,
+          "confidence": 1.0
+        },
+        {
+          "word": "they've",
+          "start": 45.299,
+          "end": 45.499,
+          "confidence": 1.0
+        },
+        {
+          "word": "done",
+          "start": 45.539,
+          "end": 45.7,
+          "confidence": 1.0
+        },
+        {
+          "word": "something",
+          "start": 45.82,
+          "end": 46.22,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 46.321,
+          "end": 46.421,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 46.441,
+          "end": 46.501,
+          "confidence": 1.0
+        },
+        {
+          "word": "aging",
+          "start": 46.641,
+          "end": 46.961,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 47.002,
+          "end": 47.042,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 47.082,
+          "end": 47.162,
+          "confidence": 1.0
+        },
+        {
+          "word": "mice.",
+          "start": 47.202,
+          "end": 47.462,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 47.502,
+      "end": 49.285,
+      "text": "These mice are brother and sister born the same.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "These",
+          "start": 47.502,
+          "end": 47.662,
+          "confidence": 1.0
+        },
+        {
+          "word": "mice",
+          "start": 47.723,
+          "end": 47.903,
+          "confidence": 1.0
+        },
+        {
+          "word": "are",
+          "start": 47.923,
+          "end": 48.003,
+          "confidence": 1.0
+        },
+        {
+          "word": "brother",
+          "start": 48.023,
+          "end": 48.223,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 48.263,
+          "end": 48.343,
+          "confidence": 1.0
+        },
+        {
+          "word": "sister",
+          "start": 48.363,
+          "end": 48.624,
+          "confidence": 1.0
+        },
+        {
+          "word": "born",
+          "start": 48.684,
+          "end": 48.884,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 48.924,
+          "end": 49.024,
+          "confidence": 1.0
+        },
+        {
+          "word": "same.",
+          "start": 49.064,
+          "end": 49.285,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 49.966,
+      "end": 53.771,
+      "text": "Later, one has been genetically altered to be old.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Later,",
+          "start": 49.966,
+          "end": 50.286,
+          "confidence": 1.0
+        },
+        {
+          "word": "one",
+          "start": 50.687,
+          "end": 50.807,
+          "confidence": 1.0
+        },
+        {
+          "word": "has",
+          "start": 50.867,
+          "end": 50.987,
+          "confidence": 1.0
+        },
+        {
+          "word": "been",
+          "start": 51.027,
+          "end": 51.147,
+          "confidence": 1.0
+        },
+        {
+          "word": "genetically",
+          "start": 51.188,
+          "end": 51.668,
+          "confidence": 1.0
+        },
+        {
+          "word": "altered",
+          "start": 51.788,
+          "end": 52.129,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 52.93,
+          "end": 53.09,
+          "confidence": 1.0
+        },
+        {
+          "word": "be",
+          "start": 53.17,
+          "end": 53.391,
+          "confidence": 1.0
+        },
+        {
+          "word": "old.",
+          "start": 53.631,
+          "end": 53.771,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 54.132,
+      "end": 57.797,
+      "text": "Oh, now scientists say they've been able to reverse aging as well.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 54.132,
+          "end": 54.232,
+          "confidence": 1.0
+        },
+        {
+          "word": "now",
+          "start": 54.572,
+          "end": 54.753,
+          "confidence": 1.0
+        },
+        {
+          "word": "scientists",
+          "start": 54.853,
+          "end": 55.233,
+          "confidence": 1.0
+        },
+        {
+          "word": "say",
+          "start": 55.253,
+          "end": 55.333,
+          "confidence": 1.0
+        },
+        {
+          "word": "they've",
+          "start": 55.354,
+          "end": 55.494,
+          "confidence": 1.0
+        },
+        {
+          "word": "been",
+          "start": 55.514,
+          "end": 55.614,
+          "confidence": 1.0
+        },
+        {
+          "word": "able",
+          "start": 55.634,
+          "end": 55.754,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 55.814,
+          "end": 55.934,
+          "confidence": 1.0
+        },
+        {
+          "word": "reverse",
+          "start": 55.974,
+          "end": 56.595,
+          "confidence": 1.0
+        },
+        {
+          "word": "aging",
+          "start": 56.776,
+          "end": 57.056,
+          "confidence": 1.0
+        },
+        {
+          "word": "as",
+          "start": 57.176,
+          "end": 57.236,
+          "confidence": 1.0
+        },
+        {
+          "word": "well.",
+          "start": 57.356,
+          "end": 57.797,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 60.511,
+      "end": 62.373,
+      "text": "They can reverse aging and mice.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "They",
+          "start": 60.511,
+          "end": 61.072,
+          "confidence": 1.0
+        },
+        {
+          "word": "can",
+          "start": 61.112,
+          "end": 61.212,
+          "confidence": 1.0
+        },
+        {
+          "word": "reverse",
+          "start": 61.252,
+          "end": 61.592,
+          "confidence": 1.0
+        },
+        {
+          "word": "aging",
+          "start": 61.732,
+          "end": 61.953,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 61.993,
+          "end": 62.053,
+          "confidence": 1.0
+        },
+        {
+          "word": "mice.",
+          "start": 62.113,
+          "end": 62.373,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 62.413,
+      "end": 63.695,
+      "text": "The goals do the same for humans.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "The",
+          "start": 62.413,
+          "end": 62.493,
+          "confidence": 1.0
+        },
+        {
+          "word": "goals",
+          "start": 62.533,
+          "end": 62.733,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 62.794,
+          "end": 62.874,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 62.914,
+          "end": 62.994,
+          "confidence": 1.0
+        },
+        {
+          "word": "same",
+          "start": 63.014,
+          "end": 63.194,
+          "confidence": 1.0
+        },
+        {
+          "word": "for",
+          "start": 63.214,
+          "end": 63.314,
+          "confidence": 1.0
+        },
+        {
+          "word": "humans.",
+          "start": 63.354,
+          "end": 63.695,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 64.275,
+      "end": 64.495,
+      "text": "Okay.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Okay.",
+          "start": 64.275,
+          "end": 64.495,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 64.515,
+      "end": 65.797,
+      "text": "This is Davidson Claire's lab.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "This",
+          "start": 64.515,
+          "end": 64.596,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 64.616,
+          "end": 64.656,
+          "confidence": 1.0
+        },
+        {
+          "word": "Davidson",
+          "start": 64.696,
+          "end": 65.116,
+          "confidence": 1.0
+        },
+        {
+          "word": "Claire's",
+          "start": 65.156,
+          "end": 65.517,
+          "confidence": 1.0
+        },
+        {
+          "word": "lab.",
+          "start": 65.577,
+          "end": 65.797,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 65.837,
+      "end": 68.981,
+      "text": "So Dr. Brooke chat, Brooke, brooch, cove.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 65.837,
+          "end": 65.977,
+          "confidence": 1.0
+        },
+        {
+          "word": "Dr.",
+          "start": 66.257,
+          "end": 66.578,
+          "confidence": 1.0
+        },
+        {
+          "word": "Brooke",
+          "start": 66.638,
+          "end": 66.918,
+          "confidence": 1.0
+        },
+        {
+          "word": "chat,",
+          "start": 66.938,
+          "end": 67.339,
+          "confidence": 1.0
+        },
+        {
+          "word": "Brooke,",
+          "start": 67.359,
+          "end": 67.899,
+          "confidence": 1.0
+        },
+        {
+          "word": "brooch,",
+          "start": 67.919,
+          "end": 68.24,
+          "confidence": 1.0
+        },
+        {
+          "word": "cove.",
+          "start": 68.62,
+          "end": 68.981,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 70.963,
+      "end": 71.964,
+      "text": "Dr. brooch, cove.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Dr.",
+          "start": 70.963,
+          "end": 71.323,
+          "confidence": 1.0
+        },
+        {
+          "word": "brooch,",
+          "start": 71.383,
+          "end": 71.744,
+          "confidence": 1.0
+        },
+        {
+          "word": "cove.",
+          "start": 71.764,
+          "end": 71.964,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 72.064,
+      "end": 74.647,
+      "text": "This is the guy that injected the ancient bacteria.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "This",
+          "start": 72.064,
+          "end": 72.184,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 72.264,
+          "end": 72.304,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 72.344,
+          "end": 72.404,
+          "confidence": 1.0
+        },
+        {
+          "word": "guy",
+          "start": 72.444,
+          "end": 72.565,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 72.605,
+          "end": 72.705,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 72.745,
+          "end": 73.205,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 73.305,
+          "end": 73.506,
+          "confidence": 1.0
+        },
+        {
+          "word": "ancient",
+          "start": 73.766,
+          "end": 74.026,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria.",
+          "start": 74.066,
+          "end": 74.647,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 74.707,
+      "end": 77.19,
+      "text": "The 3.5 million year old ancient bacteria.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "The",
+          "start": 74.707,
+          "end": 74.767,
+          "confidence": 1.0
+        },
+        {
+          "word": "3.5",
+          "start": 74.787,
+          "end": 75.428,
+          "confidence": 1.0
+        },
+        {
+          "word": "million",
+          "start": 75.488,
+          "end": 75.888,
+          "confidence": 1.0
+        },
+        {
+          "word": "year",
+          "start": 75.968,
+          "end": 76.249,
+          "confidence": 1.0
+        },
+        {
+          "word": "old",
+          "start": 76.329,
+          "end": 76.469,
+          "confidence": 1.0
+        },
+        {
+          "word": "ancient",
+          "start": 76.569,
+          "end": 76.809,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria.",
+          "start": 76.829,
+          "end": 77.19,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 77.21,
+      "end": 78.291,
+      "text": "What is he doing?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 77.21,
+          "end": 77.43,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 77.57,
+          "end": 77.67,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 77.75,
+          "end": 77.87,
+          "confidence": 1.0
+        },
+        {
+          "word": "doing?",
+          "start": 77.991,
+          "end": 78.291,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 78.511,
+      "end": 80.293,
+      "text": "BROUCHKLV.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "BROUCHKLV.",
+          "start": 78.511,
+          "end": 80.293,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 84.077,
+      "end": 87.261,
+      "text": "Yeah, he injects himself a, who imagine just having the balls to do that?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 84.077,
+          "end": 84.218,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 84.238,
+          "end": 84.338,
+          "confidence": 1.0
+        },
+        {
+          "word": "injects",
+          "start": 84.398,
+          "end": 84.778,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself",
+          "start": 84.838,
+          "end": 85.119,
+          "confidence": 1.0
+        },
+        {
+          "word": "a,",
+          "start": 85.199,
+          "end": 85.299,
+          "confidence": 1.0
+        },
+        {
+          "word": "who",
+          "start": 85.439,
+          "end": 85.699,
+          "confidence": 1.0
+        },
+        {
+          "word": "imagine",
+          "start": 85.719,
+          "end": 86.02,
+          "confidence": 1.0
+        },
+        {
+          "word": "just",
+          "start": 86.06,
+          "end": 86.14,
+          "confidence": 1.0
+        },
+        {
+          "word": "having",
+          "start": 86.18,
+          "end": 86.38,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 86.4,
+          "end": 86.48,
+          "confidence": 1.0
+        },
+        {
+          "word": "balls",
+          "start": 86.52,
+          "end": 86.72,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 86.76,
+          "end": 86.821,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 86.881,
+          "end": 86.961,
+          "confidence": 1.0
+        },
+        {
+          "word": "that?",
+          "start": 87.001,
+          "end": 87.261,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 88.827,
+      "end": 91.673,
+      "text": "You find some bacteria in ancient ice.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "You",
+          "start": 88.827,
+          "end": 89.568,
+          "confidence": 1.0
+        },
+        {
+          "word": "find",
+          "start": 89.609,
+          "end": 89.789,
+          "confidence": 1.0
+        },
+        {
+          "word": "some",
+          "start": 89.809,
+          "end": 89.929,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 89.949,
+          "end": 90.51,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 90.611,
+          "end": 90.691,
+          "confidence": 1.0
+        },
+        {
+          "word": "ancient",
+          "start": 90.971,
+          "end": 91.372,
+          "confidence": 1.0
+        },
+        {
+          "word": "ice.",
+          "start": 91.532,
+          "end": 91.673,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 92.134,
+      "end": 93.236,
+      "text": "You rejuvenate it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "You",
+          "start": 92.134,
+          "end": 92.314,
+          "confidence": 1.0
+        },
+        {
+          "word": "rejuvenate",
+          "start": 92.374,
+          "end": 93.156,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 93.176,
+          "end": 93.236,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 93.336,
+      "end": 94.178,
+      "text": "It's still alive.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "It's",
+          "start": 93.336,
+          "end": 93.436,
+          "confidence": 1.0
+        },
+        {
+          "word": "still",
+          "start": 93.456,
+          "end": 93.677,
+          "confidence": 1.0
+        },
+        {
+          "word": "alive.",
+          "start": 93.737,
+          "end": 94.178,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 94.238,
+      "end": 95.741,
+      "text": "What a psycho.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 94.238,
+          "end": 95.2,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 95.28,
+          "end": 95.32,
+          "confidence": 1.0
+        },
+        {
+          "word": "psycho.",
+          "start": 95.34,
+          "end": 95.741,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 95.801,
+      "end": 97.244,
+      "text": "The bacteria that doesn't die.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "The",
+          "start": 95.801,
+          "end": 95.881,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 95.921,
+          "end": 96.362,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 96.402,
+          "end": 96.482,
+          "confidence": 1.0
+        },
+        {
+          "word": "doesn't",
+          "start": 96.542,
+          "end": 96.823,
+          "confidence": 1.0
+        },
+        {
+          "word": "die.",
+          "start": 96.903,
+          "end": 97.244,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 97.264,
+      "end": 99.448,
+      "text": "So what does he do?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 97.264,
+          "end": 97.304,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 98.867,
+          "end": 98.947,
+          "confidence": 1.0
+        },
+        {
+          "word": "does",
+          "start": 98.987,
+          "end": 99.107,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 99.147,
+          "end": 99.207,
+          "confidence": 1.0
+        },
+        {
+          "word": "do?",
+          "start": 99.228,
+          "end": 99.448,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 99.568,
+      "end": 110.65,
+      "text": "He first discovered this ancient bacteria, bacillus F in 2009 in frozen deep in the permafrost in a mountain in Siberia is yuck.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He",
+          "start": 99.568,
+          "end": 99.648,
+          "confidence": 1.0
+        },
+        {
+          "word": "first",
+          "start": 99.688,
+          "end": 99.849,
+          "confidence": 1.0
+        },
+        {
+          "word": "discovered",
+          "start": 99.889,
+          "end": 100.33,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 100.41,
+          "end": 100.61,
+          "confidence": 1.0
+        },
+        {
+          "word": "ancient",
+          "start": 100.771,
+          "end": 101.231,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria,",
+          "start": 101.272,
+          "end": 101.933,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacillus",
+          "start": 103.255,
+          "end": 103.877,
+          "confidence": 1.0
+        },
+        {
+          "word": "F",
+          "start": 104.277,
+          "end": 104.358,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 104.518,
+          "end": 104.598,
+          "confidence": 1.0
+        },
+        {
+          "word": "2009",
+          "start": 104.618,
+          "end": 104.738,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 105.4,
+          "end": 105.62,
+          "confidence": 1.0
+        },
+        {
+          "word": "frozen",
+          "start": 106.722,
+          "end": 107.143,
+          "confidence": 1.0
+        },
+        {
+          "word": "deep",
+          "start": 107.263,
+          "end": 107.544,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 107.584,
+          "end": 107.624,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 107.664,
+          "end": 107.724,
+          "confidence": 1.0
+        },
+        {
+          "word": "permafrost",
+          "start": 107.764,
+          "end": 108.325,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 108.406,
+          "end": 108.446,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 108.506,
+          "end": 108.526,
+          "confidence": 1.0
+        },
+        {
+          "word": "mountain",
+          "start": 108.586,
+          "end": 108.846,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 108.867,
+          "end": 108.907,
+          "confidence": 1.0
+        },
+        {
+          "word": "Siberia",
+          "start": 108.927,
+          "end": 109.488,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 109.508,
+          "end": 109.568,
+          "confidence": 1.0
+        },
+        {
+          "word": "yuck.",
+          "start": 109.969,
+          "end": 110.65,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 110.63,
+      "end": 112.392,
+      "text": "How do you say that, Brian?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "How",
+          "start": 110.63,
+          "end": 111.291,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 111.531,
+          "end": 111.571,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 111.611,
+          "end": 111.671,
+          "confidence": 1.0
+        },
+        {
+          "word": "say",
+          "start": 111.691,
+          "end": 111.811,
+          "confidence": 1.0
+        },
+        {
+          "word": "that,",
+          "start": 111.831,
+          "end": 111.952,
+          "confidence": 1.0
+        },
+        {
+          "word": "Brian?",
+          "start": 111.992,
+          "end": 112.392,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 112.412,
+      "end": 114.234,
+      "text": "Yakutsk.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yakutsk.",
+          "start": 112.412,
+          "end": 114.234,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 114.254,
+      "end": 114.935,
+      "text": "Yakutsk.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yakutsk.",
+          "start": 114.254,
+          "end": 114.935,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 115.376,
+      "end": 120.442,
+      "text": "Yakutsk region, like even deeper in the permafrost than woolly mammoth remains.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yakutsk",
+          "start": 115.376,
+          "end": 116.077,
+          "confidence": 1.0
+        },
+        {
+          "word": "region,",
+          "start": 116.317,
+          "end": 116.777,
+          "confidence": 1.0
+        },
+        {
+          "word": "like",
+          "start": 117.658,
+          "end": 117.839,
+          "confidence": 1.0
+        },
+        {
+          "word": "even",
+          "start": 117.859,
+          "end": 118.159,
+          "confidence": 1.0
+        },
+        {
+          "word": "deeper",
+          "start": 118.219,
+          "end": 118.439,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 118.459,
+          "end": 118.499,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 118.539,
+          "end": 118.6,
+          "confidence": 1.0
+        },
+        {
+          "word": "permafrost",
+          "start": 118.64,
+          "end": 119.22,
+          "confidence": 1.0
+        },
+        {
+          "word": "than",
+          "start": 119.26,
+          "end": 119.38,
+          "confidence": 1.0
+        },
+        {
+          "word": "woolly",
+          "start": 119.441,
+          "end": 119.721,
+          "confidence": 1.0
+        },
+        {
+          "word": "mammoth",
+          "start": 119.761,
+          "end": 120.061,
+          "confidence": 1.0
+        },
+        {
+          "word": "remains.",
+          "start": 120.101,
+          "end": 120.442,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 120.802,
+      "end": 126.068,
+      "text": "Dr. Bruchov estimated it was 3.5 million years old and he was immediately impressed with it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Dr.",
+          "start": 120.802,
+          "end": 121.123,
+          "confidence": 1.0
+        },
+        {
+          "word": "Bruchov",
+          "start": 121.143,
+          "end": 121.603,
+          "confidence": 1.0
+        },
+        {
+          "word": "estimated",
+          "start": 121.743,
+          "end": 122.064,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 122.084,
+          "end": 122.124,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 122.144,
+          "end": 122.224,
+          "confidence": 1.0
+        },
+        {
+          "word": "3.5",
+          "start": 122.244,
+          "end": 123.105,
+          "confidence": 1.0
+        },
+        {
+          "word": "million",
+          "start": 123.245,
+          "end": 123.606,
+          "confidence": 1.0
+        },
+        {
+          "word": "years",
+          "start": 123.646,
+          "end": 123.886,
+          "confidence": 1.0
+        },
+        {
+          "word": "old",
+          "start": 124.046,
+          "end": 124.166,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 124.507,
+          "end": 124.587,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 124.627,
+          "end": 124.707,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 124.727,
+          "end": 124.807,
+          "confidence": 1.0
+        },
+        {
+          "word": "immediately",
+          "start": 124.867,
+          "end": 125.308,
+          "confidence": 1.0
+        },
+        {
+          "word": "impressed",
+          "start": 125.388,
+          "end": 125.788,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 125.828,
+          "end": 125.948,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 126.008,
+          "end": 126.068,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 126.129,
+      "end": 128.932,
+      "text": "Despite its advanced age, it was still alive.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Despite",
+          "start": 126.129,
+          "end": 126.509,
+          "confidence": 1.0
+        },
+        {
+          "word": "its",
+          "start": 126.589,
+          "end": 126.689,
+          "confidence": 1.0
+        },
+        {
+          "word": "advanced",
+          "start": 126.729,
+          "end": 127.15,
+          "confidence": 1.0
+        },
+        {
+          "word": "age,",
+          "start": 127.31,
+          "end": 127.53,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 127.61,
+          "end": 127.67,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 127.69,
+          "end": 127.77,
+          "confidence": 1.0
+        },
+        {
+          "word": "still",
+          "start": 127.851,
+          "end": 128.191,
+          "confidence": 1.0
+        },
+        {
+          "word": "alive.",
+          "start": 128.411,
+          "end": 128.932,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 129.553,
+      "end": 130.253,
+      "text": "Holy shit.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Holy",
+          "start": 129.553,
+          "end": 129.833,
+          "confidence": 1.0
+        },
+        {
+          "word": "shit.",
+          "start": 129.953,
+          "end": 130.253,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 131.034,
+      "end": 134.899,
+      "text": "Basilis F seems to make everything around it live longer too.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Basilis",
+          "start": 131.034,
+          "end": 131.455,
+          "confidence": 1.0
+        },
+        {
+          "word": "F",
+          "start": 131.635,
+          "end": 131.695,
+          "confidence": 1.0
+        },
+        {
+          "word": "seems",
+          "start": 132.156,
+          "end": 132.356,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 132.416,
+          "end": 132.476,
+          "confidence": 1.0
+        },
+        {
+          "word": "make",
+          "start": 132.516,
+          "end": 132.656,
+          "confidence": 1.0
+        },
+        {
+          "word": "everything",
+          "start": 132.797,
+          "end": 133.077,
+          "confidence": 1.0
+        },
+        {
+          "word": "around",
+          "start": 133.137,
+          "end": 133.417,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 133.457,
+          "end": 133.497,
+          "confidence": 1.0
+        },
+        {
+          "word": "live",
+          "start": 133.577,
+          "end": 133.758,
+          "confidence": 1.0
+        },
+        {
+          "word": "longer",
+          "start": 133.818,
+          "end": 134.078,
+          "confidence": 1.0
+        },
+        {
+          "word": "too.",
+          "start": 134.158,
+          "end": 134.899,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 135.419,
+      "end": 138.763,
+      "text": "I don't shine, if you don't shine, it would say if it could talk.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 135.419,
+          "end": 135.599,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 135.619,
+          "end": 135.839,
+          "confidence": 1.0
+        },
+        {
+          "word": "shine,",
+          "start": 136.0,
+          "end": 136.38,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 136.48,
+          "end": 136.54,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 136.6,
+          "end": 136.7,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 136.761,
+          "end": 136.921,
+          "confidence": 1.0
+        },
+        {
+          "word": "shine,",
+          "start": 137.021,
+          "end": 137.401,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 137.541,
+          "end": 137.601,
+          "confidence": 1.0
+        },
+        {
+          "word": "would",
+          "start": 137.641,
+          "end": 137.802,
+          "confidence": 1.0
+        },
+        {
+          "word": "say",
+          "start": 137.862,
+          "end": 138.022,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 138.082,
+          "end": 138.122,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 138.202,
+          "end": 138.242,
+          "confidence": 1.0
+        },
+        {
+          "word": "could",
+          "start": 138.282,
+          "end": 138.422,
+          "confidence": 1.0
+        },
+        {
+          "word": "talk.",
+          "start": 138.462,
+          "end": 138.763,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 138.823,
+      "end": 153.099,
+      "text": "Early studies have looked at its effect on mice, fruit flies, and crops, and the results have been so promising that Dr. Victor Terniewski, a Russian epidemiologist, has called it an elixir of life.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Early",
+          "start": 138.823,
+          "end": 139.043,
+          "confidence": 1.0
+        },
+        {
+          "word": "studies",
+          "start": 139.083,
+          "end": 139.504,
+          "confidence": 1.0
+        },
+        {
+          "word": "have",
+          "start": 139.584,
+          "end": 139.744,
+          "confidence": 1.0
+        },
+        {
+          "word": "looked",
+          "start": 139.864,
+          "end": 140.084,
+          "confidence": 1.0
+        },
+        {
+          "word": "at",
+          "start": 140.144,
+          "end": 140.184,
+          "confidence": 1.0
+        },
+        {
+          "word": "its",
+          "start": 140.264,
+          "end": 140.345,
+          "confidence": 1.0
+        },
+        {
+          "word": "effect",
+          "start": 140.385,
+          "end": 140.685,
+          "confidence": 1.0
+        },
+        {
+          "word": "on",
+          "start": 140.765,
+          "end": 140.825,
+          "confidence": 1.0
+        },
+        {
+          "word": "mice,",
+          "start": 140.925,
+          "end": 141.206,
+          "confidence": 1.0
+        },
+        {
+          "word": "fruit",
+          "start": 141.306,
+          "end": 141.566,
+          "confidence": 1.0
+        },
+        {
+          "word": "flies,",
+          "start": 141.646,
+          "end": 142.026,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 142.127,
+          "end": 142.207,
+          "confidence": 1.0
+        },
+        {
+          "word": "crops,",
+          "start": 142.327,
+          "end": 142.707,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 143.068,
+          "end": 143.128,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 143.168,
+          "end": 143.228,
+          "confidence": 1.0
+        },
+        {
+          "word": "results",
+          "start": 143.268,
+          "end": 143.688,
+          "confidence": 1.0
+        },
+        {
+          "word": "have",
+          "start": 143.708,
+          "end": 143.808,
+          "confidence": 1.0
+        },
+        {
+          "word": "been",
+          "start": 143.828,
+          "end": 143.969,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 144.029,
+          "end": 144.189,
+          "confidence": 1.0
+        },
+        {
+          "word": "promising",
+          "start": 144.269,
+          "end": 144.79,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 144.83,
+          "end": 144.93,
+          "confidence": 1.0
+        },
+        {
+          "word": "Dr.",
+          "start": 144.99,
+          "end": 145.31,
+          "confidence": 1.0
+        },
+        {
+          "word": "Victor",
+          "start": 145.39,
+          "end": 145.811,
+          "confidence": 1.0
+        },
+        {
+          "word": "Terniewski,",
+          "start": 145.831,
+          "end": 148.874,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 149.495,
+          "end": 149.535,
+          "confidence": 1.0
+        },
+        {
+          "word": "Russian",
+          "start": 149.595,
+          "end": 149.915,
+          "confidence": 1.0
+        },
+        {
+          "word": "epidemiologist,",
+          "start": 149.995,
+          "end": 150.896,
+          "confidence": 1.0
+        },
+        {
+          "word": "has",
+          "start": 150.936,
+          "end": 151.017,
+          "confidence": 1.0
+        },
+        {
+          "word": "called",
+          "start": 151.077,
+          "end": 151.317,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 151.337,
+          "end": 151.377,
+          "confidence": 1.0
+        },
+        {
+          "word": "an",
+          "start": 151.397,
+          "end": 151.437,
+          "confidence": 1.0
+        },
+        {
+          "word": "elixir",
+          "start": 151.938,
+          "end": 152.558,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 152.638,
+          "end": 152.698,
+          "confidence": 1.0
+        },
+        {
+          "word": "life.",
+          "start": 152.738,
+          "end": 153.099,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 153.74,
+      "end": 155.061,
+      "text": "So this dude injected this shit.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 153.74,
+          "end": 153.82,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 153.86,
+          "end": 153.96,
+          "confidence": 1.0
+        },
+        {
+          "word": "dude",
+          "start": 154.02,
+          "end": 154.18,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 154.22,
+          "end": 154.641,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 154.661,
+          "end": 154.821,
+          "confidence": 1.0
+        },
+        {
+          "word": "shit.",
+          "start": 154.901,
+          "end": 155.061,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 155.462,
+      "end": 156.803,
+      "text": "Yeah, eventually he does.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 155.462,
+          "end": 155.762,
+          "confidence": 1.0
+        },
+        {
+          "word": "eventually",
+          "start": 156.082,
+          "end": 156.443,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 156.483,
+          "end": 156.563,
+          "confidence": 1.0
+        },
+        {
+          "word": "does.",
+          "start": 156.583,
+          "end": 156.803,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 156.863,
+      "end": 157.584,
+      "text": "Bruchov does.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Bruchov",
+          "start": 156.863,
+          "end": 157.304,
+          "confidence": 1.0
+        },
+        {
+          "word": "does.",
+          "start": 157.364,
+          "end": 157.584,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 157.884,
+      "end": 160.347,
+      "text": "What does it show what happened when he injected it, Jamie?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 157.884,
+          "end": 158.064,
+          "confidence": 1.0
+        },
+        {
+          "word": "does",
+          "start": 158.285,
+          "end": 158.465,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 158.545,
+          "end": 158.585,
+          "confidence": 1.0
+        },
+        {
+          "word": "show",
+          "start": 158.625,
+          "end": 158.785,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 158.825,
+          "end": 158.945,
+          "confidence": 1.0
+        },
+        {
+          "word": "happened",
+          "start": 159.006,
+          "end": 159.286,
+          "confidence": 1.0
+        },
+        {
+          "word": "when",
+          "start": 159.306,
+          "end": 159.406,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 159.446,
+          "end": 159.486,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 159.526,
+          "end": 159.907,
+          "confidence": 1.0
+        },
+        {
+          "word": "it,",
+          "start": 159.927,
+          "end": 159.987,
+          "confidence": 1.0
+        },
+        {
+          "word": "Jamie?",
+          "start": 160.027,
+          "end": 160.347,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 161.525,
+      "end": 166.453,
+      "text": "No, but I've looked back, I've just, I thought we had talked about this before.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "No,",
+          "start": 161.525,
+          "end": 162.006,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 162.046,
+          "end": 162.146,
+          "confidence": 1.0
+        },
+        {
+          "word": "I've",
+          "start": 162.166,
+          "end": 162.286,
+          "confidence": 1.0
+        },
+        {
+          "word": "looked",
+          "start": 162.527,
+          "end": 162.787,
+          "confidence": 1.0
+        },
+        {
+          "word": "back,",
+          "start": 162.827,
+          "end": 163.027,
+          "confidence": 1.0
+        },
+        {
+          "word": "I've",
+          "start": 163.067,
+          "end": 163.208,
+          "confidence": 1.0
+        },
+        {
+          "word": "just,",
+          "start": 164.009,
+          "end": 164.229,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 164.95,
+          "end": 165.011,
+          "confidence": 1.0
+        },
+        {
+          "word": "thought",
+          "start": 165.051,
+          "end": 165.211,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 165.231,
+          "end": 165.291,
+          "confidence": 1.0
+        },
+        {
+          "word": "had",
+          "start": 165.331,
+          "end": 165.411,
+          "confidence": 1.0
+        },
+        {
+          "word": "talked",
+          "start": 165.451,
+          "end": 165.672,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 165.712,
+          "end": 165.892,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 165.932,
+          "end": 166.092,
+          "confidence": 1.0
+        },
+        {
+          "word": "before.",
+          "start": 166.313,
+          "end": 166.453,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 166.473,
+      "end": 166.994,
+      "text": "I think we did.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 166.473,
+          "end": 166.493,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 166.513,
+          "end": 166.673,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 166.713,
+          "end": 166.813,
+          "confidence": 1.0
+        },
+        {
+          "word": "did.",
+          "start": 166.833,
+          "end": 166.994,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 167.314,
+      "end": 170.76,
+      "text": "Now that you're bringing it up, bro, my hard drive is fried.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Now",
+          "start": 167.314,
+          "end": 167.414,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 167.454,
+          "end": 167.535,
+          "confidence": 1.0
+        },
+        {
+          "word": "you're",
+          "start": 167.555,
+          "end": 167.695,
+          "confidence": 1.0
+        },
+        {
+          "word": "bringing",
+          "start": 167.715,
+          "end": 167.915,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 167.975,
+          "end": 168.015,
+          "confidence": 1.0
+        },
+        {
+          "word": "up,",
+          "start": 168.136,
+          "end": 168.216,
+          "confidence": 1.0
+        },
+        {
+          "word": "bro,",
+          "start": 168.817,
+          "end": 169.017,
+          "confidence": 1.0
+        },
+        {
+          "word": "my",
+          "start": 169.037,
+          "end": 169.177,
+          "confidence": 1.0
+        },
+        {
+          "word": "hard",
+          "start": 169.237,
+          "end": 169.458,
+          "confidence": 1.0
+        },
+        {
+          "word": "drive",
+          "start": 169.478,
+          "end": 169.758,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 169.798,
+          "end": 170.039,
+          "confidence": 1.0
+        },
+        {
+          "word": "fried.",
+          "start": 170.219,
+          "end": 170.76,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 171.761,
+      "end": 175.768,
+      "text": "My mental hard drive of information, it's taxed beyond belief.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "My",
+          "start": 171.761,
+          "end": 171.881,
+          "confidence": 1.0
+        },
+        {
+          "word": "mental",
+          "start": 171.982,
+          "end": 172.262,
+          "confidence": 1.0
+        },
+        {
+          "word": "hard",
+          "start": 172.302,
+          "end": 172.502,
+          "confidence": 1.0
+        },
+        {
+          "word": "drive",
+          "start": 172.522,
+          "end": 172.843,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 173.003,
+          "end": 173.063,
+          "confidence": 1.0
+        },
+        {
+          "word": "information,",
+          "start": 173.103,
+          "end": 173.885,
+          "confidence": 1.0
+        },
+        {
+          "word": "it's",
+          "start": 173.905,
+          "end": 174.105,
+          "confidence": 1.0
+        },
+        {
+          "word": "taxed",
+          "start": 174.125,
+          "end": 174.866,
+          "confidence": 1.0
+        },
+        {
+          "word": "beyond",
+          "start": 174.986,
+          "end": 175.307,
+          "confidence": 1.0
+        },
+        {
+          "word": "belief.",
+          "start": 175.367,
+          "end": 175.768,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 175.908,
+      "end": 179.894,
+      "text": "The story here where this happened back in 2015, not 2019.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "The",
+          "start": 175.908,
+          "end": 175.968,
+          "confidence": 1.0
+        },
+        {
+          "word": "story",
+          "start": 175.988,
+          "end": 176.268,
+          "confidence": 1.0
+        },
+        {
+          "word": "here",
+          "start": 176.329,
+          "end": 176.529,
+          "confidence": 1.0
+        },
+        {
+          "word": "where",
+          "start": 176.569,
+          "end": 176.769,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 176.809,
+          "end": 176.929,
+          "confidence": 1.0
+        },
+        {
+          "word": "happened",
+          "start": 176.97,
+          "end": 177.27,
+          "confidence": 1.0
+        },
+        {
+          "word": "back",
+          "start": 177.29,
+          "end": 177.43,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 177.49,
+          "end": 177.55,
+          "confidence": 1.0
+        },
+        {
+          "word": "2015,",
+          "start": 177.57,
+          "end": 178.031,
+          "confidence": 1.0
+        },
+        {
+          "word": "not",
+          "start": 178.051,
+          "end": 178.352,
+          "confidence": 1.0
+        },
+        {
+          "word": "2019.",
+          "start": 178.372,
+          "end": 179.894,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 181.016,
+      "end": 182.318,
+      "text": "This is, yeah.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "This",
+          "start": 181.016,
+          "end": 181.136,
+          "confidence": 1.0
+        },
+        {
+          "word": "is,",
+          "start": 181.236,
+          "end": 181.336,
+          "confidence": 1.0
+        },
+        {
+          "word": "yeah.",
+          "start": 181.917,
+          "end": 182.318,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 182.298,
+      "end": 192.196,
+      "text": "So he injected it though go to where injected it because that's part of the the title of it says he found that he injected it himself so what was the what was the result.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 182.298,
+          "end": 182.659,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 182.759,
+          "end": 182.839,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 182.899,
+          "end": 183.4,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 183.44,
+          "end": 183.48,
+          "confidence": 1.0
+        },
+        {
+          "word": "though",
+          "start": 183.54,
+          "end": 183.721,
+          "confidence": 1.0
+        },
+        {
+          "word": "go",
+          "start": 183.761,
+          "end": 183.881,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 183.901,
+          "end": 183.961,
+          "confidence": 1.0
+        },
+        {
+          "word": "where",
+          "start": 184.001,
+          "end": 184.141,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 184.181,
+          "end": 184.682,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 184.742,
+          "end": 184.802,
+          "confidence": 1.0
+        },
+        {
+          "word": "because",
+          "start": 185.203,
+          "end": 185.363,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 185.384,
+          "end": 185.524,
+          "confidence": 1.0
+        },
+        {
+          "word": "part",
+          "start": 185.584,
+          "end": 185.804,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 185.864,
+          "end": 185.904,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 186.065,
+          "end": 186.245,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 186.365,
+          "end": 186.465,
+          "confidence": 1.0
+        },
+        {
+          "word": "title",
+          "start": 186.526,
+          "end": 186.886,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 186.946,
+          "end": 187.006,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 187.107,
+          "end": 187.167,
+          "confidence": 1.0
+        },
+        {
+          "word": "says",
+          "start": 187.367,
+          "end": 187.547,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 187.587,
+          "end": 187.668,
+          "confidence": 1.0
+        },
+        {
+          "word": "found",
+          "start": 187.728,
+          "end": 187.968,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 187.988,
+          "end": 188.088,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 188.148,
+          "end": 188.249,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 188.309,
+          "end": 188.729,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 188.79,
+          "end": 188.83,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself",
+          "start": 188.87,
+          "end": 189.17,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 189.21,
+          "end": 189.311,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 189.351,
+          "end": 189.471,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 189.511,
+          "end": 189.631,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 189.671,
+          "end": 189.892,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 190.713,
+          "end": 190.793,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 190.813,
+          "end": 190.893,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 190.933,
+          "end": 191.014,
+          "confidence": 1.0
+        },
+        {
+          "word": "result.",
+          "start": 191.054,
+          "end": 192.196,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 192.216,
+      "end": 194.059,
+      "text": "I don't know scientist who said yo low.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 192.216,
+          "end": 192.256,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 192.296,
+          "end": 192.456,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 192.476,
+          "end": 192.596,
+          "confidence": 1.0
+        },
+        {
+          "word": "scientist",
+          "start": 192.616,
+          "end": 193.077,
+          "confidence": 1.0
+        },
+        {
+          "word": "who",
+          "start": 193.117,
+          "end": 193.238,
+          "confidence": 1.0
+        },
+        {
+          "word": "said",
+          "start": 193.258,
+          "end": 193.438,
+          "confidence": 1.0
+        },
+        {
+          "word": "yo",
+          "start": 193.538,
+          "end": 193.779,
+          "confidence": 1.0
+        },
+        {
+          "word": "low.",
+          "start": 193.799,
+          "end": 194.059,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 194.36,
+      "end": 197.285,
+      "text": "I don't know that that's I don't think anyone's ever found out what happened.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 194.36,
+          "end": 194.38,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 194.4,
+          "end": 194.5,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 194.6,
+          "end": 194.68,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 194.7,
+          "end": 194.88,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 194.901,
+          "end": 195.121,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 195.321,
+          "end": 195.361,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 195.401,
+          "end": 195.522,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 195.582,
+          "end": 195.702,
+          "confidence": 1.0
+        },
+        {
+          "word": "anyone's",
+          "start": 195.922,
+          "end": 196.223,
+          "confidence": 1.0
+        },
+        {
+          "word": "ever",
+          "start": 196.283,
+          "end": 196.423,
+          "confidence": 1.0
+        },
+        {
+          "word": "found",
+          "start": 196.483,
+          "end": 196.664,
+          "confidence": 1.0
+        },
+        {
+          "word": "out",
+          "start": 196.724,
+          "end": 196.804,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 196.824,
+          "end": 196.924,
+          "confidence": 1.0
+        },
+        {
+          "word": "happened.",
+          "start": 196.964,
+          "end": 197.285,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 197.325,
+      "end": 198.587,
+      "text": "Okay, so we scroll down it was right there.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Okay,",
+          "start": 197.325,
+          "end": 197.425,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 197.445,
+          "end": 197.505,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 197.525,
+          "end": 197.645,
+          "confidence": 1.0
+        },
+        {
+          "word": "scroll",
+          "start": 197.686,
+          "end": 197.866,
+          "confidence": 1.0
+        },
+        {
+          "word": "down",
+          "start": 197.886,
+          "end": 198.006,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 198.026,
+          "end": 198.106,
+          "confidence": 1.0
+        },
+        {
+          "word": "was",
+          "start": 198.146,
+          "end": 198.226,
+          "confidence": 1.0
+        },
+        {
+          "word": "right",
+          "start": 198.247,
+          "end": 198.387,
+          "confidence": 1.0
+        },
+        {
+          "word": "there.",
+          "start": 198.407,
+          "end": 198.587,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 200.07,
+      "end": 202.073,
+      "text": "Um, where's the yo low thing scroll down there.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Um,",
+          "start": 200.07,
+          "end": 200.21,
+          "confidence": 1.0
+        },
+        {
+          "word": "where's",
+          "start": 200.811,
+          "end": 200.991,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 201.031,
+          "end": 201.092,
+          "confidence": 1.0
+        },
+        {
+          "word": "yo",
+          "start": 201.132,
+          "end": 201.272,
+          "confidence": 1.0
+        },
+        {
+          "word": "low",
+          "start": 201.292,
+          "end": 201.432,
+          "confidence": 1.0
+        },
+        {
+          "word": "thing",
+          "start": 201.452,
+          "end": 201.592,
+          "confidence": 1.0
+        },
+        {
+          "word": "scroll",
+          "start": 201.633,
+          "end": 201.793,
+          "confidence": 1.0
+        },
+        {
+          "word": "down",
+          "start": 201.813,
+          "end": 201.913,
+          "confidence": 1.0
+        },
+        {
+          "word": "there.",
+          "start": 201.933,
+          "end": 202.073,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 202.374,
+      "end": 203.235,
+      "text": "Okay.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Okay.",
+          "start": 202.374,
+          "end": 203.235,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 203.255,
+      "end": 204.137,
+      "text": "Um,",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Um,",
+          "start": 203.255,
+          "end": 204.137,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 204.455,
+      "end": 211.443,
+      "text": "So he decided, yolo, he injected himself with the bacteria, he injected himself with the bacteria and see what happened.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 204.455,
+          "end": 204.675,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 204.715,
+          "end": 204.775,
+          "confidence": 1.0
+        },
+        {
+          "word": "decided,",
+          "start": 204.815,
+          "end": 205.236,
+          "confidence": 1.0
+        },
+        {
+          "word": "yolo,",
+          "start": 205.376,
+          "end": 205.817,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 206.137,
+          "end": 206.197,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 206.257,
+          "end": 206.658,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself",
+          "start": 206.698,
+          "end": 206.898,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 206.938,
+          "end": 207.018,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 207.038,
+          "end": 207.098,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria,",
+          "start": 207.138,
+          "end": 207.779,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 208.6,
+          "end": 208.78,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 209.421,
+          "end": 209.801,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself",
+          "start": 209.821,
+          "end": 210.102,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 210.142,
+          "end": 210.222,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 210.242,
+          "end": 210.302,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 210.322,
+          "end": 210.743,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 210.763,
+          "end": 210.823,
+          "confidence": 1.0
+        },
+        {
+          "word": "see",
+          "start": 210.863,
+          "end": 210.963,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 210.983,
+          "end": 211.103,
+          "confidence": 1.0
+        },
+        {
+          "word": "happened.",
+          "start": 211.123,
+          "end": 211.443,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 211.564,
+      "end": 213.105,
+      "text": "It's not real science, he's acknowledged.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "It's",
+          "start": 211.564,
+          "end": 211.684,
+          "confidence": 1.0
+        },
+        {
+          "word": "not",
+          "start": 211.744,
+          "end": 211.864,
+          "confidence": 1.0
+        },
+        {
+          "word": "real",
+          "start": 211.924,
+          "end": 212.064,
+          "confidence": 1.0
+        },
+        {
+          "word": "science,",
+          "start": 212.124,
+          "end": 212.465,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 212.485,
+          "end": 212.625,
+          "confidence": 1.0
+        },
+        {
+          "word": "acknowledged.",
+          "start": 212.685,
+          "end": 213.105,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 213.125,
+      "end": 216.73,
+      "text": "In other words, it's not a controlled trial, but maybe now he'll live forever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "In",
+          "start": 213.125,
+          "end": 213.165,
+          "confidence": 1.0
+        },
+        {
+          "word": "other",
+          "start": 213.186,
+          "end": 213.326,
+          "confidence": 1.0
+        },
+        {
+          "word": "words,",
+          "start": 213.366,
+          "end": 213.586,
+          "confidence": 1.0
+        },
+        {
+          "word": "it's",
+          "start": 214.087,
+          "end": 214.187,
+          "confidence": 1.0
+        },
+        {
+          "word": "not",
+          "start": 214.227,
+          "end": 214.327,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 214.367,
+          "end": 214.387,
+          "confidence": 1.0
+        },
+        {
+          "word": "controlled",
+          "start": 214.427,
+          "end": 214.767,
+          "confidence": 1.0
+        },
+        {
+          "word": "trial,",
+          "start": 214.807,
+          "end": 215.088,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 215.188,
+          "end": 215.368,
+          "confidence": 1.0
+        },
+        {
+          "word": "maybe",
+          "start": 215.749,
+          "end": 215.969,
+          "confidence": 1.0
+        },
+        {
+          "word": "now",
+          "start": 216.009,
+          "end": 216.129,
+          "confidence": 1.0
+        },
+        {
+          "word": "he'll",
+          "start": 216.169,
+          "end": 216.309,
+          "confidence": 1.0
+        },
+        {
+          "word": "live",
+          "start": 216.329,
+          "end": 216.429,
+          "confidence": 1.0
+        },
+        {
+          "word": "forever.",
+          "start": 216.449,
+          "end": 216.73,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 216.97,
+      "end": 220.094,
+      "text": "He's definitely still alive and he says he's feeling better than ever in 2015.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 216.97,
+          "end": 217.09,
+          "confidence": 1.0
+        },
+        {
+          "word": "definitely",
+          "start": 217.13,
+          "end": 217.391,
+          "confidence": 1.0
+        },
+        {
+          "word": "still",
+          "start": 217.411,
+          "end": 217.591,
+          "confidence": 1.0
+        },
+        {
+          "word": "alive",
+          "start": 217.631,
+          "end": 217.911,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 217.931,
+          "end": 218.011,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 218.031,
+          "end": 218.071,
+          "confidence": 1.0
+        },
+        {
+          "word": "says",
+          "start": 218.091,
+          "end": 218.212,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 218.252,
+          "end": 218.372,
+          "confidence": 1.0
+        },
+        {
+          "word": "feeling",
+          "start": 218.412,
+          "end": 218.652,
+          "confidence": 1.0
+        },
+        {
+          "word": "better",
+          "start": 218.752,
+          "end": 218.972,
+          "confidence": 1.0
+        },
+        {
+          "word": "than",
+          "start": 219.033,
+          "end": 219.153,
+          "confidence": 1.0
+        },
+        {
+          "word": "ever",
+          "start": 219.313,
+          "end": 219.493,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 219.553,
+          "end": 219.613,
+          "confidence": 1.0
+        },
+        {
+          "word": "2015.",
+          "start": 219.653,
+          "end": 220.094,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 220.614,
+      "end": 224.139,
+      "text": "He said he hadn't had a cold or a flu in two years since he injected himself.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He",
+          "start": 220.614,
+          "end": 220.655,
+          "confidence": 1.0
+        },
+        {
+          "word": "said",
+          "start": 220.695,
+          "end": 220.835,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 220.875,
+          "end": 220.915,
+          "confidence": 1.0
+        },
+        {
+          "word": "hadn't",
+          "start": 221.015,
+          "end": 221.275,
+          "confidence": 1.0
+        },
+        {
+          "word": "had",
+          "start": 221.315,
+          "end": 221.415,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 221.435,
+          "end": 221.475,
+          "confidence": 1.0
+        },
+        {
+          "word": "cold",
+          "start": 221.556,
+          "end": 221.796,
+          "confidence": 1.0
+        },
+        {
+          "word": "or",
+          "start": 221.856,
+          "end": 221.916,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 221.956,
+          "end": 221.996,
+          "confidence": 1.0
+        },
+        {
+          "word": "flu",
+          "start": 222.096,
+          "end": 222.337,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 222.397,
+          "end": 222.457,
+          "confidence": 1.0
+        },
+        {
+          "word": "two",
+          "start": 222.517,
+          "end": 222.677,
+          "confidence": 1.0
+        },
+        {
+          "word": "years",
+          "start": 222.757,
+          "end": 222.997,
+          "confidence": 1.0
+        },
+        {
+          "word": "since",
+          "start": 223.057,
+          "end": 223.218,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 223.238,
+          "end": 223.298,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 223.338,
+          "end": 223.738,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself.",
+          "start": 223.778,
+          "end": 224.139,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 224.559,
+      "end": 226.902,
+      "text": "He also reported higher energy levels.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He",
+          "start": 224.559,
+          "end": 224.639,
+          "confidence": 1.0
+        },
+        {
+          "word": "also",
+          "start": 224.659,
+          "end": 224.96,
+          "confidence": 1.0
+        },
+        {
+          "word": "reported",
+          "start": 224.98,
+          "end": 225.36,
+          "confidence": 1.0
+        },
+        {
+          "word": "higher",
+          "start": 225.4,
+          "end": 225.721,
+          "confidence": 1.0
+        },
+        {
+          "word": "energy",
+          "start": 225.821,
+          "end": 226.161,
+          "confidence": 1.0
+        },
+        {
+          "word": "levels.",
+          "start": 226.241,
+          "end": 226.902,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 226.882,
+      "end": 230.769,
+      "text": "They could all be the placebo effect or it could be something more and we need to know more research.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "They",
+          "start": 226.882,
+          "end": 227.082,
+          "confidence": 1.0
+        },
+        {
+          "word": "could",
+          "start": 227.122,
+          "end": 227.223,
+          "confidence": 1.0
+        },
+        {
+          "word": "all",
+          "start": 227.243,
+          "end": 227.323,
+          "confidence": 1.0
+        },
+        {
+          "word": "be",
+          "start": 227.363,
+          "end": 227.443,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 227.463,
+          "end": 227.523,
+          "confidence": 1.0
+        },
+        {
+          "word": "placebo",
+          "start": 227.563,
+          "end": 227.984,
+          "confidence": 1.0
+        },
+        {
+          "word": "effect",
+          "start": 228.024,
+          "end": 228.405,
+          "confidence": 1.0
+        },
+        {
+          "word": "or",
+          "start": 228.525,
+          "end": 228.585,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 228.605,
+          "end": 228.645,
+          "confidence": 1.0
+        },
+        {
+          "word": "could",
+          "start": 228.665,
+          "end": 228.785,
+          "confidence": 1.0
+        },
+        {
+          "word": "be",
+          "start": 228.805,
+          "end": 228.865,
+          "confidence": 1.0
+        },
+        {
+          "word": "something",
+          "start": 228.905,
+          "end": 229.166,
+          "confidence": 1.0
+        },
+        {
+          "word": "more",
+          "start": 229.246,
+          "end": 229.406,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 229.426,
+          "end": 229.486,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 229.506,
+          "end": 229.546,
+          "confidence": 1.0
+        },
+        {
+          "word": "need",
+          "start": 229.567,
+          "end": 229.707,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 229.727,
+          "end": 229.767,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 229.827,
+          "end": 229.987,
+          "confidence": 1.0
+        },
+        {
+          "word": "more",
+          "start": 230.027,
+          "end": 230.288,
+          "confidence": 1.0
+        },
+        {
+          "word": "research.",
+          "start": 230.368,
+          "end": 230.769,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 231.249,
+      "end": 233.613,
+      "text": "He's a fucking Spider-Man villain.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 231.249,
+          "end": 231.45,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 231.63,
+          "end": 231.67,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucking",
+          "start": 231.73,
+          "end": 232.211,
+          "confidence": 1.0
+        },
+        {
+          "word": "Spider-Man",
+          "start": 232.632,
+          "end": 233.253,
+          "confidence": 1.0
+        },
+        {
+          "word": "villain.",
+          "start": 233.313,
+          "end": 233.613,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 233.974,
+      "end": 235.737,
+      "text": "Yeah, that's why the Spider-Man villain.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 233.974,
+          "end": 234.174,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 234.194,
+          "end": 234.335,
+          "confidence": 1.0
+        },
+        {
+          "word": "why",
+          "start": 234.355,
+          "end": 234.715,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 234.755,
+          "end": 234.835,
+          "confidence": 1.0
+        },
+        {
+          "word": "Spider-Man",
+          "start": 234.855,
+          "end": 235.376,
+          "confidence": 1.0
+        },
+        {
+          "word": "villain.",
+          "start": 235.416,
+          "end": 235.737,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 236.078,
+      "end": 237.58,
+      "text": "I mean, they're so nuts.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 236.078,
+          "end": 236.138,
+          "confidence": 1.0
+        },
+        {
+          "word": "mean,",
+          "start": 236.178,
+          "end": 236.358,
+          "confidence": 1.0
+        },
+        {
+          "word": "they're",
+          "start": 236.759,
+          "end": 236.979,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 237.019,
+          "end": 237.199,
+          "confidence": 1.0
+        },
+        {
+          "word": "nuts.",
+          "start": 237.28,
+          "end": 237.58,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 237.881,
+      "end": 239.443,
+      "text": "Scientists are so fucking nuts.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Scientists",
+          "start": 237.881,
+          "end": 238.482,
+          "confidence": 1.0
+        },
+        {
+          "word": "are",
+          "start": 238.502,
+          "end": 238.602,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 238.662,
+          "end": 238.782,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucking",
+          "start": 238.822,
+          "end": 239.143,
+          "confidence": 1.0
+        },
+        {
+          "word": "nuts.",
+          "start": 239.203,
+          "end": 239.443,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 241.967,
+      "end": 243.49,
+      "text": "How is he now?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "How",
+          "start": 241.967,
+          "end": 242.068,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 242.128,
+          "end": 242.188,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 242.208,
+          "end": 242.268,
+          "confidence": 1.0
+        },
+        {
+          "word": "now?",
+          "start": 242.328,
+          "end": 243.49,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 245.309,
+      "end": 246.331,
+      "text": "I mean, he's venom.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 245.309,
+          "end": 245.469,
+          "confidence": 1.0
+        },
+        {
+          "word": "mean,",
+          "start": 245.509,
+          "end": 245.65,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 245.67,
+          "end": 245.75,
+          "confidence": 1.0
+        },
+        {
+          "word": "venom.",
+          "start": 245.91,
+          "end": 246.331,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 246.371,
+      "end": 247.372,
+      "text": "Now he's venom.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Now",
+          "start": 246.371,
+          "end": 246.551,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 246.571,
+          "end": 246.691,
+          "confidence": 1.0
+        },
+        {
+          "word": "venom.",
+          "start": 246.731,
+          "end": 247.372,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 247.392,
+      "end": 249.395,
+      "text": "Yeah, I mean, but he said he felt better than ever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 247.392,
+          "end": 247.833,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 247.873,
+          "end": 247.893,
+          "confidence": 1.0
+        },
+        {
+          "word": "mean,",
+          "start": 247.913,
+          "end": 248.053,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 248.073,
+          "end": 248.173,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 248.193,
+          "end": 248.274,
+          "confidence": 1.0
+        },
+        {
+          "word": "said",
+          "start": 248.314,
+          "end": 248.434,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 248.454,
+          "end": 248.554,
+          "confidence": 1.0
+        },
+        {
+          "word": "felt",
+          "start": 248.594,
+          "end": 248.714,
+          "confidence": 1.0
+        },
+        {
+          "word": "better",
+          "start": 248.794,
+          "end": 248.995,
+          "confidence": 1.0
+        },
+        {
+          "word": "than",
+          "start": 249.035,
+          "end": 249.155,
+          "confidence": 1.0
+        },
+        {
+          "word": "ever.",
+          "start": 249.235,
+          "end": 249.395,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 249.576,
+      "end": 251.138,
+      "text": "But what a wild thing to do to yourself.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "But",
+          "start": 249.576,
+          "end": 249.676,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 249.696,
+          "end": 249.836,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 249.876,
+          "end": 249.896,
+          "confidence": 1.0
+        },
+        {
+          "word": "wild",
+          "start": 249.976,
+          "end": 250.257,
+          "confidence": 1.0
+        },
+        {
+          "word": "thing",
+          "start": 250.297,
+          "end": 250.457,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 250.497,
+          "end": 250.557,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 250.597,
+          "end": 250.697,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 250.717,
+          "end": 250.757,
+          "confidence": 1.0
+        },
+        {
+          "word": "yourself.",
+          "start": 250.777,
+          "end": 251.138,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 251.278,
+      "end": 255.104,
+      "text": "That's just so crazy with the bacteria that helps things that are rounded.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "That's",
+          "start": 251.278,
+          "end": 251.418,
+          "confidence": 1.0
+        },
+        {
+          "word": "just",
+          "start": 251.639,
+          "end": 251.939,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 252.039,
+          "end": 252.16,
+          "confidence": 1.0
+        },
+        {
+          "word": "crazy",
+          "start": 252.28,
+          "end": 252.52,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 252.64,
+          "end": 252.78,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 252.8,
+          "end": 252.881,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 252.961,
+          "end": 253.662,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 253.722,
+          "end": 253.842,
+          "confidence": 1.0
+        },
+        {
+          "word": "helps",
+          "start": 253.922,
+          "end": 254.163,
+          "confidence": 1.0
+        },
+        {
+          "word": "things",
+          "start": 254.223,
+          "end": 254.443,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 254.463,
+          "end": 254.583,
+          "confidence": 1.0
+        },
+        {
+          "word": "are",
+          "start": 254.643,
+          "end": 254.743,
+          "confidence": 1.0
+        },
+        {
+          "word": "rounded.",
+          "start": 254.764,
+          "end": 255.104,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 255.144,
+      "end": 256.306,
+      "text": "Are you fucking sure?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Are",
+          "start": 255.144,
+          "end": 255.224,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 255.244,
+          "end": 255.384,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucking",
+          "start": 255.404,
+          "end": 256.086,
+          "confidence": 1.0
+        },
+        {
+          "word": "sure?",
+          "start": 256.106,
+          "end": 256.306,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 256.406,
+      "end": 261.053,
+      "text": "Because especially since since it's like since you discovered it, you're the world's foremost expert on it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Because",
+          "start": 256.406,
+          "end": 256.566,
+          "confidence": 1.0
+        },
+        {
+          "word": "especially",
+          "start": 256.586,
+          "end": 256.967,
+          "confidence": 1.0
+        },
+        {
+          "word": "since",
+          "start": 256.987,
+          "end": 257.267,
+          "confidence": 1.0
+        },
+        {
+          "word": "since",
+          "start": 257.548,
+          "end": 257.728,
+          "confidence": 1.0
+        },
+        {
+          "word": "it's",
+          "start": 257.788,
+          "end": 257.868,
+          "confidence": 1.0
+        },
+        {
+          "word": "like",
+          "start": 257.888,
+          "end": 258.029,
+          "confidence": 1.0
+        },
+        {
+          "word": "since",
+          "start": 258.069,
+          "end": 258.269,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 258.309,
+          "end": 258.489,
+          "confidence": 1.0
+        },
+        {
+          "word": "discovered",
+          "start": 258.529,
+          "end": 259.01,
+          "confidence": 1.0
+        },
+        {
+          "word": "it,",
+          "start": 259.07,
+          "end": 259.13,
+          "confidence": 1.0
+        },
+        {
+          "word": "you're",
+          "start": 259.21,
+          "end": 259.431,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 259.451,
+          "end": 259.531,
+          "confidence": 1.0
+        },
+        {
+          "word": "world's",
+          "start": 259.571,
+          "end": 259.851,
+          "confidence": 1.0
+        },
+        {
+          "word": "foremost",
+          "start": 259.891,
+          "end": 260.272,
+          "confidence": 1.0
+        },
+        {
+          "word": "expert",
+          "start": 260.432,
+          "end": 260.793,
+          "confidence": 1.0
+        },
+        {
+          "word": "on",
+          "start": 260.873,
+          "end": 260.933,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 260.993,
+          "end": 261.053,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 261.253,
+      "end": 263.898,
+      "text": "So if something goes wrong, there's nobody I can help you.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 261.253,
+          "end": 261.374,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 261.394,
+          "end": 261.434,
+          "confidence": 1.0
+        },
+        {
+          "word": "something",
+          "start": 261.454,
+          "end": 261.734,
+          "confidence": 1.0
+        },
+        {
+          "word": "goes",
+          "start": 261.754,
+          "end": 261.874,
+          "confidence": 1.0
+        },
+        {
+          "word": "wrong,",
+          "start": 261.894,
+          "end": 262.275,
+          "confidence": 1.0
+        },
+        {
+          "word": "there's",
+          "start": 262.836,
+          "end": 263.056,
+          "confidence": 1.0
+        },
+        {
+          "word": "nobody",
+          "start": 263.096,
+          "end": 263.417,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 263.437,
+          "end": 263.457,
+          "confidence": 1.0
+        },
+        {
+          "word": "can",
+          "start": 263.477,
+          "end": 263.577,
+          "confidence": 1.0
+        },
+        {
+          "word": "help",
+          "start": 263.617,
+          "end": 263.737,
+          "confidence": 1.0
+        },
+        {
+          "word": "you.",
+          "start": 263.777,
+          "end": 263.898,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 264.018,
+      "end": 268.785,
+      "text": "And he's so confident that he's right that he injected himself.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "And",
+          "start": 264.018,
+          "end": 264.118,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 264.158,
+          "end": 264.278,
+          "confidence": 1.0
+        },
+        {
+          "word": "so",
+          "start": 264.338,
+          "end": 264.699,
+          "confidence": 1.0
+        },
+        {
+          "word": "confident",
+          "start": 265.56,
+          "end": 266.161,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 266.421,
+          "end": 266.522,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 266.562,
+          "end": 266.682,
+          "confidence": 1.0
+        },
+        {
+          "word": "right",
+          "start": 266.722,
+          "end": 267.102,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 267.223,
+          "end": 267.323,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 267.343,
+          "end": 267.403,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 267.463,
+          "end": 267.964,
+          "confidence": 1.0
+        },
+        {
+          "word": "himself.",
+          "start": 268.024,
+          "end": 268.785,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 269.879,
+      "end": 270.64,
+      "text": "Yeah.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 269.879,
+          "end": 270.64,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 270.961,
+      "end": 271.923,
+      "text": "Why is there no update?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Why",
+          "start": 270.961,
+          "end": 271.121,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 271.161,
+          "end": 271.222,
+          "confidence": 1.0
+        },
+        {
+          "word": "there",
+          "start": 271.262,
+          "end": 271.382,
+          "confidence": 1.0
+        },
+        {
+          "word": "no",
+          "start": 271.442,
+          "end": 271.522,
+          "confidence": 1.0
+        },
+        {
+          "word": "update?",
+          "start": 271.602,
+          "end": 271.923,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 272.364,
+      "end": 272.845,
+      "text": "Because he's dead.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Because",
+          "start": 272.364,
+          "end": 272.504,
+          "confidence": 1.0
+        },
+        {
+          "word": "he's",
+          "start": 272.524,
+          "end": 272.604,
+          "confidence": 1.0
+        },
+        {
+          "word": "dead.",
+          "start": 272.624,
+          "end": 272.845,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 274.688,
+      "end": 275.55,
+      "text": "He lives in the moon now.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He",
+          "start": 274.688,
+          "end": 274.748,
+          "confidence": 1.0
+        },
+        {
+          "word": "lives",
+          "start": 274.788,
+          "end": 274.928,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 274.969,
+          "end": 275.009,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 275.069,
+          "end": 275.129,
+          "confidence": 1.0
+        },
+        {
+          "word": "moon",
+          "start": 275.169,
+          "end": 275.349,
+          "confidence": 1.0
+        },
+        {
+          "word": "now.",
+          "start": 275.389,
+          "end": 275.55,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 275.61,
+      "end": 276.952,
+      "text": "He's fucking Dr. Manhattan.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "He's",
+          "start": 275.61,
+          "end": 275.71,
+          "confidence": 1.0
+        },
+        {
+          "word": "fucking",
+          "start": 275.75,
+          "end": 275.99,
+          "confidence": 1.0
+        },
+        {
+          "word": "Dr.",
+          "start": 276.051,
+          "end": 276.311,
+          "confidence": 1.0
+        },
+        {
+          "word": "Manhattan.",
+          "start": 276.331,
+          "end": 276.952,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 276.972,
+      "end": 282.082,
+      "text": "But I'm pretty sure he hired, like, he hired some poor, like, Russian lady to do it first.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "But",
+          "start": 276.972,
+          "end": 277.032,
+          "confidence": 1.0
+        },
+        {
+          "word": "I'm",
+          "start": 277.072,
+          "end": 277.153,
+          "confidence": 1.0
+        },
+        {
+          "word": "pretty",
+          "start": 277.193,
+          "end": 277.373,
+          "confidence": 1.0
+        },
+        {
+          "word": "sure",
+          "start": 277.433,
+          "end": 277.613,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 277.674,
+          "end": 277.794,
+          "confidence": 1.0
+        },
+        {
+          "word": "hired,",
+          "start": 277.854,
+          "end": 278.195,
+          "confidence": 1.0
+        },
+        {
+          "word": "like,",
+          "start": 278.255,
+          "end": 278.435,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 278.515,
+          "end": 278.655,
+          "confidence": 1.0
+        },
+        {
+          "word": "hired",
+          "start": 278.716,
+          "end": 279.036,
+          "confidence": 1.0
+        },
+        {
+          "word": "some",
+          "start": 279.116,
+          "end": 279.257,
+          "confidence": 1.0
+        },
+        {
+          "word": "poor,",
+          "start": 279.357,
+          "end": 279.697,
+          "confidence": 1.0
+        },
+        {
+          "word": "like,",
+          "start": 279.757,
+          "end": 279.938,
+          "confidence": 1.0
+        },
+        {
+          "word": "Russian",
+          "start": 280.178,
+          "end": 280.499,
+          "confidence": 1.0
+        },
+        {
+          "word": "lady",
+          "start": 280.559,
+          "end": 280.88,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 280.92,
+          "end": 281.02,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 281.1,
+          "end": 281.26,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 281.36,
+          "end": 281.401,
+          "confidence": 1.0
+        },
+        {
+          "word": "first.",
+          "start": 281.741,
+          "end": 282.082,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 283.224,
+      "end": 283.504,
+      "text": "What?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What?",
+          "start": 283.224,
+          "end": 283.504,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 284.587,
+      "end": 288.153,
+      "text": "I'm pretty sure that he hired a model or someone to try it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I'm",
+          "start": 284.587,
+          "end": 284.687,
+          "confidence": 1.0
+        },
+        {
+          "word": "pretty",
+          "start": 284.707,
+          "end": 284.887,
+          "confidence": 1.0
+        },
+        {
+          "word": "sure",
+          "start": 284.927,
+          "end": 285.087,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 285.128,
+          "end": 285.268,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 285.308,
+          "end": 285.869,
+          "confidence": 1.0
+        },
+        {
+          "word": "hired",
+          "start": 285.909,
+          "end": 286.149,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 286.69,
+          "end": 286.731,
+          "confidence": 1.0
+        },
+        {
+          "word": "model",
+          "start": 286.811,
+          "end": 287.151,
+          "confidence": 1.0
+        },
+        {
+          "word": "or",
+          "start": 287.211,
+          "end": 287.272,
+          "confidence": 1.0
+        },
+        {
+          "word": "someone",
+          "start": 287.332,
+          "end": 287.632,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 287.672,
+          "end": 287.772,
+          "confidence": 1.0
+        },
+        {
+          "word": "try",
+          "start": 287.793,
+          "end": 288.033,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 288.073,
+          "end": 288.153,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 288.414,
+      "end": 288.754,
+      "text": "What?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What?",
+          "start": 288.414,
+          "end": 288.754,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 289.416,
+      "end": 290.217,
+      "text": "Oh, that's creepy.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 289.416,
+          "end": 289.536,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 289.556,
+          "end": 289.756,
+          "confidence": 1.0
+        },
+        {
+          "word": "creepy.",
+          "start": 289.816,
+          "end": 290.217,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 291.648,
+      "end": 296.312,
+      "text": "There's something about doing it yourself that's kind of noble, but hiring somebody else, like that's kind of a bitch move.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "There's",
+          "start": 291.648,
+          "end": 291.828,
+          "confidence": 1.0
+        },
+        {
+          "word": "something",
+          "start": 291.848,
+          "end": 292.088,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 292.108,
+          "end": 292.269,
+          "confidence": 1.0
+        },
+        {
+          "word": "doing",
+          "start": 292.329,
+          "end": 292.469,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 292.509,
+          "end": 292.549,
+          "confidence": 1.0
+        },
+        {
+          "word": "yourself",
+          "start": 292.589,
+          "end": 292.949,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 292.989,
+          "end": 293.169,
+          "confidence": 1.0
+        },
+        {
+          "word": "kind",
+          "start": 293.209,
+          "end": 293.35,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 293.39,
+          "end": 293.43,
+          "confidence": 1.0
+        },
+        {
+          "word": "noble,",
+          "start": 293.49,
+          "end": 293.81,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 294.03,
+          "end": 294.17,
+          "confidence": 1.0
+        },
+        {
+          "word": "hiring",
+          "start": 294.21,
+          "end": 294.631,
+          "confidence": 1.0
+        },
+        {
+          "word": "somebody",
+          "start": 294.651,
+          "end": 294.891,
+          "confidence": 1.0
+        },
+        {
+          "word": "else,",
+          "start": 294.951,
+          "end": 295.111,
+          "confidence": 1.0
+        },
+        {
+          "word": "like",
+          "start": 295.151,
+          "end": 295.271,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 295.311,
+          "end": 295.471,
+          "confidence": 1.0
+        },
+        {
+          "word": "kind",
+          "start": 295.511,
+          "end": 295.612,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 295.652,
+          "end": 295.692,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 295.732,
+          "end": 295.772,
+          "confidence": 1.0
+        },
+        {
+          "word": "bitch",
+          "start": 295.832,
+          "end": 296.032,
+          "confidence": 1.0
+        },
+        {
+          "word": "move.",
+          "start": 296.072,
+          "end": 296.312,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 296.532,
+      "end": 297.513,
+      "text": "Yeah, yeah, yeah.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 296.532,
+          "end": 296.973,
+          "confidence": 1.0
+        },
+        {
+          "word": "yeah,",
+          "start": 296.993,
+          "end": 297.293,
+          "confidence": 1.0
+        },
+        {
+          "word": "yeah.",
+          "start": 297.353,
+          "end": 297.513,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 297.553,
+      "end": 299.275,
+      "text": "I'm going to practice on the floor first.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I'm",
+          "start": 297.553,
+          "end": 297.613,
+          "confidence": 1.0
+        },
+        {
+          "word": "going",
+          "start": 297.773,
+          "end": 297.974,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 298.074,
+          "end": 298.294,
+          "confidence": 1.0
+        },
+        {
+          "word": "practice",
+          "start": 298.334,
+          "end": 298.614,
+          "confidence": 1.0
+        },
+        {
+          "word": "on",
+          "start": 298.654,
+          "end": 298.714,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 298.734,
+          "end": 298.794,
+          "confidence": 1.0
+        },
+        {
+          "word": "floor",
+          "start": 298.834,
+          "end": 298.995,
+          "confidence": 1.0
+        },
+        {
+          "word": "first.",
+          "start": 299.035,
+          "end": 299.275,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 299.295,
+      "end": 302.798,
+      "text": "It is a wild thing to do to just put it in a body for the first time.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "It",
+          "start": 299.295,
+          "end": 299.375,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 299.435,
+          "end": 299.475,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 299.515,
+          "end": 299.535,
+          "confidence": 1.0
+        },
+        {
+          "word": "wild",
+          "start": 299.655,
+          "end": 299.995,
+          "confidence": 1.0
+        },
+        {
+          "word": "thing",
+          "start": 300.076,
+          "end": 300.256,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 300.316,
+          "end": 300.396,
+          "confidence": 1.0
+        },
+        {
+          "word": "do",
+          "start": 300.476,
+          "end": 300.656,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 300.716,
+          "end": 300.796,
+          "confidence": 1.0
+        },
+        {
+          "word": "just",
+          "start": 300.836,
+          "end": 300.956,
+          "confidence": 1.0
+        },
+        {
+          "word": "put",
+          "start": 301.056,
+          "end": 301.177,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 301.217,
+          "end": 301.257,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 301.297,
+          "end": 301.377,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 301.437,
+          "end": 301.457,
+          "confidence": 1.0
+        },
+        {
+          "word": "body",
+          "start": 301.517,
+          "end": 301.857,
+          "confidence": 1.0
+        },
+        {
+          "word": "for",
+          "start": 302.117,
+          "end": 302.237,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 302.277,
+          "end": 302.358,
+          "confidence": 1.0
+        },
+        {
+          "word": "first",
+          "start": 302.398,
+          "end": 302.578,
+          "confidence": 1.0
+        },
+        {
+          "word": "time.",
+          "start": 302.658,
+          "end": 302.798,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 302.818,
+      "end": 303.599,
+      "text": "Yeah, but you know what though?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 302.818,
+          "end": 302.938,
+          "confidence": 1.0
+        },
+        {
+          "word": "but",
+          "start": 302.978,
+          "end": 303.058,
+          "confidence": 1.0
+        },
+        {
+          "word": "you",
+          "start": 303.098,
+          "end": 303.178,
+          "confidence": 1.0
+        },
+        {
+          "word": "know",
+          "start": 303.198,
+          "end": 303.298,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 303.318,
+          "end": 303.398,
+          "confidence": 1.0
+        },
+        {
+          "word": "though?",
+          "start": 303.419,
+          "end": 303.599,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 303.659,
+      "end": 306.401,
+      "text": "She might have done it after him to be honest with you.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "She",
+          "start": 303.659,
+          "end": 303.839,
+          "confidence": 1.0
+        },
+        {
+          "word": "might",
+          "start": 303.879,
+          "end": 304.039,
+          "confidence": 1.0
+        },
+        {
+          "word": "have",
+          "start": 304.079,
+          "end": 304.179,
+          "confidence": 1.0
+        },
+        {
+          "word": "done",
+          "start": 304.219,
+          "end": 304.339,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 304.379,
+          "end": 304.419,
+          "confidence": 1.0
+        },
+        {
+          "word": "after",
+          "start": 304.66,
+          "end": 304.9,
+          "confidence": 1.0
+        },
+        {
+          "word": "him",
+          "start": 304.96,
+          "end": 305.12,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 305.681,
+          "end": 305.761,
+          "confidence": 1.0
+        },
+        {
+          "word": "be",
+          "start": 305.801,
+          "end": 305.841,
+          "confidence": 1.0
+        },
+        {
+          "word": "honest",
+          "start": 305.861,
+          "end": 306.081,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 306.101,
+          "end": 306.241,
+          "confidence": 1.0
+        },
+        {
+          "word": "you.",
+          "start": 306.281,
+          "end": 306.401,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 306.421,
+      "end": 307.582,
+      "text": "Yeah, no, that's 100%.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 306.421,
+          "end": 306.561,
+          "confidence": 1.0
+        },
+        {
+          "word": "no,",
+          "start": 306.621,
+          "end": 306.701,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 306.741,
+          "end": 306.882,
+          "confidence": 1.0
+        },
+        {
+          "word": "100%.",
+          "start": 306.902,
+          "end": 307.582,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 307.802,
+      "end": 310.605,
+      "text": "That's why I think that's why we talked about this.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "That's",
+          "start": 307.802,
+          "end": 308.843,
+          "confidence": 1.0
+        },
+        {
+          "word": "why",
+          "start": 308.983,
+          "end": 309.164,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 309.304,
+          "end": 309.364,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 309.404,
+          "end": 309.544,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 309.564,
+          "end": 309.724,
+          "confidence": 1.0
+        },
+        {
+          "word": "why",
+          "start": 309.744,
+          "end": 309.824,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 309.864,
+          "end": 309.944,
+          "confidence": 1.0
+        },
+        {
+          "word": "talked",
+          "start": 309.984,
+          "end": 310.185,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 310.225,
+          "end": 310.385,
+          "confidence": 1.0
+        },
+        {
+          "word": "this.",
+          "start": 310.425,
+          "end": 310.605,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 311.185,
+      "end": 315.81,
+      "text": "We talked about the lady who found out about this story, found the same stuff that injected herself with it.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "We",
+          "start": 311.185,
+          "end": 311.346,
+          "confidence": 1.0
+        },
+        {
+          "word": "talked",
+          "start": 311.506,
+          "end": 311.706,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 311.746,
+          "end": 311.886,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 311.906,
+          "end": 311.986,
+          "confidence": 1.0
+        },
+        {
+          "word": "lady",
+          "start": 312.046,
+          "end": 312.286,
+          "confidence": 1.0
+        },
+        {
+          "word": "who",
+          "start": 312.346,
+          "end": 312.487,
+          "confidence": 1.0
+        },
+        {
+          "word": "found",
+          "start": 312.567,
+          "end": 312.767,
+          "confidence": 1.0
+        },
+        {
+          "word": "out",
+          "start": 312.847,
+          "end": 312.947,
+          "confidence": 1.0
+        },
+        {
+          "word": "about",
+          "start": 312.987,
+          "end": 313.167,
+          "confidence": 1.0
+        },
+        {
+          "word": "this",
+          "start": 313.227,
+          "end": 313.367,
+          "confidence": 1.0
+        },
+        {
+          "word": "story,",
+          "start": 313.407,
+          "end": 313.768,
+          "confidence": 1.0
+        },
+        {
+          "word": "found",
+          "start": 313.848,
+          "end": 314.048,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 314.088,
+          "end": 314.168,
+          "confidence": 1.0
+        },
+        {
+          "word": "same",
+          "start": 314.208,
+          "end": 314.388,
+          "confidence": 1.0
+        },
+        {
+          "word": "stuff",
+          "start": 314.428,
+          "end": 314.608,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 314.629,
+          "end": 314.709,
+          "confidence": 1.0
+        },
+        {
+          "word": "injected",
+          "start": 314.769,
+          "end": 315.069,
+          "confidence": 1.0
+        },
+        {
+          "word": "herself",
+          "start": 315.129,
+          "end": 315.469,
+          "confidence": 1.0
+        },
+        {
+          "word": "with",
+          "start": 315.509,
+          "end": 315.629,
+          "confidence": 1.0
+        },
+        {
+          "word": "it.",
+          "start": 315.75,
+          "end": 315.81,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 315.83,
+      "end": 317.671,
+      "text": "Okay, right.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Okay,",
+          "start": 315.83,
+          "end": 315.97,
+          "confidence": 1.0
+        },
+        {
+          "word": "right.",
+          "start": 316.01,
+          "end": 317.671,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 317.691,
+      "end": 318.172,
+      "text": "Interesting.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Interesting.",
+          "start": 317.691,
+          "end": 318.172,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 318.452,
+      "end": 319.813,
+      "text": "Well, she wanted to stay alive forever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Well,",
+          "start": 318.452,
+          "end": 318.632,
+          "confidence": 1.0
+        },
+        {
+          "word": "she",
+          "start": 318.652,
+          "end": 318.752,
+          "confidence": 1.0
+        },
+        {
+          "word": "wanted",
+          "start": 318.792,
+          "end": 318.972,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 318.992,
+          "end": 319.052,
+          "confidence": 1.0
+        },
+        {
+          "word": "stay",
+          "start": 319.072,
+          "end": 319.233,
+          "confidence": 1.0
+        },
+        {
+          "word": "alive",
+          "start": 319.273,
+          "end": 319.493,
+          "confidence": 1.0
+        },
+        {
+          "word": "forever.",
+          "start": 319.513,
+          "end": 319.813,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 319.993,
+      "end": 320.794,
+      "text": "And never, never.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "And",
+          "start": 319.993,
+          "end": 320.073,
+          "confidence": 1.0
+        },
+        {
+          "word": "never,",
+          "start": 320.133,
+          "end": 320.494,
+          "confidence": 1.0
+        },
+        {
+          "word": "never.",
+          "start": 320.534,
+          "end": 320.794,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 321.314,
+      "end": 321.995,
+      "text": "So yeah, that's the thing.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "So",
+          "start": 321.314,
+          "end": 321.474,
+          "confidence": 1.0
+        },
+        {
+          "word": "yeah,",
+          "start": 321.494,
+          "end": 321.634,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 321.655,
+          "end": 321.775,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 321.795,
+          "end": 321.855,
+          "confidence": 1.0
+        },
+        {
+          "word": "thing.",
+          "start": 321.875,
+          "end": 321.995,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 322.035,
+      "end": 323.798,
+      "text": "I don't think anybody wants to live forever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 322.035,
+          "end": 322.115,
+          "confidence": 1.0
+        },
+        {
+          "word": "don't",
+          "start": 322.155,
+          "end": 322.295,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 322.316,
+          "end": 322.456,
+          "confidence": 1.0
+        },
+        {
+          "word": "anybody",
+          "start": 322.536,
+          "end": 322.896,
+          "confidence": 1.0
+        },
+        {
+          "word": "wants",
+          "start": 322.936,
+          "end": 323.077,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 323.097,
+          "end": 323.177,
+          "confidence": 1.0
+        },
+        {
+          "word": "live",
+          "start": 323.217,
+          "end": 323.357,
+          "confidence": 1.0
+        },
+        {
+          "word": "forever.",
+          "start": 323.437,
+          "end": 323.798,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 323.898,
+      "end": 324.198,
+      "text": "Whatever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Whatever.",
+          "start": 323.898,
+          "end": 324.198,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 324.238,
+      "end": 324.739,
+      "text": "Whatever.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Whatever.",
+          "start": 324.238,
+          "end": 324.739,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 324.799,
+      "end": 325.36,
+      "text": "Yeah, here.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 324.799,
+          "end": 325.08,
+          "confidence": 1.0
+        },
+        {
+          "word": "here.",
+          "start": 325.2,
+          "end": 325.36,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 325.38,
+      "end": 326.782,
+      "text": "There's an old actress.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "There's",
+          "start": 325.38,
+          "end": 325.54,
+          "confidence": 1.0
+        },
+        {
+          "word": "an",
+          "start": 325.58,
+          "end": 325.641,
+          "confidence": 1.0
+        },
+        {
+          "word": "old",
+          "start": 325.861,
+          "end": 326.281,
+          "confidence": 1.0
+        },
+        {
+          "word": "actress.",
+          "start": 326.362,
+          "end": 326.782,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 327.543,
+      "end": 328.966,
+      "text": "Oh my God.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh",
+          "start": 327.543,
+          "end": 327.824,
+          "confidence": 1.0
+        },
+        {
+          "word": "my",
+          "start": 328.585,
+          "end": 328.665,
+          "confidence": 1.0
+        },
+        {
+          "word": "God.",
+          "start": 328.685,
+          "end": 328.966,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 329.126,
+      "end": 329.987,
+      "text": "Aging is disease.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Aging",
+          "start": 329.126,
+          "end": 329.346,
+          "confidence": 1.0
+        },
+        {
+          "word": "is",
+          "start": 329.406,
+          "end": 329.466,
+          "confidence": 1.0
+        },
+        {
+          "word": "disease.",
+          "start": 329.506,
+          "end": 329.987,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 330.207,
+      "end": 333.112,
+      "text": "Actress injectors of a 3.5 million year old back here.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Actress",
+          "start": 330.207,
+          "end": 330.508,
+          "confidence": 1.0
+        },
+        {
+          "word": "injectors",
+          "start": 330.548,
+          "end": 331.089,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 331.109,
+          "end": 331.169,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 331.249,
+          "end": 331.289,
+          "confidence": 1.0
+        },
+        {
+          "word": "3.5",
+          "start": 331.309,
+          "end": 331.489,
+          "confidence": 1.0
+        },
+        {
+          "word": "million",
+          "start": 331.87,
+          "end": 332.331,
+          "confidence": 1.0
+        },
+        {
+          "word": "year",
+          "start": 332.351,
+          "end": 332.471,
+          "confidence": 1.0
+        },
+        {
+          "word": "old",
+          "start": 332.491,
+          "end": 332.571,
+          "confidence": 1.0
+        },
+        {
+          "word": "back",
+          "start": 332.611,
+          "end": 332.811,
+          "confidence": 1.0
+        },
+        {
+          "word": "here.",
+          "start": 332.871,
+          "end": 333.112,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 333.452,
+      "end": 335.495,
+      "text": "How did she get it from that cut from the doctor?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "How",
+          "start": 333.452,
+          "end": 333.532,
+          "confidence": 1.0
+        },
+        {
+          "word": "did",
+          "start": 333.572,
+          "end": 333.693,
+          "confidence": 1.0
+        },
+        {
+          "word": "she",
+          "start": 333.713,
+          "end": 333.813,
+          "confidence": 1.0
+        },
+        {
+          "word": "get",
+          "start": 333.893,
+          "end": 334.093,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 334.133,
+          "end": 334.173,
+          "confidence": 1.0
+        },
+        {
+          "word": "from",
+          "start": 334.314,
+          "end": 334.414,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 334.454,
+          "end": 334.554,
+          "confidence": 1.0
+        },
+        {
+          "word": "cut",
+          "start": 334.734,
+          "end": 334.874,
+          "confidence": 1.0
+        },
+        {
+          "word": "from",
+          "start": 334.914,
+          "end": 335.015,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 335.055,
+          "end": 335.115,
+          "confidence": 1.0
+        },
+        {
+          "word": "doctor?",
+          "start": 335.155,
+          "end": 335.495,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 335.535,
+      "end": 336.757,
+      "text": "I think I think she contacted.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "I",
+          "start": 335.535,
+          "end": 335.575,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 335.636,
+          "end": 335.876,
+          "confidence": 1.0
+        },
+        {
+          "word": "I",
+          "start": 336.056,
+          "end": 336.096,
+          "confidence": 1.0
+        },
+        {
+          "word": "think",
+          "start": 336.116,
+          "end": 336.256,
+          "confidence": 1.0
+        },
+        {
+          "word": "she",
+          "start": 336.297,
+          "end": 336.417,
+          "confidence": 1.0
+        },
+        {
+          "word": "contacted.",
+          "start": 336.457,
+          "end": 336.757,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 336.777,
+      "end": 337.939,
+      "text": "She's banging the doctor.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "She's",
+          "start": 336.777,
+          "end": 336.897,
+          "confidence": 1.0
+        },
+        {
+          "word": "banging",
+          "start": 336.938,
+          "end": 337.258,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 337.298,
+          "end": 337.358,
+          "confidence": 1.0
+        },
+        {
+          "word": "doctor.",
+          "start": 337.378,
+          "end": 337.939,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 339.1,
+      "end": 339.801,
+      "text": "Wow.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Wow.",
+          "start": 339.1,
+          "end": 339.801,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 339.821,
+      "end": 341.162,
+      "text": "Yeah, she got a hell of a doctor.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 339.821,
+          "end": 340.081,
+          "confidence": 1.0
+        },
+        {
+          "word": "she",
+          "start": 340.101,
+          "end": 340.221,
+          "confidence": 1.0
+        },
+        {
+          "word": "got",
+          "start": 340.241,
+          "end": 340.401,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 340.461,
+          "end": 340.481,
+          "confidence": 1.0
+        },
+        {
+          "word": "hell",
+          "start": 340.501,
+          "end": 340.621,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 340.641,
+          "end": 340.681,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 340.742,
+          "end": 340.782,
+          "confidence": 1.0
+        },
+        {
+          "word": "doctor.",
+          "start": 340.842,
+          "end": 341.162,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 341.863,
+      "end": 342.503,
+      "text": "Oh boy.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "Oh",
+          "start": 341.863,
+          "end": 342.003,
+          "confidence": 1.0
+        },
+        {
+          "word": "boy.",
+          "start": 342.143,
+          "end": 342.503,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 342.683,
+      "end": 353.333,
+      "text": "The team who unlocked the DNA code in 2015 say that unlike cells in nature, Bacillus F shows no signs of aging and believe it could hold the key to unlocking improved human health and longevity.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "The",
+          "start": 342.683,
+          "end": 342.783,
+          "confidence": 1.0
+        },
+        {
+          "word": "team",
+          "start": 342.823,
+          "end": 343.004,
+          "confidence": 1.0
+        },
+        {
+          "word": "who",
+          "start": 343.024,
+          "end": 343.144,
+          "confidence": 1.0
+        },
+        {
+          "word": "unlocked",
+          "start": 343.184,
+          "end": 343.444,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 343.464,
+          "end": 343.544,
+          "confidence": 1.0
+        },
+        {
+          "word": "DNA",
+          "start": 343.564,
+          "end": 343.864,
+          "confidence": 1.0
+        },
+        {
+          "word": "code",
+          "start": 343.904,
+          "end": 344.105,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 344.145,
+          "end": 344.205,
+          "confidence": 1.0
+        },
+        {
+          "word": "2015",
+          "start": 344.225,
+          "end": 344.645,
+          "confidence": 1.0
+        },
+        {
+          "word": "say",
+          "start": 344.705,
+          "end": 345.266,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 345.286,
+          "end": 345.366,
+          "confidence": 1.0
+        },
+        {
+          "word": "unlike",
+          "start": 345.466,
+          "end": 345.746,
+          "confidence": 1.0
+        },
+        {
+          "word": "cells",
+          "start": 345.786,
+          "end": 346.006,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 346.066,
+          "end": 346.107,
+          "confidence": 1.0
+        },
+        {
+          "word": "nature,",
+          "start": 346.167,
+          "end": 346.467,
+          "confidence": 1.0
+        },
+        {
+          "word": "Bacillus",
+          "start": 347.388,
+          "end": 347.888,
+          "confidence": 1.0
+        },
+        {
+          "word": "F",
+          "start": 348.068,
+          "end": 348.128,
+          "confidence": 1.0
+        },
+        {
+          "word": "shows",
+          "start": 348.148,
+          "end": 348.349,
+          "confidence": 1.0
+        },
+        {
+          "word": "no",
+          "start": 348.429,
+          "end": 348.549,
+          "confidence": 1.0
+        },
+        {
+          "word": "signs",
+          "start": 348.609,
+          "end": 348.829,
+          "confidence": 1.0
+        },
+        {
+          "word": "of",
+          "start": 348.889,
+          "end": 348.929,
+          "confidence": 1.0
+        },
+        {
+          "word": "aging",
+          "start": 348.949,
+          "end": 349.35,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 349.81,
+          "end": 349.89,
+          "confidence": 1.0
+        },
+        {
+          "word": "believe",
+          "start": 349.93,
+          "end": 350.15,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 350.19,
+          "end": 350.23,
+          "confidence": 1.0
+        },
+        {
+          "word": "could",
+          "start": 350.27,
+          "end": 350.391,
+          "confidence": 1.0
+        },
+        {
+          "word": "hold",
+          "start": 350.411,
+          "end": 350.531,
+          "confidence": 1.0
+        },
+        {
+          "word": "the",
+          "start": 350.551,
+          "end": 350.631,
+          "confidence": 1.0
+        },
+        {
+          "word": "key",
+          "start": 350.691,
+          "end": 350.831,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 350.871,
+          "end": 350.911,
+          "confidence": 1.0
+        },
+        {
+          "word": "unlocking",
+          "start": 351.031,
+          "end": 351.512,
+          "confidence": 1.0
+        },
+        {
+          "word": "improved",
+          "start": 351.552,
+          "end": 352.092,
+          "confidence": 1.0
+        },
+        {
+          "word": "human",
+          "start": 352.152,
+          "end": 352.432,
+          "confidence": 1.0
+        },
+        {
+          "word": "health",
+          "start": 352.472,
+          "end": 352.673,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 352.713,
+          "end": 352.773,
+          "confidence": 1.0
+        },
+        {
+          "word": "longevity.",
+          "start": 352.813,
+          "end": 353.333,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 353.614,
+      "end": 356.776,
+      "text": "That what a crazy beginning to a science fiction movie.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "That",
+          "start": 353.614,
+          "end": 353.794,
+          "confidence": 1.0
+        },
+        {
+          "word": "what",
+          "start": 353.874,
+          "end": 354.014,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 354.054,
+          "end": 354.074,
+          "confidence": 1.0
+        },
+        {
+          "word": "crazy",
+          "start": 354.294,
+          "end": 354.995,
+          "confidence": 1.0
+        },
+        {
+          "word": "beginning",
+          "start": 355.115,
+          "end": 355.555,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 355.615,
+          "end": 355.715,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 355.776,
+          "end": 355.816,
+          "confidence": 1.0
+        },
+        {
+          "word": "science",
+          "start": 355.876,
+          "end": 356.156,
+          "confidence": 1.0
+        },
+        {
+          "word": "fiction",
+          "start": 356.176,
+          "end": 356.456,
+          "confidence": 1.0
+        },
+        {
+          "word": "movie.",
+          "start": 356.496,
+          "end": 356.776,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 357.097,
+      "end": 361.321,
+      "text": "They found a bacteria that's three and a half million years old and won't die.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "They",
+          "start": 357.097,
+          "end": 357.257,
+          "confidence": 1.0
+        },
+        {
+          "word": "found",
+          "start": 357.317,
+          "end": 357.597,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 357.677,
+          "end": 357.717,
+          "confidence": 1.0
+        },
+        {
+          "word": "bacteria",
+          "start": 357.777,
+          "end": 358.378,
+          "confidence": 1.0
+        },
+        {
+          "word": "that's",
+          "start": 358.418,
+          "end": 358.598,
+          "confidence": 1.0
+        },
+        {
+          "word": "three",
+          "start": 358.758,
+          "end": 359.059,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 359.099,
+          "end": 359.159,
+          "confidence": 1.0
+        },
+        {
+          "word": "a",
+          "start": 359.199,
+          "end": 359.219,
+          "confidence": 1.0
+        },
+        {
+          "word": "half",
+          "start": 359.279,
+          "end": 359.439,
+          "confidence": 1.0
+        },
+        {
+          "word": "million",
+          "start": 359.479,
+          "end": 359.999,
+          "confidence": 1.0
+        },
+        {
+          "word": "years",
+          "start": 360.039,
+          "end": 360.24,
+          "confidence": 1.0
+        },
+        {
+          "word": "old",
+          "start": 360.36,
+          "end": 360.48,
+          "confidence": 1.0
+        },
+        {
+          "word": "and",
+          "start": 360.54,
+          "end": 360.6,
+          "confidence": 1.0
+        },
+        {
+          "word": "won't",
+          "start": 360.68,
+          "end": 360.9,
+          "confidence": 1.0
+        },
+        {
+          "word": "die.",
+          "start": 360.98,
+          "end": 361.321,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 361.981,
+      "end": 365.985,
+      "text": "And they just said, well, let's just stick it in us.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "And",
+          "start": 361.981,
+          "end": 362.041,
+          "confidence": 1.0
+        },
+        {
+          "word": "they",
+          "start": 362.081,
+          "end": 362.201,
+          "confidence": 1.0
+        },
+        {
+          "word": "just",
+          "start": 362.222,
+          "end": 362.322,
+          "confidence": 1.0
+        },
+        {
+          "word": "said,",
+          "start": 362.342,
+          "end": 362.502,
+          "confidence": 1.0
+        },
+        {
+          "word": "well,",
+          "start": 362.562,
+          "end": 362.702,
+          "confidence": 1.0
+        },
+        {
+          "word": "let's",
+          "start": 362.722,
+          "end": 362.862,
+          "confidence": 1.0
+        },
+        {
+          "word": "just",
+          "start": 362.922,
+          "end": 363.062,
+          "confidence": 1.0
+        },
+        {
+          "word": "stick",
+          "start": 363.122,
+          "end": 363.403,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 363.423,
+          "end": 363.503,
+          "confidence": 1.0
+        },
+        {
+          "word": "in",
+          "start": 363.543,
+          "end": 363.603,
+          "confidence": 1.0
+        },
+        {
+          "word": "us.",
+          "start": 363.703,
+          "end": 365.985,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 365.965,
+      "end": 367.993,
+      "text": "just to see if it'll keep me here.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "just",
+          "start": 365.965,
+          "end": 366.226,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 366.266,
+          "end": 366.347,
+          "confidence": 1.0
+        },
+        {
+          "word": "see",
+          "start": 366.387,
+          "end": 366.487,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 366.567,
+          "end": 366.608,
+          "confidence": 1.0
+        },
+        {
+          "word": "it'll",
+          "start": 366.668,
+          "end": 366.869,
+          "confidence": 1.0
+        },
+        {
+          "word": "keep",
+          "start": 366.989,
+          "end": 367.089,
+          "confidence": 1.0
+        },
+        {
+          "word": "me",
+          "start": 367.11,
+          "end": 367.33,
+          "confidence": 1.0
+        },
+        {
+          "word": "here.",
+          "start": 367.672,
+          "end": 367.993,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 368.495,
+      "end": 369.6,
+      "text": "What if it works?",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 368.495,
+          "end": 368.596,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 368.616,
+          "end": 368.656,
+          "confidence": 1.0
+        },
+        {
+          "word": "it",
+          "start": 368.716,
+          "end": 368.756,
+          "confidence": 1.0
+        },
+        {
+          "word": "works?",
+          "start": 368.816,
+          "end": 369.6,
+          "confidence": 1.0
+        }
+      ]
+    },
+    {
+      "start": 369.62,
+      "end": 373.495,
+      "text": "What if that dude, like we come back to him 10, 20 years from now, he hasn't aged at all.",
+      "confidence": 1.0,
+      "words": [
+        {
+          "word": "What",
+          "start": 369.62,
+          "end": 369.72,
+          "confidence": 1.0
+        },
+        {
+          "word": "if",
+          "start": 369.78,
+          "end": 369.84,
+          "confidence": 1.0
+        },
+        {
+          "word": "that",
+          "start": 369.861,
+          "end": 369.981,
+          "confidence": 1.0
+        },
+        {
+          "word": "dude,",
+          "start": 370.041,
+          "end": 370.363,
+          "confidence": 1.0
+        },
+        {
+          "word": "like",
+          "start": 370.443,
+          "end": 370.583,
+          "confidence": 1.0
+        },
+        {
+          "word": "we",
+          "start": 370.624,
+          "end": 370.704,
+          "confidence": 1.0
+        },
+        {
+          "word": "come",
+          "start": 370.744,
+          "end": 370.865,
+          "confidence": 1.0
+        },
+        {
+          "word": "back",
+          "start": 370.905,
+          "end": 371.065,
+          "confidence": 1.0
+        },
+        {
+          "word": "to",
+          "start": 371.085,
+          "end": 371.166,
+          "confidence": 1.0
+        },
+        {
+          "word": "him",
+          "start": 371.206,
+          "end": 371.286,
+          "confidence": 1.0
+        },
+        {
+          "word": "10,",
+          "start": 371.306,
+          "end": 371.648,
+          "confidence": 1.0
+        },
+        {
+          "word": "20",
+          "start": 371.668,
+          "end": 371.708,
+          "confidence": 1.0
+        },
+        {
+          "word": "years",
+          "start": 371.969,
+          "end": 372.15,
+          "confidence": 1.0
+        },
+        {
+          "word": "from",
+          "start": 372.19,
+          "end": 372.29,
+          "confidence": 1.0
+        },
+        {
+          "word": "now,",
+          "start": 372.33,
+          "end": 372.451,
+          "confidence": 1.0
+        },
+        {
+          "word": "he",
+          "start": 372.491,
+          "end": 372.551,
+          "confidence": 1.0
+        },
+        {
+          "word": "hasn't",
+          "start": 372.591,
+          "end": 372.792,
+          "confidence": 1.0
+        },
+        {
+          "word": "aged",
+          "start": 372.853,
+          "end": 372.993,
+          "confidence": 1.0
+        },
+        {
+          "word": "at",
+          "start": 373.053,
+          "end": 373.093,
+          "confidence": 1.0
+        },
+        {
+          "word": "all.",
+          "start": 373.114,
+          "end": 373.495,
+          "confidence": 1.0
+        }
+      ]
+    }
+  ],
+  "speakers": []
+}

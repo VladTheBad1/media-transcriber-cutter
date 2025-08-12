@@ -1,0 +1,1022 @@
+openapi: 3.0.3
+info:
+  title: Media Transcription & Editing Service API
+  description: API contracts for local media processing platform
+  version: 1.0.0
+  contact:
+    name: Media Transcription Service
+    email: support@example.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+paths:
+  /upload:
+    post:
+      summary: Upload media file
+      description: Upload a media file for processing
+      tags:
+        - Media Upload
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Media file to upload
+                metadata:
+                  $ref: '#/components/schemas/MediaMetadata'
+      responses:
+        '200':
+          description: Upload successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+        '400':
+          description: Invalid file format or size
+        '413':
+          description: File too large
+        '500':
+          description: Server processing error
+
+  /upload/url:
+    post:
+      summary: Import media from URL
+      description: Import media content from external URL
+      tags:
+        - Media Upload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: "https://youtube.com/watch?v=example"
+                quality:
+                  type: string
+                  enum: ["highest", "high", "medium", "low"]
+                  default: "high"
+                extractAudio:
+                  type: boolean
+                  default: false
+              required:
+                - url
+      responses:
+        '200':
+          description: Import started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportResponse'
+        '400':
+          description: Invalid URL or unsupported platform
+        '404':
+          description: Media not found at URL
+        '403':
+          description: Access denied to private content
+
+  /transcribe:
+    post:
+      summary: Transcribe media file
+      description: Start transcription process with speaker diarization
+      tags:
+        - Transcription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mediaId:
+                  type: string
+                  description: ID of uploaded media file
+                language:
+                  type: string
+                  example: "en"
+                  description: Language code (auto-detect if not provided)
+                enableDiarization:
+                  type: boolean
+                  default: true
+                  description: Enable speaker diarization
+                maxSpeakers:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+                  default: 5
+              required:
+                - mediaId
+      responses:
+        '200':
+          description: Transcription started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionJobResponse'
+        '400':
+          description: Invalid media ID or parameters
+        '404':
+          description: Media file not found
+
+  /transcribe/{jobId}:
+    get:
+      summary: Get transcription status
+      description: Check transcription job status and retrieve results
+      tags:
+        - Transcription
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Transcription job ID
+      responses:
+        '200':
+          description: Transcription status and results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionResult'
+        '404':
+          description: Job not found
+        '202':
+          description: Job still processing
+
+  /ai/summarize:
+    post:
+      summary: Generate content summary
+      description: Generate AI-powered summary from transcript
+      tags:
+        - AI Features
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transcriptId:
+                  type: string
+                  description: ID of transcript to summarize
+                summaryType:
+                  type: string
+                  enum: ["executive", "keypoints", "chapters", "actions"]
+                  default: "executive"
+                length:
+                  type: string
+                  enum: ["short", "medium", "long"]
+                  default: "medium"
+              required:
+                - transcriptId
+      responses:
+        '200':
+          description: Summary generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+
+  /ai/highlights:
+    post:
+      summary: Detect video highlights
+      description: AI-suggested highlights for social media
+      tags:
+        - AI Features
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mediaId:
+                  type: string
+                transcriptId:
+                  type: string
+                targetDuration:
+                  type: integer
+                  minimum: 15
+                  maximum: 180
+                  default: 60
+                  description: Target highlight duration in seconds
+                platform:
+                  type: string
+                  enum: ["tiktok", "instagram", "youtube", "twitter", "linkedin"]
+                count:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+                  default: 3
+              required:
+                - mediaId
+                - transcriptId
+      responses:
+        '200':
+          description: Highlights detected successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HighlightsResponse'
+
+  /edit/timeline:
+    post:
+      summary: Create editing timeline
+      description: Initialize timeline for video editing
+      tags:
+        - Video Editing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mediaId:
+                  type: string
+                name:
+                  type: string
+                  example: "My Project"
+                settings:
+                  $ref: '#/components/schemas/TimelineSettings'
+              required:
+                - mediaId
+      responses:
+        '200':
+          description: Timeline created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelineResponse'
+
+  /edit/timeline/{timelineId}:
+    put:
+      summary: Update timeline
+      description: Apply edits to video timeline
+      tags:
+        - Video Editing
+      parameters:
+        - name: timelineId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                operations:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/EditOperation'
+                autoSave:
+                  type: boolean
+                  default: true
+              required:
+                - operations
+      responses:
+        '200':
+          description: Timeline updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimelineResponse'
+
+  /edit/preview/{timelineId}:
+    get:
+      summary: Generate timeline preview
+      description: Get preview URL for current timeline state
+      tags:
+        - Video Editing
+      parameters:
+        - name: timelineId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: timestamp
+          in: query
+          schema:
+            type: number
+            minimum: 0
+          description: Preview timestamp in seconds
+        - name: quality
+          in: query
+          schema:
+            type: string
+            enum: ["low", "medium", "high"]
+            default: "medium"
+      responses:
+        '200':
+          description: Preview generated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  previewUrl:
+                    type: string
+                    format: uri
+                  thumbnailUrl:
+                    type: string
+                    format: uri
+                  duration:
+                    type: number
+
+  /export:
+    post:
+      summary: Export processed media
+      description: Export final media in specified format
+      tags:
+        - Export
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                timelineId:
+                  type: string
+                format:
+                  type: string
+                  enum: ["mp4", "webm", "mov", "mp3", "wav", "srt", "vtt", "txt", "md"]
+                preset:
+                  $ref: '#/components/schemas/ExportPreset'
+                settings:
+                  $ref: '#/components/schemas/ExportSettings'
+              required:
+                - timelineId
+                - format
+      responses:
+        '200':
+          description: Export started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportJobResponse'
+        '400':
+          description: Invalid export parameters
+
+  /export/{jobId}:
+    get:
+      summary: Get export status
+      description: Check export job status and download link
+      tags:
+        - Export
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Export completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+        '202':
+          description: Export in progress
+        '404':
+          description: Export job not found
+
+  /library:
+    get:
+      summary: List media library
+      description: Get paginated list of media files in library
+      tags:
+        - Library
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Search query for file names and metadata
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: ["video", "audio", "all"]
+            default: "all"
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: ["name", "created", "duration", "size"]
+            default: "created"
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: ["asc", "desc"]
+            default: "desc"
+      responses:
+        '200':
+          description: Media library listing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryResponse'
+
+  /library/{mediaId}:
+    get:
+      summary: Get media details
+      description: Get detailed information about specific media file
+      tags:
+        - Library
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Media details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaDetails'
+        '404':
+          description: Media not found
+
+    delete:
+      summary: Delete media file
+      description: Delete media file and associated data
+      tags:
+        - Library
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Media deleted successfully
+        '404':
+          description: Media not found
+        '409':
+          description: Media is being processed and cannot be deleted
+
+components:
+  schemas:
+    MediaMetadata:
+      type: object
+      properties:
+        title:
+          type: string
+          example: "Interview with John Doe"
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        category:
+          type: string
+          example: "interview"
+
+    UploadResponse:
+      type: object
+      properties:
+        mediaId:
+          type: string
+          example: "media_123456"
+        filename:
+          type: string
+          example: "interview.mp4"
+        size:
+          type: integer
+          example: 157286400
+        duration:
+          type: number
+          example: 1800.5
+        format:
+          type: string
+          example: "mp4"
+        status:
+          type: string
+          enum: ["uploaded", "processing", "ready", "error"]
+
+    ImportResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          example: "import_789012"
+        url:
+          type: string
+        status:
+          type: string
+          enum: ["started", "downloading", "processing", "completed", "error"]
+        estimatedDuration:
+          type: integer
+          description: Estimated completion time in seconds
+
+    TranscriptionJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          example: "transcribe_345678"
+        mediaId:
+          type: string
+        status:
+          type: string
+          enum: ["queued", "processing", "completed", "error"]
+        estimatedCompletion:
+          type: string
+          format: date-time
+
+    TranscriptionResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum: ["completed", "processing", "error"]
+        transcriptId:
+          type: string
+        transcript:
+          type: object
+          properties:
+            text:
+              type: string
+            segments:
+              type: array
+              items:
+                $ref: '#/components/schemas/TranscriptSegment'
+            speakers:
+              type: array
+              items:
+                $ref: '#/components/schemas/Speaker'
+            language:
+              type: string
+              example: "en"
+            confidence:
+              type: number
+              minimum: 0
+              maximum: 1
+              example: 0.95
+        processingTime:
+          type: number
+          description: Processing time in seconds
+
+    TranscriptSegment:
+      type: object
+      properties:
+        id:
+          type: string
+        start:
+          type: number
+          description: Start time in seconds
+        end:
+          type: number
+          description: End time in seconds
+        text:
+          type: string
+        speaker:
+          type: string
+          nullable: true
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        words:
+          type: array
+          items:
+            $ref: '#/components/schemas/Word'
+
+    Word:
+      type: object
+      properties:
+        text:
+          type: string
+        start:
+          type: number
+        end:
+          type: number
+        confidence:
+          type: number
+
+    Speaker:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "speaker_1"
+        name:
+          type: string
+          nullable: true
+          example: "John Doe"
+        totalDuration:
+          type: number
+          description: Total speaking time in seconds
+        segmentCount:
+          type: integer
+
+    SummaryResponse:
+      type: object
+      properties:
+        summaryId:
+          type: string
+        type:
+          type: string
+        content:
+          type: object
+          properties:
+            text:
+              type: string
+            keyPoints:
+              type: array
+              items:
+                type: string
+            chapters:
+              type: array
+              items:
+                $ref: '#/components/schemas/Chapter'
+            actionItems:
+              type: array
+              items:
+                type: string
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+
+    Chapter:
+      type: object
+      properties:
+        title:
+          type: string
+        startTime:
+          type: number
+        endTime:
+          type: number
+        summary:
+          type: string
+
+    HighlightsResponse:
+      type: object
+      properties:
+        highlights:
+          type: array
+          items:
+            $ref: '#/components/schemas/Highlight'
+        totalCount:
+          type: integer
+        processingTime:
+          type: number
+
+    Highlight:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        startTime:
+          type: number
+        endTime:
+          type: number
+        duration:
+          type: number
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        reason:
+          type: string
+          example: "High engagement content"
+        transcript:
+          type: string
+        thumbnailUrl:
+          type: string
+
+    TimelineSettings:
+      type: object
+      properties:
+        resolution:
+          type: object
+          properties:
+            width:
+              type: integer
+              example: 1920
+            height:
+              type: integer
+              example: 1080
+        frameRate:
+          type: number
+          example: 29.97
+        aspectRatio:
+          type: string
+          example: "16:9"
+
+    TimelineResponse:
+      type: object
+      properties:
+        timelineId:
+          type: string
+        name:
+          type: string
+        mediaId:
+          type: string
+        duration:
+          type: number
+        settings:
+          $ref: '#/components/schemas/TimelineSettings'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+        lastModified:
+          type: string
+          format: date-time
+
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: ["video", "audio", "text"]
+        clips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Clip'
+
+    Clip:
+      type: object
+      properties:
+        id:
+          type: string
+        sourceStart:
+          type: number
+          description: Start time in source media
+        sourceEnd:
+          type: number
+          description: End time in source media
+        timelineStart:
+          type: number
+          description: Start time in timeline
+        duration:
+          type: number
+        effects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Effect'
+
+    Effect:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ["fade", "transition", "crop", "scale"]
+        parameters:
+          type: object
+          additionalProperties: true
+
+    EditOperation:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: ["split", "trim", "delete", "move", "add_effect", "remove_effect"]
+        target:
+          type: string
+          description: Target clip or track ID
+        parameters:
+          type: object
+          additionalProperties: true
+        timestamp:
+          type: number
+          nullable: true
+
+    ExportPreset:
+      type: object
+      properties:
+        platform:
+          type: string
+          enum: ["tiktok", "instagram_reel", "instagram_post", "youtube_short", "twitter", "linkedin", "custom"]
+        aspectRatio:
+          type: string
+          example: "9:16"
+        resolution:
+          type: object
+          properties:
+            width:
+              type: integer
+            height:
+              type: integer
+        maxDuration:
+          type: integer
+          nullable: true
+          description: Maximum duration in seconds
+        framerate:
+          type: number
+
+    ExportSettings:
+      type: object
+      properties:
+        quality:
+          type: string
+          enum: ["low", "medium", "high", "ultra"]
+          default: "high"
+        bitrate:
+          type: integer
+          nullable: true
+        audioBitrate:
+          type: integer
+          default: 128
+        includeSubtitles:
+          type: boolean
+          default: false
+        watermark:
+          type: object
+          nullable: true
+          properties:
+            enabled:
+              type: boolean
+            position:
+              type: string
+              enum: ["top-left", "top-right", "bottom-left", "bottom-right", "center"]
+            opacity:
+              type: number
+              minimum: 0
+              maximum: 1
+
+    ExportJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+        timelineId:
+          type: string
+        format:
+          type: string
+        status:
+          type: string
+          enum: ["queued", "processing", "completed", "error"]
+        estimatedCompletion:
+          type: string
+          format: date-time
+
+    ExportResult:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+        downloadUrl:
+          type: string
+          format: uri
+          nullable: true
+        filename:
+          type: string
+        fileSize:
+          type: integer
+        processingTime:
+          type: number
+        error:
+          type: string
+          nullable: true
+
+    LibraryResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaLibraryItem'
+        pagination:
+          type: object
+          properties:
+            page:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+            totalPages:
+              type: integer
+
+    MediaLibraryItem:
+      type: object
+      properties:
+        mediaId:
+          type: string
+        filename:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          enum: ["video", "audio"]
+        duration:
+          type: number
+        size:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        thumbnailUrl:
+          type: string
+          nullable: true
+        hasTranscript:
+          type: boolean
+        status:
+          type: string
+          enum: ["ready", "processing", "error"]
+
+    MediaDetails:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/MediaLibraryItem'
+        - type: object
+          properties:
+            metadata:
+              $ref: '#/components/schemas/MediaMetadata'
+            format:
+              type: string
+            codec:
+              type: string
+            bitrate:
+              type: integer
+            resolution:
+              type: object
+              properties:
+                width:
+                  type: integer
+                height:
+                  type: integer
+            framerate:
+              type: number
+            audioChannels:
+              type: integer
+            transcripts:
+              type: array
+              items:
+                type: object
+                properties:
+                  transcriptId:
+                    type: string
+                  language:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+            timelines:
+              type: array
+              items:
+                type: object
+                properties:
+                  timelineId:
+                    type: string
+                  name:
+                    type: string
+                  lastModified:
+                    type: string
+                    format: date-time
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Optional API key for enhanced features
+
+security:
+  - ApiKeyAuth: []
+  - {} # Allow unauthenticated access for local usage

@@ -1,0 +1,293 @@
+{
+  "version": "1.0.0",
+  "description": "SAZ-Mini Generated Agents Registry",
+  "note": "This file is automatically updated by agent-generator when creating new agents",
+  "starter_agents": [
+    {
+      "name": "project-analyzer",
+      "description": "Analyzes existing codebases for architecture, quality, and optimization opportunities",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["project-planner", "database-architect", "ui-component-builder"],
+      "prerequisites": []
+    },
+    {
+      "name": "project-planner",
+      "description": "Plans new projects, features, or major refactors with roadmaps and milestones",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["nextjs-app-builder", "database-architect", "deployment-automation-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "memory-manager",
+      "description": "Complex knowledge retrieval, pattern analysis, and sophisticated handoff coordination",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["project-analyzer", "project-planner"],
+      "prerequisites": []
+    },
+    {
+      "name": "agent-generator",
+      "description": "Creates new agent configurations to fill capability gaps",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["agent-preloader"],
+      "prerequisites": []
+    },
+    {
+      "name": "agent-preloader",
+      "description": "Background agent preparation and hot-loading coordination",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["agent-generator", "memory-manager"],
+      "prerequisites": []
+    },
+    {
+      "name": "brainstorming-specialist",
+      "description": "Creative ideation, concept development, and structured idea documentation with organized folder creation",
+      "type": "starter",
+      "created": "bundled",
+      "works_well_with": ["project-planner", "agent-generator", "memory-manager"],
+      "prerequisites": []
+    }
+  ],
+  "agent_templates": [
+    {
+      "name": "nextjs-app-builder",
+      "description": "Scaffolds Next.js applications with authentication, SaaS features, and production-ready architecture",
+      "type": "template",
+      "works_well_with": ["database-architect", "api-integration-specialist", "ui-component-builder"],
+      "prerequisites": ["project-planner"],
+      "conflicts_with": []
+    },
+    {
+      "name": "api-integration-specialist", 
+      "description": "Integrates third-party APIs with authentication flows, rate limiting, and robust error handling",
+      "type": "template",
+      "works_well_with": ["database-architect", "deployment-automation-specialist"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "database-architect",
+      "description": "Designs scalable database schemas, implements migrations, and optimizes query performance",
+      "type": "template", 
+      "works_well_with": ["api-integration-specialist", "nextjs-app-builder"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "ui-component-builder",
+      "description": "Creates reusable UI components, design systems, and accessible interfaces with modern styling",
+      "type": "template",
+      "works_well_with": ["nextjs-app-builder"],
+      "prerequisites": ["nextjs-app-builder"],
+      "conflicts_with": []
+    },
+    {
+      "name": "deployment-automation-specialist",
+      "description": "Sets up CI/CD pipelines, automated deployments, and production monitoring with containerization",
+      "type": "template",
+      "works_well_with": ["nextjs-app-builder", "database-architect"],
+      "prerequisites": ["nextjs-app-builder"],
+      "conflicts_with": []
+    },
+    {
+      "name": "performance-optimizer",
+      "description": "Optimizes React/Next.js applications for speed, bundle size, and Core Web Vitals with systematic analysis",
+      "type": "template",
+      "works_well_with": ["nextjs-app-builder", "debug-specialist"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "debug-specialist",
+      "description": "Systematic error tracing, bug fixing, and production debugging with root cause analysis",
+      "type": "template",
+      "works_well_with": ["performance-optimizer", "integration-coordinator"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "pdf-generator", 
+      "description": "PDF document generation, reporting systems, and automated document creation with templates",
+      "type": "template",
+      "works_well_with": ["api-integration-specialist", "database-architect"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "integration-coordinator",
+      "description": "Complex multi-system integrations, API orchestration, and enterprise system synchronization", 
+      "type": "template",
+      "works_well_with": ["api-integration-specialist", "debug-specialist"],
+      "prerequisites": [],
+      "conflicts_with": []
+    },
+    {
+      "name": "tutorial-guide",
+      "description": "Educational step-by-step guidance, concept explanation, and mentorship-style learning experiences",
+      "type": "template", 
+      "works_well_with": ["nextjs-app-builder", "ui-component-builder"],
+      "prerequisites": [],
+      "conflicts_with": []
+    }
+  ],
+  "generated_agents": [
+    {
+      "name": "nextjs-app-builder",
+      "description": "Next.js application specialist for scaffolding modern React apps with authentication and production features",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/nextjs-app-builder.md",
+      "works_well_with": ["database-architect", "ui-component-builder", "api-integration-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "database-architect",
+      "description": "Database architecture specialist for media transcription with schema design and optimization",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/database-architect.md",
+      "works_well_with": ["nextjs-app-builder", "api-integration-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "api-integration-specialist",
+      "description": "API integration specialist for media processing and transcription services with error handling",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/api-integration-specialist.md",
+      "works_well_with": ["ai-transcription-specialist", "media-processing-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "ui-component-builder",
+      "description": "UI component specialist for media interfaces with timeline controls and video players",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/ui-component-builder.md",
+      "works_well_with": ["timeline-editor-specialist", "nextjs-app-builder"],
+      "prerequisites": ["nextjs-app-builder"]
+    },
+    {
+      "name": "deployment-automation-specialist",
+      "description": "Deployment automation specialist for media applications with Docker and CI/CD pipelines",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/deployment-automation-specialist.md",
+      "works_well_with": ["nextjs-app-builder", "media-processing-specialist"],
+      "prerequisites": ["nextjs-app-builder"]
+    },
+    {
+      "name": "ai-transcription-specialist",
+      "description": "AI transcription specialist for WhisperX integration and speech-to-text processing pipelines",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/ai-transcription-specialist.md",
+      "works_well_with": ["media-processing-specialist", "api-integration-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "media-processing-specialist",
+      "description": "Media processing specialist for FFmpeg operations and audio/video manipulation",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/media-processing-specialist.md",
+      "works_well_with": ["ai-transcription-specialist", "export-specialist"],
+      "prerequisites": []
+    },
+    {
+      "name": "timeline-editor-specialist",
+      "description": "Timeline editor specialist for interactive media editing with waveform visualization and segment manipulation",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/timeline-editor-specialist.md",
+      "works_well_with": ["ui-component-builder", "media-processing-specialist"],
+      "prerequisites": ["ui-component-builder"]
+    },
+    {
+      "name": "export-specialist",
+      "description": "Export specialist for multi-platform media export with platform-specific presets and subtitle generation",
+      "type": "generated",
+      "created": "2025-01-11",
+      "file_path": ".claude/agents/custom/export-specialist.md",
+      "works_well_with": ["media-processing-specialist", "timeline-editor-specialist"],
+      "prerequisites": []
+    }
+  ],
+  "agent_groups": [
+    {
+      "name": "media-transcription-team",
+      "description": "Complete agent team for media transcription and editing applications",
+      "members": [
+        "nextjs-app-builder",
+        "database-architect", 
+        "api-integration-specialist",
+        "ui-component-builder",
+        "deployment-automation-specialist",
+        "ai-transcription-specialist",
+        "media-processing-specialist",
+        "timeline-editor-specialist",
+        "export-specialist"
+      ],
+      "coordination_agent": "nextjs-app-builder",
+      "created": "2025-01-11"
+    }
+  ],
+  "usage_stats": {
+    "note": "Optional: Track agent effectiveness (updated by agents)",
+    "last_updated": null,
+    "agent_calls": {},
+    "successful_workflows": [],
+    "failed_patterns": []
+  },
+  "workflows": [
+    {
+      "name": "new-saas-app",
+      "description": "Complete workflow for building SaaS applications",
+      "agents_sequence": ["project-planner", "nextjs-app-builder", "database-architect", "api-integration-specialist", "ui-component-builder", "deployment-automation-specialist"],
+      "parallel_opportunities": [
+        ["nextjs-app-builder", "database-architect"],
+        ["api-integration-specialist", "ui-component-builder"]
+      ]
+    },
+    {
+      "name": "optimize-existing-app", 
+      "description": "Systematic optimization of existing applications",
+      "agents_sequence": ["project-analyzer", "project-planner", "database-architect", "ui-component-builder", "deployment-automation-specialist"],
+      "parallel_opportunities": [
+        ["database-architect", "ui-component-builder"]
+      ]
+    },
+    {
+      "name": "add-new-feature",
+      "description": "Add features to existing applications",
+      "agents_sequence": ["project-analyzer", "project-planner", "database-architect", "api-integration-specialist", "ui-component-builder", "deployment-automation-specialist"],
+      "parallel_opportunities": []
+    },
+    {
+      "name": "media-transcription-platform",
+      "description": "Complete workflow for building media transcription and editing platforms",
+      "agents_sequence": [
+        "project-planner",
+        "nextjs-app-builder",
+        "database-architect",
+        "media-processing-specialist",
+        "ai-transcription-specialist",
+        "api-integration-specialist",
+        "ui-component-builder",
+        "timeline-editor-specialist",
+        "export-specialist",
+        "deployment-automation-specialist"
+      ],
+      "parallel_opportunities": [
+        ["nextjs-app-builder", "database-architect"],
+        ["media-processing-specialist", "ai-transcription-specialist"],
+        ["ui-component-builder", "timeline-editor-specialist"],
+        ["export-specialist", "deployment-automation-specialist"]
+      ]
+    }
+  ]
+}
