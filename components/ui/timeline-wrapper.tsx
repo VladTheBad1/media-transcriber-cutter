@@ -14,13 +14,21 @@ import { Button } from "./button";
 import { Alert, AlertDescription } from "./alert";
 
 interface MediaFile {
-  id: string;
-  name: string;
+  mediaId: string;
+  filename: string;
+  originalName: string;
+  title?: string | null;
   type: "video" | "audio";
-  duration: number;
+  format: string;
   size: number;
-  createdAt: Date;
+  duration: number;
+  resolution?: string;
+  thumbnailUrl?: string;
   status: string;
+  uploadedAt: string;
+  hasTranscripts: boolean;
+  hasTimelines: boolean;
+  hasHighlights: boolean;
 }
 
 interface Transcript {
@@ -212,7 +220,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
 
       try {
         const timelineOps = createTimelineOperations();
-        await timelineOps.initializeFromMedia(mediaFile.id, transcript, mediaFile.duration);
+        await timelineOps.initializeFromMedia(mediaFile.mediaId, transcript, mediaFile.duration);
 
         // Subscribe to state changes
         const unsubscribe = timelineOps.subscribe((state) => {
@@ -265,7 +273,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
     };
 
     initializeTimeline();
-  }, [mediaFile.id, transcript]);
+  }, [mediaFile.mediaId, transcript]);
 
   // Auto-save handler
   const handleAutoSave = useCallback(async (ops: TimelineOperations) => {
@@ -460,10 +468,9 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
   const statistics = operations.getStatistics();
 
   return (
-    <div className={`space-y-4 ${className}`}>
-      {/* Media Player Preview */}
-      <div className="bg-gray-800 rounded-lg border border-gray-700 p-4">
-        <div className="max-w-3xl mx-auto">
+    <div className={className}>
+      {/* Media Player Preview - Hidden, audio only */}
+      <div className="hidden">
           <MediaPlayer
             ref={mediaPlayerRef}
             src={getMediaUrl(mediaFile)}
@@ -508,45 +515,9 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
               // No need to seek again - the media player already did it
             }}
           />
-        </div>
       </div>
 
-      {/* Timeline Header with Stats and Controls */}
-      <div className="flex items-center justify-between p-4 bg-gray-800 rounded-lg border border-gray-700">
-        <div className="flex items-center gap-6 text-sm text-gray-400">
-          <span>Duration: {formatTime(timelineState.duration)}</span>
-          <span>Tracks: {statistics.totalTracks}</span>
-          <span>Clips: {statistics.totalClips}</span>
-          {statistics.lockedClips > 0 && (
-            <span className="text-yellow-400">
-              Locked: {statistics.lockedClips}
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2">
-          {hasUnsavedChanges && (
-            <span className="text-xs text-yellow-400 flex items-center gap-1">
-              <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
-              Unsaved changes
-            </span>
-          )}
-
-          <Button
-            onClick={handleManualSave}
-            disabled={isSaving || !hasUnsavedChanges}
-            size="sm"
-            className="flex items-center gap-2"
-          >
-            {isSaving ? (
-              <Loader2 className="h-3 w-3 animate-spin" />
-            ) : (
-              <Save className="h-3 w-3" />
-            )}
-            {isSaving ? "Saving..." : "Save"}
-          </Button>
-        </div>
-      </div>
+      {/* Removed header for minimal interface */}
 
       {/* Timeline Editor */}
       <TimelineEditor
@@ -572,49 +543,11 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
         gridInterval={1}
         showWaveforms={true}
         frameRate={30}
+        mediaSrc={mediaFile.type === 'video' ? getMediaUrl(mediaFile) : undefined}
       />
 
-      {/* Timeline Stats Footer */}
-      <div className="flex items-center justify-between p-2 bg-gray-800/50 rounded text-xs text-gray-500">
-        <div className="flex items-center gap-4">
-          <span>Zoom: {Math.round(timelineState.zoom * 100)}%</span>
-          <span>Current: {formatTime(timelineState.currentTime)}</span>
-          {playbackRate !== 1 && <span>Speed: {playbackRate}x</span>}
-        </div>
+      {/* Removed footer for minimal interface */}
 
-        <div className="flex items-center gap-4">
-          <span
-            className={statistics.canUndo ? "text-blue-400" : "text-gray-600"}
-          >
-            Undo: {statistics.canUndo ? "Available" : "None"}
-          </span>
-          <span
-            className={statistics.canRedo ? "text-blue-400" : "text-gray-600"}
-          >
-            Redo: {statistics.canRedo ? "Available" : "None"}
-          </span>
-        </div>
-      </div>
-
-      {/* Debug Info (Development Only) */}
-      {process.env.NODE_ENV === "development" && (
-        <details className="p-2 bg-gray-900 rounded text-xs text-gray-400">
-          <summary className="cursor-pointer">Debug Info</summary>
-          <pre className="mt-2 text-xs overflow-auto">
-            {JSON.stringify(
-              {
-                mediaFileId: mediaFile.id,
-                transcriptSegments: transcript?.segments?.length || 0,
-                historyLength: timelineState.history.length,
-                historyIndex: timelineState.historyIndex,
-                statistics,
-              },
-              null,
-              2,
-            )}
-          </pre>
-        </details>
-      )}
     </div>
   );
 };

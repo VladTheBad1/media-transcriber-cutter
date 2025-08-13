@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { Scissors, Trash2, Copy, Volume2, Eye, ZoomIn, ZoomOut, RotateCcw, Play, Pause, SkipBack, SkipForward } from 'lucide-react'
 import { cn, formatTime, clamp, generateId } from '@/lib/utils'
 import { WaveformVisualization } from './waveform-visualization'
+import { VideoThumbnails } from './video-thumbnails'
 
 interface TimelineClip {
   id: string
@@ -78,6 +79,7 @@ interface TimelineEditorProps {
   gridInterval?: number
   showWaveforms?: boolean
   frameRate?: number
+  mediaSrc?: string // Add media source for video thumbnails
 }
 
 export const TimelineEditor: React.FC<TimelineEditorProps> = ({
@@ -103,7 +105,8 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
   snapToGrid = true,
   gridInterval = 1,
   showWaveforms = true,
-  frameRate = 30
+  frameRate = 30,
+  mediaSrc
 }) => {
   const timelineRef = useRef<HTMLDivElement>(null)
   const [zoom, setZoom] = useState(1)
@@ -116,8 +119,10 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     type: 'move' | 'resize-start' | 'resize-end'
     originalClip?: TimelineClip
   } | null>(null)
-  const [selectedClips, setSelectedClips] = useState<string[]>([])
+  const [selectedClips, setSelectedClips] = useState<string[]>([]) // Disabled selection
   const [playheadPosition, setPlayheadPosition] = useState(0)
+  const [hoverPosition, setHoverPosition] = useState<number | null>(null)
+  const [isHoveringTimeline, setIsHoveringTimeline] = useState(false)
   const [actionHistory, setActionHistory] = useState<TimelineAction[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
   const [isSelecting, setIsSelecting] = useState(false)
@@ -211,9 +216,9 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
       return
     }
     
-    // Account for track header width (128px) and scroll position
+    // Account for track header width (80px) and scroll position
     const scrollLeft = container.parentElement?.scrollLeft || 0
-    const clickX = e.clientX - rect.left + scrollLeft - 128
+    const clickX = e.clientX - rect.left + scrollLeft - 80
     
     // Don't process clicks on the track header area
     if (clickX < 0) {
@@ -395,7 +400,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
           const trackY = trackIndex * track.height
           
           track.clips.forEach(clip => {
-            const clipX = clip.start * scaledPixelsPerSecond + 128 // Account for header
+            const clipX = clip.start * scaledPixelsPerSecond + 80 // Account for header
             const clipWidth = clip.duration * scaledPixelsPerSecond
             const clipY = trackY
             
@@ -668,7 +673,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
           style={{ left: x }}
         >
           {(isSecond || (showFrames && time % (1/frameRate * 5) === 0)) && (
-            <span className="absolute top-1 left-1 bg-gray-800 px-1 rounded text-gray-300">
+            <span className="absolute top-1 left-1/2 -translate-x-1/2 bg-gray-800 px-1 rounded text-gray-300">
               {showFrames && !isSecond 
                 ? `${Math.round(time * frameRate)}f`
                 : formatTime(time)
@@ -684,91 +689,19 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
 
   return (
     <div className={cn("bg-gray-900 rounded-lg border border-gray-700", className)}>
-      {/* Header */}
-      <div className="p-4 border-b border-gray-700">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h3 className="text-lg font-semibold text-gray-200">Timeline Editor</h3>
-            <div className="text-sm text-gray-400">
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </div>
+      {/* Minimal Header */}
+      <div className="p-2 border-b border-gray-700">
+        <div className="flex items-center justify-center relative">
+          {/* Time display in center */}
+          <div className="text-sm text-gray-300 font-mono bg-gray-800 px-3 py-1 rounded">
+            {formatTime(currentTime)} / {formatTime(duration)}
           </div>
           
-          <div className="flex items-center gap-4">
-            {/* Transport Controls */}
-            <div className="flex items-center gap-1 border border-gray-600 rounded">
-              <button
-                onClick={() => onTimeChange(Math.max(0, currentTime - 10))}
-                className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors"
-                aria-label="Skip backward 10s"
-              >
-                <SkipBack className="h-4 w-4" />
-              </button>
-              
-              {onPlayPause && (
-                <button
-                  onClick={onPlayPause}
-                  className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors"
-                  aria-label={isPlaying ? "Pause" : "Play"}
-                >
-                  {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                </button>
-              )}
-              
-              <button
-                onClick={() => onTimeChange(Math.min(duration, currentTime + 10))}
-                className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors"
-                aria-label="Skip forward 10s"
-              >
-                <SkipForward className="h-4 w-4" />
-              </button>
-              
-              {onPlaybackRateChange && (
-                <select
-                  value={playbackRate}
-                  onChange={(e) => onPlaybackRateChange(parseFloat(e.target.value))}
-                  className="bg-gray-700 text-gray-200 text-xs px-2 py-1 border-l border-gray-600 focus:outline-none"
-                >
-                  <option value={0.25}>0.25x</option>
-                  <option value={0.5}>0.5x</option>
-                  <option value={0.75}>0.75x</option>
-                  <option value={1}>1x</option>
-                  <option value={1.25}>1.25x</option>
-                  <option value={1.5}>1.5x</option>
-                  <option value={2}>2x</option>
-                </select>
-              )}
-            </div>
-            {/* Zoom Controls */}
-            <div className="flex items-center gap-1 border border-gray-600 rounded">
-              <button
-                onClick={handleZoomOut}
-                className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors"
-                aria-label="Zoom out"
-              >
-                <ZoomOut className="h-4 w-4" />
-              </button>
-              <span className="px-2 py-1 text-xs text-gray-400 min-w-[60px] text-center">
-                {Math.round(zoom * 100)}%
-              </span>
-              <button
-                onClick={handleZoomIn}
-                className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors"
-                aria-label="Zoom in"
-              >
-                <ZoomIn className="h-4 w-4" />
-              </button>
-              <button
-                onClick={handleZoomFit}
-                className="p-1 text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors border-l border-gray-600"
-                aria-label="Fit to view"
-              >
-                Fit
-              </button>
-            </div>
-
-            {/* Editing Tools */}
-            <div className="flex items-center gap-1 border border-gray-600 rounded">
+          {/* Tools on the right */}
+          <div className="absolute right-2 flex items-center gap-2">
+            {/* Minimal Split Tool Only */}
+            {/* Only Split Tool */}
+            <div className="flex items-center gap-1">
               <button
                 onClick={() => {
                   // First try to split selected clips
@@ -826,97 +759,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
               >
                 <Scissors className="h-4 w-4" />
               </button>
-              
-              <button
-                onClick={() => {
-                  if (selectedClips.length > 0 && onClipCopy) {
-                    const clipsToCopy: { clip: TimelineClip, trackId: string }[] = []
-                    selectedClips.forEach(clipId => {
-                      const track = tracks.find(t => t.clips.some(c => c.id === clipId))
-                      const clip = track?.clips.find(c => c.id === clipId)
-                      if (track && clip) {
-                        clipsToCopy.push({ clip, trackId: track.id })
-                      }
-                    })
-                    if (clipsToCopy.length > 0) {
-                      setClipboardData({
-                        clips: clipsToCopy.map(({ clip }) => clip),
-                        trackIds: clipsToCopy.map(({ trackId }) => trackId)
-                      })
-                    }
-                  }
-                }}
-                className={cn(
-                  "p-2 transition-colors",
-                  selectedClips.length > 0
-                    ? "text-gray-400 hover:text-gray-200 hover:bg-gray-700"
-                    : "text-gray-500 cursor-not-allowed"
-                )}
-                aria-label="Copy clips"
-                disabled={selectedClips.length === 0}
-              >
-                <Copy className="h-4 w-4" />
-              </button>
-              
-              <button
-                onClick={() => {
-                  selectedClips.forEach(clipId => {
-                    const track = tracks.find(t => t.clips.some(c => c.id === clipId))
-                    if (track && !track.locked) {
-                      const clip = track.clips.find(c => c.id === clipId)
-                      if (clip && !clip.locked) {
-                        onClipDelete(track.id, clipId)
-                      }
-                    }
-                  })
-                  addToHistory({ type: 'clip_delete', data: { clipIds: selectedClips } })
-                  setSelectedClips([])
-                }}
-                className={cn(
-                  "p-2 transition-colors",
-                  selectedClips.length > 0
-                    ? "text-red-400 hover:text-red-300 hover:bg-gray-700"
-                    : "text-gray-500 cursor-not-allowed"
-                )}
-                aria-label="Delete clips"
-                disabled={selectedClips.length === 0}
-              >
-                <Trash2 className="h-4 w-4" />
-              </button>
             </div>
-            
-            {/* Undo/Redo */}
-            {(onUndo || onRedo) && (
-              <div className="flex items-center gap-1 border border-gray-600 rounded">
-                <button
-                  onClick={handleUndo}
-                  className={cn(
-                    "p-2 transition-colors",
-                    canUndo
-                      ? "text-gray-400 hover:text-gray-200 hover:bg-gray-700"
-                      : "text-gray-500 cursor-not-allowed"
-                  )}
-                  aria-label="Undo"
-                  disabled={!canUndo}
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </button>
-                
-                <button
-                  onClick={handleRedo}
-                  className={cn(
-                    "p-2 transition-colors",
-                    canRedo
-                      ? "text-gray-400 hover:text-gray-200 hover:bg-gray-700"
-                      : "text-gray-500 cursor-not-allowed"
-                  )}
-                  aria-label="Redo"
-                  disabled={!canRedo}
-                >
-                  <RotateCcw className="h-4 w-4 scale-x-[-1]" />
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -925,13 +768,11 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
       <div className="relative">
         {/* Time Ruler */}
         <div className="h-10 bg-gray-800 border-b border-gray-700 relative overflow-hidden">
-          {/* Track Headers Spacer */}
-          <div className="absolute left-0 top-0 w-32 h-full bg-gray-800 border-r border-gray-700 z-10 flex items-center justify-center">
-            <span className="text-xs text-gray-500">Time</span>
-          </div>
+          {/* Minimal Track Headers Spacer */}
+          <div className="absolute left-0 top-0 w-40 h-full bg-gray-800 border-r border-gray-700 z-10" />
           
           <div
-            className="relative h-full ml-32"
+            className="relative h-full ml-40"
             style={{ width: Math.max(timelineWidth, 800) + 'px' }}
           >
             {generateTimeRuler}
@@ -947,6 +788,43 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
             onClick={(e) => {
               // Handle clicks on the timeline
               handleTimelineClick(e)
+            }}
+            onMouseMove={(e) => {
+              // Update hover position for playhead preview
+              const rect = e.currentTarget.getBoundingClientRect()
+              const scrollLeft = e.currentTarget.parentElement?.scrollLeft || 0
+              const x = e.clientX - rect.left + scrollLeft
+              
+              // Constrain to clip boundaries if hovering over a clip
+              let constrainedX = x
+              const target = e.target as HTMLElement
+              const clipElement = target.closest('[data-clip]')
+              
+              if (clipElement) {
+                const clipId = clipElement.getAttribute('data-clip')
+                const track = tracks.find(t => t.clips.some(c => c.id === clipId))
+                const clip = track?.clips.find(c => c.id === clipId)
+                
+                if (clip) {
+                  const clipStart = clip.start * scaledPixelsPerSecond
+                  const clipEnd = clip.end * scaledPixelsPerSecond
+                  constrainedX = Math.max(clipStart, Math.min(x, clipEnd))
+                }
+              }
+              
+              const time = constrainedX / scaledPixelsPerSecond
+              
+              if (time >= 0 && time <= duration) {
+                setHoverPosition(constrainedX)
+                setIsHoveringTimeline(true)
+              }
+            }}
+            onMouseEnter={() => {
+              setIsHoveringTimeline(true)
+            }}
+            onMouseLeave={() => {
+              setIsHoveringTimeline(false)
+              setHoverPosition(null)
             }}
             onMouseDown={(e) => {
               // Check if we're clicking on empty space (not a clip)
@@ -986,62 +864,20 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                 className="relative border-b border-gray-700"
                 style={{ height: track.height }}
               >
-                {/* Track Header */}
-                <div className={cn(
-                  "absolute left-0 top-0 w-32 h-full border-r border-gray-700 flex flex-col justify-center p-2 z-10 transition-colors",
-                  track.locked ? "bg-gray-750" : "bg-gray-800",
-                  track.color && `border-l-2 border-l-${track.color}-400`
-                )}>
-                  <div className="text-sm font-medium text-gray-200 truncate mb-1 flex items-center gap-1">
-                    <span className={cn(
-                      "w-2 h-2 rounded-full",
-                      track.type === 'video' ? "bg-blue-400" :
-                      track.type === 'audio' ? "bg-green-400" :
-                      track.type === 'text' ? "bg-yellow-400" : "bg-purple-400"
-                    )} />
-                    {track.name}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <button
-                      onClick={() => onTrackToggle(track.id, 'visible')}
-                      className={cn(
-                        "p-1 rounded transition-colors",
-                        track.visible ? "text-blue-400 hover:text-blue-300" : "text-gray-500 hover:text-gray-400"
-                      )}
-                      aria-label={track.visible ? "Hide track" : "Show track"}
-                    >
-                      <Eye className="h-3 w-3" />
-                    </button>
-                    {(track.type === 'audio' || track.type === 'video') && (
-                      <button
-                        onClick={() => onTrackToggle(track.id, 'muted')}
-                        className={cn(
-                          "p-1 rounded transition-colors",
-                          !track.muted ? "text-blue-400 hover:text-blue-300" : "text-gray-500 hover:text-gray-400"
-                        )}
-                        aria-label={track.muted ? "Unmute track" : "Mute track"}
-                      >
-                        <Volume2 className="h-3 w-3" />
-                      </button>
-                    )}
-                    <button
-                      onClick={() => onTrackToggle(track.id, 'locked')}
-                      className={cn(
-                        "p-1 rounded transition-colors",
-                        track.locked ? "text-red-400 hover:text-red-300" : "text-gray-500 hover:text-gray-400"
-                      )}
-                      aria-label={track.locked ? "Unlock track" : "Lock track"}
-                    >
-                      <div className={cn(
-                        "w-3 h-3 border border-current rounded",
-                        track.locked ? "border-t-2" : ""
-                      )} />
-                    </button>
-                  </div>
+                {/* Minimal Track Header */}
+                <div className="absolute left-0 top-0 w-40 h-full border-r border-gray-700 bg-gray-800 flex items-center justify-center z-10">
+                  <span className={cn(
+                    "text-xs text-gray-400",
+                    track.type === 'video' ? "text-blue-400" :
+                    track.type === 'audio' ? "text-green-400" :
+                    track.type === 'text' ? "text-yellow-400" : "text-purple-400"
+                  )}>
+                    {track.type === 'video' ? 'V' : track.type === 'audio' ? 'A' : 'T'}
+                  </span>
                 </div>
 
                 {/* Track Content */}
-                <div className="relative ml-32 h-full timeline-track">
+                <div className="relative ml-40 h-full timeline-track">
                   {/* Waveform Background for Audio Tracks */}
                   {showWaveforms && track.type === 'audio' && track.waveformData && track.visible && (
                     <WaveformVisualization
@@ -1057,26 +893,28 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                   {track.clips.map((clip) => {
                     const clipX = clip.start * scaledPixelsPerSecond
                     const clipWidth = clip.duration * scaledPixelsPerSecond
-                    const isSelected = selectedClips.includes(clip.id)
+                    const isSelected = false // Disable selection highlighting
 
                     return (
                       <div
                         key={clip.id}
                         data-clip={clip.id}
                         className={cn(
-                          "absolute top-1 bottom-1 rounded border-2 transition-all flex items-center justify-between px-2 overflow-hidden",
-                          isSelected
-                            ? "border-blue-400 bg-blue-900/50 shadow-lg shadow-blue-400/20"
-                            : "border-gray-500 bg-gray-700 hover:border-gray-400",
-                          clip.color && `bg-${clip.color}-900/50 border-${clip.color}-400`,
+                          "absolute top-1 bottom-1 rounded-md border transition-all flex items-center justify-between overflow-hidden",
+                          "border-gray-600 hover:border-gray-500",
                           track.locked || clip.locked 
                             ? "cursor-not-allowed opacity-60" 
                             : "cursor-move",
-                          dragData?.clipId === clip.id && "ring-2 ring-blue-400/50"
+                          dragData?.clipId === clip.id && "ring-2 ring-yellow-400/50"
                         )}
                         style={{
                           left: clipX,
-                          width: Math.max(clipWidth, 20)
+                          width: Math.max(clipWidth, 20),
+                          background: track.type === 'video' 
+                            ? 'linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8))'
+                            : track.type === 'audio'
+                            ? 'linear-gradient(to bottom, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8))'
+                            : 'linear-gradient(to bottom, rgba(250, 204, 21, 0.8), rgba(245, 158, 11, 0.8))'
                         }}
                         onMouseDown={(e) => {
                           e.stopPropagation()
@@ -1088,7 +926,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                         {/* Resize Handle - Start */}
                         {!track.locked && !clip.locked && (
                           <div
-                            className="absolute left-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-blue-400 opacity-0 hover:opacity-100 transition-opacity z-10"
+                            className="absolute left-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-yellow-400/50 opacity-0 hover:opacity-100 transition-opacity z-10"
                             onMouseDown={(e) => {
                               e.stopPropagation()
                               handleClipMouseDown(e, clip.id, track.id, 'resize-start')
@@ -1096,14 +934,27 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                           />
                         )}
 
+                        {/* Video Thumbnails for video clips */}
+                        {track.type === 'video' && mediaSrc && clipWidth > 50 && (
+                          <VideoThumbnails
+                            src={mediaSrc}
+                            clipStart={clip.sourceStart || clip.start}
+                            clipEnd={clip.sourceEnd || clip.end}
+                            clipWidth={clipWidth}
+                            height={track.height - 8}
+                            frameInterval={Math.max(1, clip.duration / 5)} // Show up to 5 frames
+                            className="absolute inset-0"
+                          />
+                        )}
+
                         {/* Clip Content */}
-                        <div className="flex-1 min-w-0 text-xs text-gray-200 truncate flex items-center gap-1">
+                        <div className="relative flex-1 min-w-0 text-xs text-white font-medium truncate flex items-center gap-1 z-10 px-2 drop-shadow-md">
                           {clip.locked && (
-                            <div className="w-3 h-3 border border-gray-400 rounded border-t-2" />
+                            <div className="w-3 h-3 border border-white/80 rounded border-t-2" />
                           )}
                           <span>{clip.label || `${track.type} clip`}</span>
                           {clip.effects && clip.effects.length > 0 && (
-                            <span className="text-purple-400">●</span>
+                            <span className="text-purple-300">●</span>
                           )}
                         </div>
                         
@@ -1118,7 +969,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                         {/* Resize Handle - End */}
                         {!track.locked && !clip.locked && (
                           <div
-                            className="absolute right-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-blue-400 opacity-0 hover:opacity-100 transition-opacity z-10"
+                            className="absolute right-0 top-0 bottom-0 w-2 cursor-ew-resize hover:bg-yellow-400/50 opacity-0 hover:opacity-100 transition-opacity z-10"
                             onMouseDown={(e) => {
                               e.stopPropagation()
                               handleClipMouseDown(e, clip.id, track.id, 'resize-end')
@@ -1145,10 +996,12 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
               />
             )}
             
-            {/* Playhead - Now Draggable */}
+            {/* Removed hover preview line - only one thin line needed */}
+            
+            {/* Playhead - Thin golden line like iMovie */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-red-500 z-40 shadow-lg cursor-col-resize hover:w-2 hover:bg-red-400 transition-all group"
-              style={{ left: playheadPosition + 128 }}
+              className="absolute top-0 bottom-0 w-0.5 bg-yellow-400 z-40 shadow-lg shadow-yellow-400/50 cursor-col-resize hover:w-1 hover:bg-yellow-300 transition-all group"
+              style={{ left: playheadPosition + 80 }}
               onMouseDown={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
@@ -1185,13 +1038,9 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
               }}
               title="Drag to seek"
             >
-              {/* Top Handle */}
-              <div className="absolute -top-3 -left-3 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center cursor-col-resize group-hover:scale-125 group-hover:bg-red-400 transition-all">
-                <div className="w-2 h-2 bg-white rounded-full" />
-              </div>
-              {/* Bottom Handle */}
-              <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center cursor-col-resize group-hover:scale-125 group-hover:bg-red-400 transition-all">
-                <div className="w-2 h-2 bg-white rounded-full" />
+              {/* Top Handle - Golden */}
+              <div className="absolute -top-2 -left-1.5 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center cursor-col-resize group-hover:scale-110 group-hover:bg-yellow-300 transition-all">
+                <div className="w-1 h-1 bg-gray-900 rounded-full" />
               </div>
               {/* Center Line Extension for Better Grabbing */}
               <div className="absolute top-0 bottom-0 -left-2 w-4 cursor-col-resize" />
@@ -1204,45 +1053,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
         </div>
       </div>
 
-      {/* Status Bar */}
-      <div className="px-4 py-2 bg-gray-800 border-t border-gray-700 text-xs text-gray-400">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span>
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </span>
-            {frameRate > 0 && (
-              <span>
-                Frame: {Math.round(currentTime * frameRate)}/{Math.round(duration * frameRate)}
-              </span>
-            )}
-            {selectedClips.length > 0 && (
-              <span className="text-blue-400">
-                {selectedClips.length} clip{selectedClips.length > 1 ? 's' : ''} selected
-              </span>
-            )}
-            {clipboardData && (
-              <span className="text-green-400">
-                {clipboardData.clips.length} clip{clipboardData.clips.length > 1 ? 's' : ''} copied
-              </span>
-            )}
-          </div>
-          <div className="flex items-center gap-4">
-            <span>Zoom: {Math.round(zoom * 100)}%</span>
-            <span>Grid: {snapToGrid ? `${gridInterval}s` : 'Off'}</span>
-            {frameRate > 0 && (
-              <span>{frameRate}fps</span>
-            )}
-            <div className="flex items-center gap-2">
-              <span>Shortcuts:</span>
-              <span className="font-mono bg-gray-700 px-1 rounded">Space</span>
-              <span>Play/Pause</span>
-              <span className="font-mono bg-gray-700 px-1 rounded">J/K/L</span>
-              <span>Playback</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Removed status bar for minimal interface */}
     </div>
   )
 }

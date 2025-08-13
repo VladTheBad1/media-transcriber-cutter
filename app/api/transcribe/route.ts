@@ -69,23 +69,35 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Extract audio from media file if needed
-    const { MediaProcessor } = await import('@/lib/media');
-    const mediaProcessor = new MediaProcessor();
+    // Extract audio from media file if needed - use server-side FFmpeg directly
+    const { exec } = await import('child_process');
+    const { promisify } = await import('util');
+    const execAsync = promisify(exec);
     let audioPath = mediaFile.filePath;
 
     // If it's a video file, extract audio optimized for transcription
     if (mediaFile.type === 'video') {
       console.log(`Extracting audio from video: ${mediaFile.filename}`);
       
-      const result = await mediaProcessor.optimizeForTranscription(mediaFile.filePath);
-      if (!result.success) {
+      // Use FFmpeg directly to extract audio
+      const outputPath = path.join('temp', `${mediaFileId}_audio.wav`);
+      try {
+        // Create temp directory if it doesn't exist
+        await execAsync('mkdir -p temp');
+        
+        // Extract audio as WAV for WhisperX
+        const command = `ffmpeg -i "${mediaFile.filePath}" -vn -acodec pcm_s16le -ac 1 -ar 16000 "${outputPath}" -y`;
+        await execAsync(command);
+        
+        audioPath = outputPath;
+        console.log(`Audio extracted to: ${audioPath}`);
+      } catch (error) {
+        console.error('Failed to extract audio:', error);
         return NextResponse.json(
           { error: 'Failed to extract audio for transcription' },
           { status: 500 }
         );
       }
-      audioPath = result.outputPath;
     }
 
     // Queue transcription job

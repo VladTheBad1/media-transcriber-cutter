@@ -26,10 +26,13 @@ export async function GET(request: NextRequest) {
 
       // Set up event listeners for transcription progress
       const handleProgress = (progress: any) => {
+        console.log('SSE received progress event:', progress);
         if (mediaFileId && progress.mediaFileId === mediaFileId) {
+          console.log('SSE sending progress for mediaFileId:', mediaFileId);
           const data = encoder.encode(`data: ${JSON.stringify({ type: 'progress', ...progress })}\n\n`);
           controller.enqueue(data);
         } else if (jobId && progress.jobId === jobId) {
+          console.log('SSE sending progress for jobId:', jobId);
           const data = encoder.encode(`data: ${JSON.stringify({ type: 'progress', ...progress })}\n\n`);
           controller.enqueue(data);
         }

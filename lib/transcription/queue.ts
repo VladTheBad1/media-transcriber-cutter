@@ -289,19 +289,25 @@ export class TranscriptionQueue extends EventEmitter {
    */
   private setupTranscriptionListeners(): void {
     this.transcriptionService.on('transcription-progress', (progress) => {
+      console.log('Queue received transcription progress:', progress);
+      
       // Find the queue job and update progress
       const job = Array.from(this.jobs.values())
         .find(j => j.mediaFileId === progress.mediaFileId && j.status === 'processing');
       
       if (job) {
         job.progress = progress.progress;
-        this.emit('job-progress', {
+        const event = {
           jobId: job.id,
           mediaFileId: job.mediaFileId,
           progress: progress.progress,
           message: progress.message,
           status: progress.status,
-        });
+        };
+        console.log('Queue emitting job-progress:', event);
+        this.emit('job-progress', event);
+      } else {
+        console.log('No active job found for mediaFileId:', progress.mediaFileId);
       }
     });
   }

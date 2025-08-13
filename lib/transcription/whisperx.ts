@@ -185,7 +185,7 @@ export class WhisperXTranscriber {
       console.log(`Starting WhisperX transcription for media ${mediaFileId} with transcript ${transcript.id}`);
 
       // Run WhisperX transcription
-      const result = await this.runWhisperX(audioPath, opts);
+      const result = await this.runWhisperX(audioPath, opts, mediaFileId);
 
       // Process and save results
       const transcriptionResult = await this.processWhisperXResult(
@@ -243,7 +243,8 @@ export class WhisperXTranscriber {
    */
   private async runWhisperX(
     audioPath: string,
-    options: Required<TranscriptionOptions>
+    options: Required<TranscriptionOptions>,
+    mediaFileId?: string
   ): Promise<z.infer<typeof WhisperXDiarizedResult>> {
     return new Promise((resolve, reject) => {
       const outputPath = path.join(this.tempDir, `${Date.now()}_output.json`);
@@ -284,13 +285,47 @@ export class WhisperXTranscriber {
       whisperProcess.stdout.on('data', (data) => {
         const chunk = data.toString();
         stdout += chunk;
-        console.log('WhisperX:', chunk.trim());
+        // Only log important messages, not the full output
+        if (chunk.includes('Progress:') || chunk.includes('Detected language:')) {
+          console.log('WhisperX:', chunk.trim());
+        }
+        
+        // Parse progress from WhisperX output
+        // Look for patterns like "Processing: 50%" or "Transcribing audio..."
+        const progressMatch = chunk.match(/(\d+)%/);
+        if (progressMatch) {
+          const progress = parseInt(progressMatch[1]);
+          // Emit progress event (this will be picked up by the service/queue)
+          process.emit('transcription-progress', {
+            mediaFileId,
+            progress,
+            message: chunk.trim()
+          });
+        }
       });
 
       whisperProcess.stderr.on('data', (data) => {
         const chunk = data.toString();
         stderr += chunk;
-        console.error('WhisperX Error:', chunk.trim());
+        // Only log errors and progress, not all stderr output
+        if (chunk.includes('Error') || chunk.includes('Progress:') || chunk.includes('Warning')) {
+          console.error('WhisperX:', chunk.trim());
+        }
+        
+        // Parse progress from stderr too (WhisperX outputs to stderr)
+        const progressMatch = chunk.match(/Progress:\s*(\d+)%/);
+        if (progressMatch) {
+          const progress = parseInt(progressMatch[1]);
+          // Emit progress event - mediaFileId is available in the closure scope
+          console.log(`WhisperX Progress: ${progress}% for media ${mediaFileId}`);
+          
+          // Emit progress event through Node.js process
+          process.emit('transcription-progress' as any, {
+            mediaFileId,
+            progress,
+            message: `Processing: ${progress}%`
+          });
+        }
       });
 
       whisperProcess.on('close', async (code) => {

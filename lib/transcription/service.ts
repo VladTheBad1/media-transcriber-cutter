@@ -73,6 +73,25 @@ export class TranscriptionService extends EventEmitter {
       retryDelay: config.retryDelay || 5000,
       enableProgressTracking: config.enableProgressTracking ?? true,
     };
+    
+    // Listen for WhisperX progress events
+    process.on('transcription-progress' as any, (data: any) => {
+      console.log('Received WhisperX progress event:', data);
+      
+      // Find the job for this media file
+      const job = Array.from(this.jobs.values()).find(j => 
+        j.mediaFileId === data.mediaFileId && j.status === 'processing'
+      );
+      
+      if (job) {
+        this.emitProgress(job.id, job.mediaFileId, {
+          status: 'transcribing',
+          progress: data.progress,
+          message: data.message || `Processing: ${data.progress}%`,
+          timeElapsed: Date.now() - (job.startedAt?.getTime() || Date.now()),
+        });
+      }
+    });
   }
 
   /**

@@ -41,7 +41,7 @@ import TranscriptionQueue from './queue';
 
 // Create default transcription service
 export const transcriptionService = new TranscriptionService({
-  pythonPath: process.env.PYTHON_PATH || 'python3',
+  pythonPath: process.env.PYTHON_PATH || '/Users/vp/SAZ Projects/transcriber-cutter/venv_whisperx/bin/python',
   whisperxScript: process.env.WHISPERX_SCRIPT_PATH,
   tempDir: process.env.TRANSCRIPTION_TEMP_DIR || './temp/transcription',
   enableWhisperX: process.env.ENABLE_WHISPERX !== 'false',
@@ -56,7 +56,7 @@ export const transcriptionService = new TranscriptionService({
 // Create default transcription queue
 export const transcriptionQueue = new TranscriptionQueue(
   {
-    pythonPath: process.env.PYTHON_PATH || 'python3',
+    pythonPath: process.env.PYTHON_PATH || '/Users/vp/SAZ Projects/transcriber-cutter/venv_whisperx/bin/python',
     whisperxScript: process.env.WHISPERX_SCRIPT_PATH,
     tempDir: process.env.TRANSCRIPTION_TEMP_DIR || './temp/transcription',
     enableWhisperX: process.env.ENABLE_WHISPERX !== 'false',

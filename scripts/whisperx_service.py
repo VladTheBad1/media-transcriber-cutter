@@ -88,25 +88,31 @@ class WhisperXTranscriber:
         print(f"Processing: {audio_path}", file=sys.stderr)
         
         # Load audio
+        print("Progress: 10%", file=sys.stderr)
         audio = whisperx.load_audio(audio_path)
+        print("Progress: 20%", file=sys.stderr)
         
         # Transcribe with Whisper
         print("Transcribing audio...", file=sys.stderr)
+        print("Progress: 30%", file=sys.stderr)
         result = self.model.transcribe(
             audio, 
             batch_size=16,
             language=language
         )
+        print("Progress: 70%", file=sys.stderr)
         
         detected_language = result.get("language", "unknown")
         print(f"Detected language: {detected_language}", file=sys.stderr)
         
         # Align whisper output
         print("Aligning transcript...", file=sys.stderr)
+        print("Progress: 75%", file=sys.stderr)
         model_a, metadata = whisperx.load_align_model(
             language_code=detected_language, 
             device=self.device
         )
+        print("Progress: 80%", file=sys.stderr)
         result = whisperx.align(
             result["segments"], 
             model_a, 
@@ -115,6 +121,7 @@ class WhisperXTranscriber:
             self.device,
             return_char_alignments=False
         )
+        print("Progress: 90%", file=sys.stderr)
         
         # Speaker diarization
         if enable_diarization and self.diarize_model:

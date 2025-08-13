@@ -325,14 +325,15 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
   return (
     <div
       ref={containerRef}
-      className={cn("relative bg-black rounded-lg overflow-hidden", className)}
+      className={cn("relative bg-gray-800 rounded-lg overflow-hidden", className)}
     >
       {/* Media Element */}
       {type === 'video' ? (
         <video
           ref={mediaRef as React.RefObject<HTMLVideoElement>}
           src={src}
-          className="w-full h-auto"
+          className="w-full h-full object-contain"
+          style={{ backgroundColor: '#374151' }}
           autoPlay={autoPlay}
           onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}
