@@ -14,6 +14,7 @@ interface MediaPlayerProps {
   className?: string
   controls?: boolean
   autoPlay?: boolean
+  muted?: boolean
 }
 
 interface TranscriptSegment {
@@ -50,7 +51,8 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
   transcript = [],
   className,
   controls = true,
-  autoPlay = false
+  autoPlay = false,
+  muted = false
 }, ref) => {
   const mediaRef = useRef<HTMLVideoElement | HTMLAudioElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -68,6 +70,7 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     isMuted: false,
     isFullscreen: false
   })
+  const [wasMutedBeforeProp, setWasMutedBeforeProp] = useState(false)
 
   // Control functions (defined early for keyboard shortcuts)
   const togglePlayPause = useCallback(async () => {
@@ -176,6 +179,23 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     return () => document.removeEventListener('keydown', handleKeydown)
   }, [togglePlayPause, seekRelative, adjustVolume, toggleMute, toggleFullscreen, type])
 
+  // Handle muted prop changes
+  useEffect(() => {
+    if (mediaRef.current) {
+      if (muted && !wasMutedBeforeProp) {
+        // Muting for scrubbing - only set muted, don't touch volume
+        setWasMutedBeforeProp(true)
+        mediaRef.current.muted = true
+        // DON'T change volume - this can cause playback issues
+      } else if (!muted && wasMutedBeforeProp) {
+        // Unmuting after scrubbing - restore muted state only
+        setWasMutedBeforeProp(false)
+        mediaRef.current.muted = playerState.isMuted
+        // Volume stays the same - don't touch it
+      }
+    }
+  }, [muted, playerState.isMuted, wasMutedBeforeProp]) // Removed playerState.volume to avoid re-runs
+
   // Media event handlers
   const handleLoadedMetadata = () => {
     if (mediaRef.current) {
@@ -214,11 +234,12 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     const duration = mediaRef.current.duration || 0
     const clampedTime = Math.min(Math.max(time, 0), duration)
     
-    console.log('🎯 Media Player seekTo called:', {
-      requestedTime: time.toFixed(2),
-      clampedTime: clampedTime.toFixed(2),
-      duration: duration.toFixed(2)
-    })
+    // Remove verbose logging
+    // console.log('🎯 Media Player seekTo called:', {
+    //   requestedTime: time.toFixed(2),
+    //   clampedTime: clampedTime.toFixed(2),
+    //   duration: duration.toFixed(2)
+    // })
     
     // Set the media element's current time
     mediaRef.current.currentTime = clampedTime
@@ -265,7 +286,6 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
     const clickPosition = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1)
     const newTime = clickPosition * playerState.duration
     
-    console.log('Progress bar clicked - seeking to:', newTime, 'seconds')
     seekTo(newTime)
   }
 
@@ -335,6 +355,7 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
           className="w-full h-full object-contain"
           style={{ backgroundColor: '#374151' }}
           autoPlay={autoPlay}
+          muted={muted}
           onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}
           onError={handleError}
@@ -347,6 +368,7 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
             ref={mediaRef as React.RefObject<HTMLAudioElement>}
             src={src}
             autoPlay={autoPlay}
+            muted={muted}
             onLoadedMetadata={handleLoadedMetadata}
             onTimeUpdate={handleTimeUpdate}
             onError={handleError}

@@ -49,6 +49,7 @@ export default function EditorPage() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isTranscribing, setIsTranscribing] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [isScrubbing, setIsScrubbing] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const mediaPlayerRef = useRef<MediaPlayerRef>(null)
 
@@ -187,10 +188,23 @@ export default function EditorPage() {
   const handleTimeUpdate = (time: number) => {
     setCurrentTime(time)
   }
+  
+  const handleSeek = (time: number) => {
+    setCurrentTime(time)
+    // When timeline seeks, update the media player
+    if (mediaPlayerRef.current) {
+      mediaPlayerRef.current.seekTo(time)
+    }
+  }
 
   const handlePlayStateChange = (playing: boolean) => {
     setIsPlaying(playing)
   }
+
+  const handleScrubbingChange = useCallback((scrubbing: boolean) => {
+    setIsScrubbing(scrubbing)
+    // При скраббинге мы больше не меняем muted, просто отслеживаем состояние
+  }, [])
 
   return (
     <div className="h-screen bg-gray-950 text-white flex flex-col">
@@ -292,9 +306,11 @@ export default function EditorPage() {
                   src={getMediaUrl(selectedFile)}
                   type={selectedFile.type}
                   onTimeUpdate={handleTimeUpdate}
-                  onSeek={handleTimeUpdate}
+                  onSeek={handleSeek}
+                  onPlayStateChange={handlePlayStateChange}
                   transcript={transcript?.segments}
                   className="h-full"
+                  muted={false}
                 />
               </div>
               
@@ -367,7 +383,10 @@ export default function EditorPage() {
             mediaFile={selectedFile}
             transcript={transcript}
             currentTime={currentTime}
-            onTimeUpdate={handleTimeUpdate}
+            onTimeUpdate={handleSeek}
+            isPlaying={isPlaying}
+            onPlayPause={togglePlayPause}
+            onScrubbingChange={handleScrubbingChange}
             className="h-full"
           />
         ) : (

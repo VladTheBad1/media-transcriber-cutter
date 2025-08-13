@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { TimelineEditor } from "./timeline-editor";
-import { MediaPlayer, type MediaPlayerRef } from "./media-player";
 import {
   TimelineOperations,
   createTimelineOperations,
@@ -59,6 +58,9 @@ interface TimelineWrapperProps {
   currentTime: number;
   onTimeUpdate: (time: number) => void;
   onSave?: (success: boolean) => void;
+  onScrubbingChange?: (isScrubbing: boolean) => void;
+  isPlaying?: boolean;
+  onPlayPause?: () => void;
   className?: string;
 }
 
@@ -68,6 +70,9 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
   currentTime,
   onTimeUpdate,
   onSave,
+  onScrubbingChange,
+  isPlaying: externalIsPlaying,
+  onPlayPause: externalOnPlayPause,
   className,
 }) => {
   const [operations, setOperations] = useState<TimelineOperations | null>(null);
@@ -76,16 +81,18 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // Use external isPlaying if provided, otherwise use local state
+  const [localIsPlaying, setLocalIsPlaying] = useState(false);
+  const isPlaying = externalIsPlaying !== undefined ? externalIsPlaying : localIsPlaying;
   const [playbackRate, setPlaybackRate] = useState(1);
   const [localCurrentTime, setLocalCurrentTime] = useState(0);
   const [activeClips, setActiveClips] = useState<TimelineClip[]>([]);
   const [virtualTimeline, setVirtualTimeline] = useState<{ virtual: number; actual: number }[]>([]);
   const [virtualDuration, setVirtualDuration] = useState(0);
+  const [isScrubbing, setIsScrubbing] = useState(false);
 
   const lastSaveTimeRef = useRef<number>(0);
   const autoSaveTimeoutRef = useRef<NodeJS.Timeout>();
-  const mediaPlayerRef = useRef<MediaPlayerRef>(null);
   const playbackMonitorRef = useRef<NodeJS.Timeout>();
   const lastActualTimeRef = useRef<number>(0);
 
@@ -236,12 +243,13 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
           setVirtualTimeline(mapping);
           setVirtualDuration(totalDuration);
           
-          console.log('🔄 Timeline state updated:', {
-            activeClips: clips.length,
-            virtualDuration: totalDuration.toFixed(2),
-            mappingPoints: mapping.length,
-            firstClip: clips[0] ? `${clips[0].start.toFixed(2)}-${clips[0].end.toFixed(2)}` : 'none'
-          });
+          // Removed verbose logging for cleaner output
+          // console.log('🔄 Timeline state updated:', {
+          //   activeClips: clips.length,
+          //   virtualDuration: totalDuration.toFixed(2),
+          //   mappingPoints: mapping.length,
+          //   firstClip: clips[0] ? `${clips[0].start.toFixed(2)}-${clips[0].end.toFixed(2)}` : 'none'
+          // });
 
           // Auto-save after 2 seconds of inactivity
           if (autoSaveTimeoutRef.current) {
@@ -316,34 +324,29 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
         return;
       }
       
-      console.log('🎬 Timeline time change:', { 
-        time: time.toFixed(2),
-        mediaDuration: mediaFile.duration
-      })
-      
       operations?.setCurrentTime(time);
       onTimeUpdate(time);
       setLocalCurrentTime(time);
-      
-      // Seek the media player directly to the time
-      if (mediaPlayerRef.current) {
-        console.log('  → Seeking media player to:', time.toFixed(2))
-        mediaPlayerRef.current.seekTo(time);
-      }
     },
     [operations, onTimeUpdate, localCurrentTime, mediaFile.duration],
   );
 
   const handlePlayPause = useCallback(() => {
-    if (mediaPlayerRef.current) {
-      if (isPlaying) {
-        mediaPlayerRef.current.pause();
-      } else {
-        mediaPlayerRef.current.play();
-      }
+    // Always use external onPlayPause since we removed the hidden player
+    if (externalOnPlayPause) {
+      externalOnPlayPause();
     }
-    setIsPlaying((prev) => !prev);
-  }, [isPlaying]);
+    // No fallback needed - parent handles all playback control
+  }, [externalOnPlayPause]);
+
+  // Handle scrubbing state changes from timeline
+  const handleScrubbingChange = useCallback((scrubbing: boolean) => {
+    setIsScrubbing(scrubbing);
+    // Pass scrubbing state to parent if callback provided
+    if (onScrubbingChange) {
+      onScrubbingChange(scrubbing);
+    }
+  }, [onScrubbingChange]);
 
   const handlePlaybackRateChange = useCallback((rate: number) => {
     setPlaybackRate(rate);
@@ -435,6 +438,8 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
     ) {
       operations.setCurrentTime(currentTime);
     }
+    // Also update localCurrentTime to sync with external playback
+    setLocalCurrentTime(currentTime);
   }, [currentTime, operations, timelineState]);
 
   if (isLoading) {
@@ -469,53 +474,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
 
   return (
     <div className={className}>
-      {/* Media Player Preview - Hidden, audio only */}
-      <div className="hidden">
-          <MediaPlayer
-            ref={mediaPlayerRef}
-            src={getMediaUrl(mediaFile)}
-            type={mediaFile.type}
-            onTimeUpdate={(actualTime) => {
-              console.log('📹 Video time update:', { 
-                actualTime: actualTime.toFixed(2),
-                mediaDuration: mediaFile.duration
-              })
-              
-              setLocalCurrentTime(actualTime);
-              onTimeUpdate(actualTime);
-              
-              if (operations) {
-                operations.setCurrentTime(actualTime);
-              }
-              
-              // Update last actual time
-              lastActualTimeRef.current = actualTime;
-            }}
-            onSeek={(actualTime) => {
-              console.log('⏩ Media Player onSeek:', {
-                actualTime: actualTime.toFixed(2),
-                mediaDuration: mediaFile.duration
-              });
-              
-              setLocalCurrentTime(actualTime);
-              onTimeUpdate(actualTime);
-              
-              if (operations) {
-                operations.setCurrentTime(actualTime);
-              }
-              
-              // Force timeline editor to update its position
-              if (timelineState) {
-                setTimelineState(prev => ({
-                  ...prev,
-                  currentTime: actualTime
-                }));
-              }
-              
-              // No need to seek again - the media player already did it
-            }}
-          />
-      </div>
+      {/* REMOVED: Hidden MediaPlayer - was causing audio conflicts */}
 
       {/* Removed header for minimal interface */}
 
@@ -537,6 +496,7 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
         onTrackToggle={handleTrackToggle}
         onUndo={handleUndo}
         onRedo={handleRedo}
+        onScrubbingChange={handleScrubbingChange}
         className="min-h-[400px]"
         pixelsPerSecond={20}
         snapToGrid={true}

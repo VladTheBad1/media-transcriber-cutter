@@ -73,6 +73,7 @@ interface TimelineEditorProps {
   onTrackEdit?: (trackId: string, updates: Partial<TimelineTrack>) => void
   onUndo?: () => void
   onRedo?: () => void
+  onScrubbingChange?: (isScrubbing: boolean) => void
   className?: string
   pixelsPerSecond?: number
   snapToGrid?: boolean
@@ -100,6 +101,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
   onTrackEdit,
   onUndo,
   onRedo,
+  onScrubbingChange,
   className,
   pixelsPerSecond = 20,
   snapToGrid = true,
@@ -120,10 +122,17 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     originalClip?: TimelineClip
   } | null>(null)
   const [selectedClips, setSelectedClips] = useState<string[]>([]) // Disabled selection
-  const [playheadPosition, setPlayheadPosition] = useState(0)
   const [hoverPosition, setHoverPosition] = useState<number | null>(null)
   const [isHoveringTimeline, setIsHoveringTimeline] = useState(false)
+  const [hoverTime, setHoverTime] = useState<number | null>(null)
+  const [clickedPosition, setClickedPosition] = useState<number | null>(null)
+  const [clickedTime, setClickedTime] = useState<number | null>(null)
+  const [clickAnimation, setClickAnimation] = useState<boolean>(false)
+  const [playheadPosition, setPlayheadPosition] = useState(0)
+  const [smoothPosition, setSmoothPosition] = useState(0)
   const [actionHistory, setActionHistory] = useState<TimelineAction[]>([])
+  const animationFrameRef = useRef<number>()
+  const lastUpdateRef = useRef<number>(0)
   const [historyIndex, setHistoryIndex] = useState(-1)
   const [isSelecting, setIsSelecting] = useState(false)
   const [selectionBox, setSelectionBox] = useState<{
@@ -151,10 +160,34 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
   const canUndo = historyIndex >= 0
   const canRedo = historyIndex < actionHistory.length - 1
 
-  // Update playhead position
+  // Update playhead position based on video time
   useEffect(() => {
-    setPlayheadPosition(currentTime * scaledPixelsPerSecond)
-  }, [currentTime, scaledPixelsPerSecond])
+    const newPosition = currentTime * scaledPixelsPerSecond
+    setPlayheadPosition(newPosition)
+    
+    // Always update clicked position when time changes (during playback or seeking)
+    if (clickedTime !== null) {
+      // Always update position to follow current time
+      setClickedPosition(newPosition)
+      setClickedTime(currentTime)
+      // Don't trigger animation during continuous updates
+      setClickAnimation(false)
+    }
+    
+    // Smooth animation frame update
+    if (isPlaying) {
+      const now = performance.now()
+      const timeSinceLastUpdate = now - lastUpdateRef.current
+      
+      // Only update if enough time has passed (throttle to 30fps)
+      if (timeSinceLastUpdate > 33) {
+        setSmoothPosition(newPosition)
+        lastUpdateRef.current = now
+      }
+    } else {
+      setSmoothPosition(newPosition)
+    }
+  }, [currentTime, scaledPixelsPerSecond, isPlaying])
   
   // Add action to history for undo/redo
   const addToHistory = useCallback((action: Omit<TimelineAction, 'id' | 'timestamp'>) => {
@@ -189,30 +222,23 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
 
   // Handle timeline click for seeking
   const handleTimelineClick = (e: React.MouseEvent) => {
-    // Debug logging
-    console.log('Timeline click event triggered', {
-      isDragging,
-      isSelecting,
-      target: e.target,
-      currentTarget: e.currentTarget
-    })
-    
     if (isDragging || isSelecting) {
-      console.log('Click ignored - dragging or selecting')
       return
     }
     
-    // Check if we clicked on a clip or other interactive element
+    // Check if we clicked on a clip - if so, don't handle here
     const target = e.target as HTMLElement
-    if (target.closest('[data-clip]') || target.closest('button')) {
-      console.log('Click ignored - on interactive element')
-      return // Don't seek if clicking on interactive elements
+    if (target.closest('[data-clip]')) {
+      return // Let the clip handle it
+    }
+    
+    if (target.closest('button')) {
+      return // Don't seek if clicking on buttons
     }
     
     const container = e.currentTarget as HTMLElement
     const rect = container.getBoundingClientRect()
     if (!rect) {
-      console.log('Click ignored - no rect')
       return
     }
     
@@ -222,7 +248,6 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     
     // Don't process clicks on the track header area
     if (clickX < 0) {
-      console.log('Click ignored - in header area')
       return
     }
     
@@ -238,7 +263,28 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     }
     
     const clampedTime = clamp(newTime, 0, duration)
-    console.log('Timeline clicked - seeking to:', clampedTime, 'from click X:', clickX)
+    
+    // Use hover position if available, otherwise calculate
+    if (hoverPosition !== null && hoverTime !== null) {
+      setClickedPosition(hoverPosition)
+      setClickedTime(hoverTime)
+    } else {
+      // Fallback calculation if no hover position
+      setClickedPosition(clickX + 80)
+      setClickedTime(clampedTime)
+    }
+    setClickAnimation(true)
+    
+    // Reset animation after it completes
+    setTimeout(() => {
+      setClickAnimation(false)
+    }, 800) // Animation duration
+    
+    // Stop playback if playing
+    if (isPlaying && onPlayPause) {
+      onPlayPause() // Stop playback
+    }
+    
     onTimeChange(clampedTime)
   }
 
@@ -380,8 +426,6 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
 
   // Handle mouse up
   const handleMouseUp = useCallback(() => {
-    console.log('Mouse up - resetting drag states')
-    
     if (isDragging && dragData) {
       // Add drag action to history
       addToHistory({
@@ -430,11 +474,8 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
   // Add event listeners
   useEffect(() => {
     if (isDragging || isSelecting) {
-      console.log('Adding mouse event listeners')
-      
       const handleGlobalMouseMove = (e: MouseEvent) => handleMouseMove(e)
       const handleGlobalMouseUp = () => {
-        console.log('Global mouse up triggered')
         handleMouseUp()
       }
       
@@ -442,7 +483,6 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
       document.addEventListener('mouseup', handleGlobalMouseUp)
       
       return () => {
-        console.log('Removing mouse event listeners')
         document.removeEventListener('mousemove', handleGlobalMouseMove)
         document.removeEventListener('mouseup', handleGlobalMouseUp)
       }
@@ -608,6 +648,9 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [selectedClips, tracks, currentTime, isPlaying, playbackRate, canUndo, canRedo, clipboardData, frameRate, duration, onClipDelete, onClipSplit, onClipCopy, onPlayPause, onPlaybackRateChange, onTimeChange, handleUndo, handleRedo, addToHistory])
 
+  // Scrubbing disabled to prevent stuttering
+  // Scrubbing is now purely visual - no actual seeking during hover
+
   // Zoom controls with frame-accurate positioning
   const handleZoomIn = useCallback(() => {
     setZoom(prev => {
@@ -637,14 +680,14 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
     if (isPlaying && timelineRef.current) {
       const container = timelineRef.current
       const containerWidth = container.clientWidth - 128
-      const playheadX = playheadPosition
+      const currentX = currentTime * scaledPixelsPerSecond
       const scrollLeft = container.scrollLeft
       
-      if (playheadX < scrollLeft || playheadX > scrollLeft + containerWidth) {
-        container.scrollLeft = Math.max(0, playheadX - containerWidth / 2)
+      if (currentX < scrollLeft || currentX > scrollLeft + containerWidth) {
+        container.scrollLeft = Math.max(0, currentX - containerWidth / 2)
       }
     }
-  }, [isPlaying, playheadPosition])
+  }, [isPlaying, currentTime, scaledPixelsPerSecond])
 
   // Generate time ruler with frame markers
   const generateTimeRuler = useMemo(() => {
@@ -725,7 +768,6 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                       if (!track.locked) {
                         track.clips.forEach(clip => {
                           if (!clip.locked && currentTime > clip.start && currentTime < clip.end) {
-                            console.log('Splitting unselected clip:', clip.id, 'at', currentTime)
                             onClipSplit(track.id, clip.id, currentTime)
                             splitCount++
                           }
@@ -766,18 +808,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
 
       {/* Timeline Container */}
       <div className="relative">
-        {/* Time Ruler */}
-        <div className="h-10 bg-gray-800 border-b border-gray-700 relative overflow-hidden">
-          {/* Minimal Track Headers Spacer */}
-          <div className="absolute left-0 top-0 w-40 h-full bg-gray-800 border-r border-gray-700 z-10" />
-          
-          <div
-            className="relative h-full ml-40"
-            style={{ width: Math.max(timelineWidth, 800) + 'px' }}
-          >
-            {generateTimeRuler}
-          </div>
-        </div>
+        {/* Removed Time Ruler - time is shown above */}
 
         {/* Tracks Container */}
         <div className="relative overflow-x-auto overflow-y-visible">
@@ -790,6 +821,14 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
               handleTimelineClick(e)
             }}
             onMouseMove={(e) => {
+              // CRITICAL: Don't process mouse moves during playback
+              // This prevents scrubbing conflicts and stuttering
+              if (isPlaying) {
+                // During playback, only update visual cursor position
+                setIsHoveringTimeline(true)
+                return
+              }
+              
               // Update hover position for playhead preview
               const rect = e.currentTarget.getBoundingClientRect()
               const scrollLeft = e.currentTarget.parentElement?.scrollLeft || 0
@@ -815,16 +854,24 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
               const time = constrainedX / scaledPixelsPerSecond
               
               if (time >= 0 && time <= duration) {
+                // Only update hover position for visual cursor
                 setHoverPosition(constrainedX)
+                // Only update hover TIME when paused - prevents scrubbing conflicts
+                if (!isPlaying) {
+                  setHoverTime(time)
+                }
                 setIsHoveringTimeline(true)
               }
             }}
             onMouseEnter={() => {
               setIsHoveringTimeline(true)
+              // Scrubbing depends on playback state, not mouse events
+              // Will be handled in useEffect watching isPlaying + isHoveringTimeline
             }}
             onMouseLeave={() => {
               setIsHoveringTimeline(false)
               setHoverPosition(null)
+              setHoverTime(null)
             }}
             onMouseDown={(e) => {
               // Check if we're clicking on empty space (not a clip)
@@ -889,10 +936,12 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                       opacity={0.3}
                     />
                   )}
-                  {/* Clips */}
+                  {/* Clips - Centered horizontally */}
                   {track.clips.map((clip) => {
-                    const clipX = clip.start * scaledPixelsPerSecond
+                    // Center the clip horizontally in the timeline
+                    const timelineCenter = timelineWidth / 2
                     const clipWidth = clip.duration * scaledPixelsPerSecond
+                    const clipX = timelineCenter - (clipWidth / 2)
                     const isSelected = false // Disable selection highlighting
 
                     return (
@@ -900,7 +949,7 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                         key={clip.id}
                         data-clip={clip.id}
                         className={cn(
-                          "absolute top-1 bottom-1 rounded-md border transition-all flex items-center justify-between overflow-hidden",
+                          "absolute rounded-md border transition-all flex items-center justify-between overflow-hidden",
                           "border-gray-600 hover:border-gray-500",
                           track.locked || clip.locked 
                             ? "cursor-not-allowed opacity-60" 
@@ -909,18 +958,41 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                         )}
                         style={{
                           left: clipX,
+                          top: '50%',
+                          transform: 'translateY(-50%)',
                           width: Math.max(clipWidth, 20),
+                          height: '60px',
                           background: track.type === 'video' 
                             ? 'linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8))'
                             : track.type === 'audio'
                             ? 'linear-gradient(to bottom, rgba(34, 197, 94, 0.8), rgba(22, 163, 74, 0.8))'
                             : 'linear-gradient(to bottom, rgba(250, 204, 21, 0.8), rgba(245, 158, 11, 0.8))'
                         }}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          
+                          if (hoverPosition !== null && hoverTime !== null) {
+                            // Use EXACT hover position - no recalculation
+                            setClickedPosition(hoverPosition)
+                            setClickedTime(hoverTime)
+                            setClickAnimation(true)
+                            
+                            // Reset animation after it completes
+                            setTimeout(() => {
+                              setClickAnimation(false)
+                            }, 800)
+                            
+                            // Stop playback if playing, then seek to clicked position
+                            if (isPlaying && onPlayPause) {
+                              onPlayPause() // Stop playback
+                            }
+                            
+                            // Always change time when clicking
+                            onTimeChange(hoverTime)
+                          }
+                        }}
                         onMouseDown={(e) => {
                           e.stopPropagation()
-                          if (!track.locked && !clip.locked) {
-                            handleClipMouseDown(e, clip.id, track.id, 'move')
-                          }
                         }}
                       >
                         {/* Resize Handle - Start */}
@@ -943,12 +1015,12 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                             clipWidth={clipWidth}
                             height={track.height - 8}
                             frameInterval={Math.max(1, clip.duration / 5)} // Show up to 5 frames
-                            className="absolute inset-0"
+                            className="absolute inset-0 pointer-events-none"
                           />
                         )}
 
                         {/* Clip Content */}
-                        <div className="relative flex-1 min-w-0 text-xs text-white font-medium truncate flex items-center gap-1 z-10 px-2 drop-shadow-md">
+                        <div className="relative flex-1 min-w-0 text-xs text-white font-medium truncate flex items-center gap-1 z-10 px-2 drop-shadow-md pointer-events-none">
                           {clip.locked && (
                             <div className="w-3 h-3 border border-white/80 rounded border-t-2" />
                           )}
@@ -998,57 +1070,53 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
             
             {/* Removed hover preview line - only one thin line needed */}
             
-            {/* Playhead - Thin golden line like iMovie */}
-            <div
-              className="absolute top-0 bottom-0 w-0.5 bg-yellow-400 z-40 shadow-lg shadow-yellow-400/50 cursor-col-resize hover:w-1 hover:bg-yellow-300 transition-all group"
-              style={{ left: playheadPosition + 80 }}
-              onMouseDown={(e) => {
-                e.preventDefault()
-                e.stopPropagation()
+            {/* Clicked Position Marker - White line with flash animation like iMovie */}
+            {/* Update position during playback */}
+            {clickedPosition !== null && clickedTime !== null && (
+              <div
+                className="absolute top-0 bottom-0 pointer-events-none z-40 transition-all duration-100"
+                style={{ 
+                  left: isPlaying 
+                    ? `${currentTime * scaledPixelsPerSecond}px`  // Move with playback
+                    : `${clickedPosition}px`,  // Stay at clicked position when paused
+                  transition: isPlaying ? 'left 100ms linear' : 'none'
+                }}
+              >
+                {/* Clicked Line with animation - White line like iMovie */}
+                <div 
+                  className={`absolute top-0 bottom-0 w-px bg-white transition-opacity duration-700 ${
+                    clickAnimation ? 'animate-flash' : 'opacity-40'
+                  }`}
+                  style={{
+                    boxShadow: clickAnimation ? '0 0 10px rgba(255, 255, 255, 1)' : 'none'
+                  }}
+                />
                 
-                const startX = e.clientX
-                const startPosition = playheadPosition
-                
-                const handlePlayheadDrag = (moveEvent: MouseEvent) => {
-                  const deltaX = moveEvent.clientX - startX
-                  let newPosition = startPosition + deltaX
-                  
-                  // Clamp to timeline bounds
-                  newPosition = Math.max(0, Math.min(newPosition, timelineWidth))
-                  
-                  // Convert position to time
-                  const newTime = newPosition / scaledPixelsPerSecond
-                  
-                  // Use the existing snapTime function for consistency
-                  const snappedTime = snapTime(newTime)
-                  
-                  // Update playhead and seek
-                  onTimeChange(Math.min(Math.max(snappedTime, 0), duration))
-                }
-                
-                const handlePlayheadDragEnd = () => {
-                  document.removeEventListener('mousemove', handlePlayheadDrag)
-                  document.removeEventListener('mouseup', handlePlayheadDragEnd)
-                  document.body.style.cursor = ''
-                }
-                
-                document.addEventListener('mousemove', handlePlayheadDrag)
-                document.addEventListener('mouseup', handlePlayheadDragEnd)
-                document.body.style.cursor = 'col-resize'
-              }}
-              title="Drag to seek"
-            >
-              {/* Top Handle - Golden */}
-              <div className="absolute -top-2 -left-1.5 w-3 h-3 bg-yellow-400 rounded-full flex items-center justify-center cursor-col-resize group-hover:scale-110 group-hover:bg-yellow-300 transition-all">
-                <div className="w-1 h-1 bg-gray-900 rounded-full" />
+                {/* Time Label - shows during animation */}
+                {clickAnimation && (
+                  <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap shadow-lg animate-fade-in">
+                    {formatTime(clickedTime)}
+                  </div>
+                )}
               </div>
-              {/* Center Line Extension for Better Grabbing */}
-              <div className="absolute top-0 bottom-0 -left-2 w-4 cursor-col-resize" />
-              {/* Time Label on Hover */}
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                {formatTime(currentTime)}
+            )}
+            
+            {/* Hover Cursor with Time (iMovie style) - White line with preview */}
+            {/* Hide during playback to prevent distractions */}
+            {!isPlaying && isHoveringTimeline && hoverPosition !== null && hoverTime !== null && (
+              <div
+                className="absolute top-0 bottom-0 pointer-events-none z-30"
+                style={{ left: `${hoverPosition}px` }}
+              >
+                {/* White Vertical Line */}
+                <div className="absolute top-0 bottom-0 w-px bg-white" />
+                
+                {/* Time Label */}
+                <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap shadow-lg">
+                  {formatTime(hoverTime)}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

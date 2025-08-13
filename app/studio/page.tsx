@@ -58,13 +58,39 @@ export default function StudioPage() {
   const [transcriptionPercent, setTranscriptionPercent] = useState(0)
   const [transcriptionTimeRemaining, setTranscriptionTimeRemaining] = useState<number | null>(null)
   const [transcriptionStartTime, setTranscriptionStartTime] = useState<number | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<{segmentId: string, start: number}[]>([])
+  const [currentSearchIndex, setCurrentSearchIndex] = useState(0)
+  const [showExportMenu, setShowExportMenu] = useState(false)
+  const [isScrubbingTimeline, setIsScrubbingTimeline] = useState(false)
+  const [wasPlayingBeforeScrub, setWasPlayingBeforeScrub] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const mediaPlayerRef = useRef<MediaPlayerRef>(null)
+  const transcriptContainerRef = useRef<HTMLDivElement>(null)
 
   // Load media files on mount
   useEffect(() => {
     fetchMediaFiles()
   }, [])
+
+  // Handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // Skip if user is typing in an input
+      if (e.target instanceof HTMLInputElement || 
+          e.target instanceof HTMLTextAreaElement) {
+        return
+      }
+
+      if (e.code === 'Space') {
+        e.preventDefault()
+        togglePlayPause()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyPress)
+    return () => document.removeEventListener('keydown', handleKeyPress)
+  }, [isPlaying])
 
   // Load transcript when file is selected
   useEffect(() => {
@@ -72,6 +98,74 @@ export default function StudioPage() {
       fetchTranscript(selectedFile.mediaId)
     }
   }, [selectedFile])
+
+  // Search functionality
+  useEffect(() => {
+    if (!transcript || !searchQuery) {
+      setSearchResults([])
+      setCurrentSearchIndex(0)
+      return
+    }
+
+    const results: {segmentId: string, start: number}[] = []
+    transcript.segments.forEach(segment => {
+      if (segment.text.toLowerCase().includes(searchQuery.toLowerCase())) {
+        results.push({ segmentId: segment.id, start: segment.start })
+      }
+    })
+
+    setSearchResults(results)
+    setCurrentSearchIndex(0)
+
+    // Auto-jump to first result
+    if (results.length > 0) {
+      jumpToSearchResult(0, results)
+    }
+  }, [searchQuery, transcript])
+
+  const jumpToSearchResult = (index: number, results = searchResults) => {
+    if (results.length === 0) return
+    
+    const result = results[index]
+    if (!result) return
+
+    // Jump video to this time
+    if (mediaPlayerRef.current) {
+      mediaPlayerRef.current.seekTo(result.start)
+    }
+    setCurrentTime(result.start)
+
+    // Scroll transcript to this segment
+    const segmentElement = document.getElementById(`segment-${result.segmentId}`)
+    if (segmentElement && transcriptContainerRef.current) {
+      segmentElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
+  const handleSearchNavigation = (direction: 'prev' | 'next') => {
+    if (searchResults.length === 0) return
+
+    let newIndex = currentSearchIndex
+    if (direction === 'next') {
+      newIndex = (currentSearchIndex + 1) % searchResults.length
+    } else {
+      newIndex = currentSearchIndex === 0 ? searchResults.length - 1 : currentSearchIndex - 1
+    }
+
+    setCurrentSearchIndex(newIndex)
+    jumpToSearchResult(newIndex)
+  }
+
+  // Sync video player with timeline currentTime
+  useEffect(() => {
+    if (mediaPlayerRef.current && currentTime !== undefined) {
+      // Only seek if there's a significant difference to avoid feedback loops
+      const mediaElement = (mediaPlayerRef.current as any)?.mediaElement
+      if (mediaElement && Math.abs(mediaElement.currentTime - currentTime) > 0.1) {
+        mediaPlayerRef.current.seekTo(currentTime)
+      }
+    }
+  }, [currentTime])
 
   const fetchMediaFiles = async () => {
     try {
@@ -217,8 +311,53 @@ export default function StudioPage() {
           />
         </div>
         
-        <div className="text-xs text-gray-500">
-          My Media
+        <div className="relative">
+          <button
+            onClick={() => setShowExportMenu(!showExportMenu)}
+            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs rounded transition-colors"
+          >
+            Export
+          </button>
+          {showExportMenu && (
+            <div className="absolute right-0 mt-1 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50">
+              <button
+                onClick={() => {
+                  console.log('Export video')
+                  setShowExportMenu(false)
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+              >
+                🎬 Export Video
+              </button>
+              <button
+                onClick={() => {
+                  console.log('Export audio')
+                  setShowExportMenu(false)
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+              >
+                🎵 Export Audio
+              </button>
+              <button
+                onClick={() => {
+                  console.log('Export transcript')
+                  setShowExportMenu(false)
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors"
+              >
+                📝 Export Transcript
+              </button>
+              <button
+                onClick={() => {
+                  console.log('Export video + audio')
+                  setShowExportMenu(false)
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition-colors rounded-b-lg"
+              >
+                🎞️ Export Video + Audio
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -382,34 +521,109 @@ export default function StudioPage() {
             <div className="h-8 bg-gray-850 border-b border-gray-800 flex items-center px-3">
               <span className="text-xs text-gray-400">TRANSCRIPT</span>
             </div>
-            <div className="flex-1 overflow-y-auto p-4">
+            {/* Search Bar */}
+            <div className="p-3 border-b border-gray-800">
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder="Search transcript..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-1 px-3 py-1.5 bg-gray-800 text-gray-300 text-sm rounded border border-gray-700 focus:border-blue-500 focus:outline-none transition-colors"
+                />
+                {searchResults.length > 0 && (
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-gray-400">
+                      {currentSearchIndex + 1}/{searchResults.length}
+                    </span>
+                    <button
+                      onClick={() => handleSearchNavigation('prev')}
+                      className="p-1 hover:bg-gray-700 rounded transition-colors"
+                      title="Previous result"
+                    >
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => handleSearchNavigation('next')}
+                      className="p-1 hover:bg-gray-700 rounded transition-colors"
+                      title="Next result"
+                    >
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4" ref={transcriptContainerRef}>
               {selectedFile && transcript ? (
                 <div className="space-y-3">
-                  {transcript.segments.map((segment) => (
-                    <div
-                      key={segment.id}
-                      className="p-3 bg-gray-800 rounded-lg hover:bg-gray-750 cursor-pointer transition-colors"
-                      onClick={() => {
-                        if (mediaPlayerRef.current) {
-                          mediaPlayerRef.current.seekTo(segment.start)
-                        }
-                      }}
-                    >
-                      <div className="flex items-start gap-3">
-                        <span className="text-xs text-yellow-500 font-mono mt-0.5">
-                          {formatTime(segment.start)}
-                        </span>
-                        <p className="text-sm text-gray-300 leading-relaxed flex-1">
-                          {segment.text}
-                        </p>
-                      </div>
-                      {segment.speaker && (
-                        <div className="mt-2 text-xs text-gray-500">
-                          Speaker: {segment.speaker.label}
+                  {transcript.segments.map((segment) => {
+                    const isActive = currentTime >= segment.start && currentTime <= segment.end
+                    const highlightedText = searchQuery && segment.text.toLowerCase().includes(searchQuery.toLowerCase())
+                      ? segment.text.replace(
+                          new RegExp(`(${searchQuery})`, 'gi'),
+                          '<mark class="bg-yellow-500 text-black px-0.5 rounded">$1</mark>'
+                        )
+                      : segment.text
+                    const isSearchResult = searchResults.some(r => r.segmentId === segment.id)
+                    const isCurrentSearchResult = searchResults[currentSearchIndex]?.segmentId === segment.id
+                    
+                    return (
+                      <div
+                        id={`segment-${segment.id}`}
+                        key={segment.id}
+                        className={`p-3 rounded-lg cursor-pointer transition-all duration-300 ${
+                          isCurrentSearchResult
+                            ? 'bg-yellow-900/50 border-l-4 border-yellow-500 shadow-lg transform scale-[1.02]'
+                            : isActive 
+                            ? 'bg-blue-900/50 border-l-4 border-blue-500 shadow-lg transform scale-[1.02]' 
+                            : isSearchResult
+                            ? 'bg-gray-700 hover:bg-gray-650 border-l-4 border-yellow-500/30'
+                            : 'bg-gray-800 hover:bg-gray-750 border-l-4 border-transparent'
+                        }`}
+                        onClick={() => {
+                          if (mediaPlayerRef.current) {
+                            mediaPlayerRef.current.seekTo(segment.start)
+                          }
+                          setCurrentTime(segment.start)
+                        }}
+                        ref={isActive && !isCurrentSearchResult ? (el) => {
+                          // Auto-scroll to active segment only when playing
+                          if (el && isPlaying) {
+                            el.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'center'
+                            })
+                          }
+                        } : undefined}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className={`text-xs font-mono mt-0.5 ${
+                            isActive ? 'text-blue-400 font-bold' : 'text-yellow-500'
+                          }`}>
+                            {formatTime(segment.start)}
+                          </span>
+                          <p 
+                            className={`text-sm leading-relaxed flex-1 ${
+                              isActive ? 'text-white font-medium' : 'text-gray-300'
+                            }`}
+                            dangerouslySetInnerHTML={{ __html: highlightedText }}
+                          />
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {segment.speaker && (
+                          <div className={`mt-2 text-xs ${
+                            isActive ? 'text-blue-300' : 'text-gray-500'
+                          }`}>
+                            Speaker: {segment.speaker.label}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               ) : selectedFile && !isTranscribing ? (
                 <div className="text-center text-gray-500 mt-8">
@@ -623,6 +837,7 @@ export default function StudioPage() {
                   onTimeUpdate={setCurrentTime}
                   onSeek={setCurrentTime}
                   controls={false}
+                  muted={isScrubbingTimeline}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -661,10 +876,6 @@ export default function StudioPage() {
                 >
                   <SkipForward className="h-4 w-4" />
                 </button>
-                
-                <span className="ml-2 text-xs text-gray-400">
-                  {formatTime(currentTime)} / {formatTime(selectedFile.duration)}
-                </span>
               </div>
               </div>
             ) : (
@@ -712,7 +923,36 @@ export default function StudioPage() {
             mediaFile={selectedFile}
             transcript={transcript}
             currentTime={currentTime}
-            onTimeUpdate={setCurrentTime}
+            onTimeUpdate={(time) => {
+              setCurrentTime(time)
+              // Also seek the video player when timeline is clicked
+              if (mediaPlayerRef.current) {
+                mediaPlayerRef.current.seekTo(time)
+              }
+            }}
+            onScrubbingChange={(isScrubbing) => {
+              setIsScrubbingTimeline(isScrubbing)
+              
+              if (isScrubbing) {
+                // Starting scrubbing - pause if playing
+                if (isPlaying) {
+                  setWasPlayingBeforeScrub(true)
+                  if (mediaPlayerRef.current) {
+                    mediaPlayerRef.current.pause()
+                  }
+                  setIsPlaying(false)
+                }
+              } else {
+                // Stopping scrubbing - resume if was playing
+                if (wasPlayingBeforeScrub) {
+                  if (mediaPlayerRef.current) {
+                    mediaPlayerRef.current.play()
+                  }
+                  setIsPlaying(true)
+                  setWasPlayingBeforeScrub(false)
+                }
+              }
+            }}
             className="h-full"
           />
         ) : (
