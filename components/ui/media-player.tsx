@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Play, Pause, Volume2, VolumeX, Settings, SkipBack, SkipForward, Maximize2 } from 'lucide-react'
 import { cn, formatTime } from '@/lib/utils'
+import { EditableTranscript } from './editable-transcript'
 
 interface MediaPlayerProps {
   src: string
@@ -542,9 +543,9 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
         </div>
       )}
 
-      {/* Current Transcript Display */}
+      {/* Current Transcript Display - Editable */}
       {transcript.length > 0 && (
-        <div className="absolute top-4 left-4 right-4">
+        <div className="absolute top-4 left-4 right-4 max-h-[40%] overflow-y-auto">
           {(() => {
             const currentSegment = getCurrentTranscriptSegment()
             if (!currentSegment) return null
@@ -556,7 +557,19 @@ export const MediaPlayer = React.forwardRef<MediaPlayerRef, MediaPlayerProps>(({
                     {currentSegment.speaker}
                   </div>
                 )}
-                <div className="text-lg">{currentSegment.text}</div>
+                <EditableTranscript
+                  segmentId={currentSegment.id}
+                  text={currentSegment.text}
+                  isActive={true}
+                  onTextChange={(segmentId, newText) => {
+                    // Update the local transcript
+                    const index = transcript.findIndex(s => s.id === segmentId)
+                    if (index !== -1) {
+                      transcript[index].text = newText
+                    }
+                  }}
+                  className="text-lg"
+                />
               </div>
             )
           })()}

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Plus, Play, Pause, SkipBack, SkipForward, Trash2 } from 'lucide-react'
 import { TimelineWrapper } from '@/components/ui/timeline-wrapper'
 import { MediaPlayer, type MediaPlayerRef } from '@/components/ui/media-player'
+import { EditableTranscript } from '@/components/ui/editable-transcript'
 import { formatTime } from '@/lib/utils'
 
 interface MediaFile {
@@ -563,12 +564,6 @@ export default function StudioPage() {
                 <div className="space-y-3">
                   {transcript.segments.map((segment) => {
                     const isActive = currentTime >= segment.start && currentTime <= segment.end
-                    const highlightedText = searchQuery && segment.text.toLowerCase().includes(searchQuery.toLowerCase())
-                      ? segment.text.replace(
-                          new RegExp(`(${searchQuery})`, 'gi'),
-                          '<mark class="bg-yellow-500 text-black px-0.5 rounded">$1</mark>'
-                        )
-                      : segment.text
                     const isSearchResult = searchResults.some(r => r.segmentId === segment.id)
                     const isCurrentSearchResult = searchResults[currentSearchIndex]?.segmentId === segment.id
                     
@@ -607,11 +602,26 @@ export default function StudioPage() {
                           }`}>
                             {formatTime(segment.start)}
                           </span>
-                          <p 
+                          <EditableTranscript
+                            segmentId={segment.id}
+                            text={segment.text}
+                            isActive={isActive}
+                            searchTerm={searchQuery}
+                            onTextChange={(segmentId, newText) => {
+                              // Update the local transcript state
+                              if (transcript) {
+                                const updatedSegments = transcript.segments.map(s => 
+                                  s.id === segmentId ? { ...s, text: newText } : s
+                                )
+                                setTranscript({
+                                  ...transcript,
+                                  segments: updatedSegments
+                                })
+                              }
+                            }}
                             className={`text-sm leading-relaxed flex-1 ${
                               isActive ? 'text-white font-medium' : 'text-gray-300'
                             }`}
-                            dangerouslySetInnerHTML={{ __html: highlightedText }}
                           />
                         </div>
                         {segment.speaker && (
