@@ -46,3 +46,12 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+
+# User uploads and media files
+uploads/
+temp/
+public/thumbnails/
+
+# Database
+prisma/dev.db
+prisma/dev.db-journal
