@@ -814,8 +814,8 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
         <div className="relative overflow-x-auto overflow-y-visible">
           <div
             ref={timelineRef}
-            className="relative bg-gray-850 cursor-crosshair"
-            style={{ width: Math.max(timelineWidth, 800) + 'px', minHeight: tracks.length * 80 }}
+            className="relative cursor-crosshair"
+            style={{ width: Math.max(timelineWidth, 800) + 'px', height: '300px' }}
             onClick={(e) => {
               // Handle clicks on the timeline
               handleTimelineClick(e)
@@ -887,55 +887,16 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
             }}
             title="Click to seek"
           >
-            {/* Grid Lines */}
-            {snapToGrid && (
-              <div className="absolute inset-0 pointer-events-none timeline-grid">
-                {Array.from({ length: Math.ceil(duration / gridInterval) }).map((_, i) => {
-                  const time = i * gridInterval
-                  const x = time * scaledPixelsPerSecond
-                  return (
-                    <div
-                      key={i}
-                      className="absolute top-0 bottom-0 border-l border-gray-700 opacity-30"
-                      style={{ left: x }}
-                    />
-                  )
-                })}
-              </div>
-            )}
+            {/* Grid Lines - Removed per user request */}
 
-            {/* Tracks */}
-            {tracks.map((track, trackIndex) => (
-              <div
-                key={track.id}
-                className="relative border-b border-gray-700"
-                style={{ height: track.height }}
-              >
-                {/* Minimal Track Header */}
-                <div className="absolute left-0 top-0 w-40 h-full border-r border-gray-700 bg-gray-800 flex items-center justify-center z-10">
-                  <span className={cn(
-                    "text-xs text-gray-400",
-                    track.type === 'video' ? "text-blue-400" :
-                    track.type === 'audio' ? "text-green-400" :
-                    track.type === 'text' ? "text-yellow-400" : "text-purple-400"
-                  )}>
-                    {track.type === 'video' ? 'V' : track.type === 'audio' ? 'A' : 'T'}
-                  </span>
-                </div>
-
-                {/* Track Content */}
-                <div className="relative ml-40 h-full timeline-track">
-                  {/* Waveform Background for Audio Tracks */}
-                  {showWaveforms && track.type === 'audio' && track.waveformData && track.visible && (
-                    <WaveformVisualization
-                      waveformData={track.waveformData}
-                      duration={duration}
-                      width={timelineWidth}
-                      height={track.height - 2}
-                      color={track.color || 'green'}
-                      opacity={0.3}
-                    />
-                  )}
+            {/* Single Tracks Container - centered content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              {tracks.map((track, trackIndex) => (
+                <div
+                  key={track.id}
+                  className="relative w-full"
+                  style={{ height: track.height }}
+                >
                   {/* Clips - Centered horizontally */}
                   {track.clips.map((clip) => {
                     // Center the clip horizontally in the timeline
@@ -958,10 +919,9 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                         )}
                         style={{
                           left: clipX,
-                          top: '50%',
-                          transform: 'translateY(-50%)',
+                          top: 0, // Start from top
                           width: Math.max(clipWidth, 20),
-                          height: '60px',
+                          height: '100%', // Full height of track
                           background: track.type === 'video' 
                             ? 'linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8))'
                             : track.type === 'audio'
@@ -1052,9 +1012,11 @@ export const TimelineEditor: React.FC<TimelineEditorProps> = ({
                     )
                   })}
                 </div>
-              </div>
             ))}
-
+            </div>
+            
+            {/* Lines and overlays - outside centered wrapper for full height */}
+            
             {/* Selection Box */}
             {selectionBox && (
               <div

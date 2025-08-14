@@ -110,17 +110,13 @@ export const VideoThumbnails: React.FC<VideoThumbnailsProps> = ({
       
       {/* Thumbnails */}
       {!isLoading && thumbnails.map((thumbnail, index) => (
-        <div
+        <img
           key={index}
-          className="relative flex-shrink-0 overflow-hidden"
-          style={{ width: thumbnailWidth }}
-        >
-          <img
-            src={thumbnail}
-            alt={`Frame ${index}`}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-        </div>
+          src={thumbnail}
+          alt={`Frame ${index}`}
+          className="flex-shrink-0 object-cover opacity-30"
+          style={{ width: thumbnailWidth, height: '100%' }}
+        />
       ))}
     </div>
   )

@@ -2,8 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Roboto_Mono } from "next/font/google";
 import { Providers } from './providers'
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+// Header and Footer removed for fullscreen Studio experience
+// import Header from "./components/header/Header";
+// import Footer from "./components/footer/Footer";
 // import { Toaster } from 'react-hot-toast';
 
 const geistSans = Inter({
@@ -32,7 +33,7 @@ export default function RootLayout({
         className={`min-h-screen flex flex-col bg-darkSurfacePrimary text-white dark:bg-darkSurfacePrimary dark:text-white font-sans ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <Header />
+          {/* Header and Footer removed - Studio is now fullscreen */}
           <main className="flex-grow">
             {/* <Toaster toastOptions={{
               style: {
@@ -43,7 +44,6 @@ export default function RootLayout({
             }} /> */}
             {children}
           </main>
-          <Footer />
         </Providers>
       </body>
     </html>
