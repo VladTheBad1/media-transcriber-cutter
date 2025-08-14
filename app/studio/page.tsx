@@ -214,6 +214,7 @@ export default function StudioPage() {
     if (mediaPlayerRef.current) {
       mediaPlayerRef.current.pause()
     }
+    // Transcript will be fetched by useEffect watching selectedFile
   }
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -237,10 +238,13 @@ export default function StudioPage() {
         
         // Auto-select the newly uploaded file
         if (data.mediaId) {
-          // Find the newly uploaded file
-          const newFile = mediaFiles.find(f => f.mediaId === data.mediaId)
+          // Refresh the list first to get the new file
+          const response = await fetch('/api/media')
+          const updatedFiles = await response.json()
+          const newFile = updatedFiles.find((f: MediaFile) => f.mediaId === data.mediaId)
           if (newFile) {
             setSelectedFile(newFile)
+            // Transcript will be fetched by useEffect watching selectedFile
           }
         }
       }
@@ -962,7 +966,7 @@ export default function StudioPage() {
           minHeight={100}
           maxHeight={600}
           resizeDirections={['top', 'right', 'bottom', 'left', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight']}
-          borderColor=""
+          borderColor="red"
           onDragOver={(e) => {
             e.preventDefault()
             e.dataTransfer.dropEffect = 'copy'

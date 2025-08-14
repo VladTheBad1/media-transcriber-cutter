@@ -620,6 +620,30 @@ export class TimelineOperations {
     this.notify()
   }
 
+  // Add a new track to the timeline
+  addTrack(track: TimelineTrack, position?: number): void {
+    if (position !== undefined && position >= 0 && position <= this.state.tracks.length) {
+      this.state.tracks.splice(position, 0, track)
+    } else {
+      this.state.tracks.push(track)
+    }
+    
+    this.notify()
+    this.saveTimeline()
+  }
+
+  // Add a clip to a track
+  addClipToTrack(trackId: string, clip: TimelineClip): void {
+    const track = this.state.tracks.find(t => t.id === trackId)
+    if (!track) return
+    
+    track.clips.push(clip)
+    track.clips.sort((a, b) => a.start - b.start)
+    
+    this.notify()
+    this.saveTimeline()
+  }
+
   // Undo last action
   undo(): boolean {
     if (this.state.historyIndex < 0) return false

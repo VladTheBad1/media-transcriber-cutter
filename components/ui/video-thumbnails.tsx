@@ -48,12 +48,16 @@ export const VideoThumbnails: React.FC<VideoThumbnailsProps> = ({
         })
 
         const duration = clipEnd - clipStart
-        const thumbnailCount = Math.min(Math.ceil(duration / frameInterval), 10) // Max 10 thumbnails
+        const thumbnailCount = Math.min(Math.ceil(duration / frameInterval), 30) // Max 30 thumbnails for HD detail
         const actualInterval = duration / thumbnailCount
 
-        // Set canvas size to maintain aspect ratio
-        canvas.width = height * (video.videoWidth / video.videoHeight)
-        canvas.height = height
+        // Set canvas size for high resolution
+        const scale = 2 // For retina displays
+        canvas.width = height * (video.videoWidth / video.videoHeight) * scale
+        canvas.height = height * scale
+        canvas.style.width = `${canvas.width / scale}px`
+        canvas.style.height = `${canvas.height / scale}px`
+        ctx.scale(scale, scale)
 
         for (let i = 0; i < thumbnailCount; i++) {
           const time = clipStart + (i * actualInterval)
@@ -66,11 +70,13 @@ export const VideoThumbnails: React.FC<VideoThumbnailsProps> = ({
             video.addEventListener('seeked', resolve, { once: true })
           })
 
-          // Draw frame to canvas
-          ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+          // Draw frame to canvas with high quality
+          ctx.imageSmoothingEnabled = true
+          ctx.imageSmoothingQuality = 'high'
+          ctx.drawImage(video, 0, 0, canvas.width / scale, canvas.height / scale)
           
-          // Convert to data URL
-          const dataUrl = canvas.toDataURL('image/jpeg', 0.6)
+          // Convert to data URL with high quality
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.9)
           generatedThumbnails.push(dataUrl)
         }
 
@@ -108,13 +114,13 @@ export const VideoThumbnails: React.FC<VideoThumbnailsProps> = ({
         </div>
       )}
       
-      {/* Thumbnails */}
+      {/* Thumbnails - full opacity for HD clarity */}
       {!isLoading && thumbnails.map((thumbnail, index) => (
         <img
           key={index}
           src={thumbnail}
           alt={`Frame ${index}`}
-          className="flex-shrink-0 object-cover opacity-30"
+          className="flex-shrink-0 object-cover"
           style={{ width: thumbnailWidth, height: '100%' }}
         />
       ))}

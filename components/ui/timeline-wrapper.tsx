@@ -394,6 +394,88 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
     [operations],
   );
 
+  const handleDetachAudio = useCallback(
+    (trackId: string, clipId: string) => {
+      if (!operations || !timelineState) return;
+      
+      console.log('Detaching audio from track:', trackId, 'clip:', clipId);
+      
+      // Find the clip in the track
+      const track = timelineState.tracks.find(t => t.id === trackId);
+      const clip = track?.clips.find(c => c.id === clipId);
+      
+      if (!clip || clip.type !== 'video') {
+        console.log('Clip not found or not a video clip');
+        return;
+      }
+      
+      // Find or create an audio track below the video track
+      const trackIndex = timelineState.tracks.findIndex(t => t.id === trackId);
+      let audioTrack = timelineState.tracks.find((t, i) => 
+        i > trackIndex && t.type === 'audio' && t.name === 'Audio'
+      );
+      
+      const audioTrackId = audioTrack?.id || `audio-${Date.now()}`;
+      
+      if (!audioTrack) {
+        console.log('Creating new audio track');
+        // Create a new audio track
+        const newAudioTrack = {
+          id: audioTrackId,
+          name: 'Audio',
+          type: 'audio' as const,
+          clips: [],
+          height: 96,
+          visible: true,
+          muted: false,
+          locked: false
+        };
+        
+        // Insert the audio track directly into state
+        const state = operations.getState();
+        state.tracks.splice(trackIndex + 1, 0, newAudioTrack);
+        audioTrack = newAudioTrack;
+      }
+      
+      console.log('Creating audio clip');
+      // Create an audio clip with the same timing as the video clip
+      const audioClip = {
+        id: `audio-${clip.id}`,
+        start: clip.start,
+        end: clip.end,
+        duration: clip.duration,
+        type: 'audio' as const,
+        label: clip.label ? `${clip.label} - Audio` : 'Detached Audio',
+        sourceStart: clip.sourceStart,
+        sourceEnd: clip.sourceEnd,
+        locked: false,
+        data: clip.data
+      };
+      
+      // Add the audio clip to the audio track
+      console.log('Adding audio clip to track:', audioTrackId);
+      const state = operations.getState();
+      const targetTrack = state.tracks.find(t => t.id === audioTrackId);
+      if (targetTrack) {
+        targetTrack.clips.push(audioClip);
+        targetTrack.clips.sort((a, b) => a.start - b.start);
+      }
+      
+      // Mark the video clip as having detached audio
+      const videoTrack = state.tracks.find(t => t.id === trackId);
+      const videoClip = videoTrack?.clips.find(c => c.id === clipId);
+      if (videoClip) {
+        (videoClip as any).audioDetached = true;
+      }
+      
+      // Force update by changing current time slightly and back
+      const currentTime = state.currentTime;
+      operations.setCurrentTime(currentTime + 0.001);
+      setTimeout(() => operations.setCurrentTime(currentTime), 0);
+    },
+    [operations, timelineState],
+  );
+
   const handleUndo = useCallback(() => {
     const success = operations?.undo();
     if (!success) {
@@ -491,18 +573,13 @@ export const TimelineWrapper: React.FC<TimelineWrapperProps> = ({
         onClipEdit={handleClipEdit}
         onClipDelete={handleClipDelete}
         onClipSplit={handleClipSplit}
-        onClipMerge={handleClipMerge}
-        onClipCopy={handleClipCopy}
         onTrackToggle={handleTrackToggle}
+        onDetachAudio={handleDetachAudio}
         onUndo={handleUndo}
         onRedo={handleRedo}
         onScrubbingChange={handleScrubbingChange}
         className="min-h-[400px]"
         pixelsPerSecond={20}
-        snapToGrid={true}
-        gridInterval={1}
-        showWaveforms={true}
-        frameRate={30}
         mediaSrc={mediaFile.type === 'video' ? getMediaUrl(mediaFile) : undefined}
       />
 
